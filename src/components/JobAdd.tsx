@@ -29,7 +29,11 @@ const JobAdd = (ctx: IJobAdd) => {
             width={22}
             alt="location_pointer"
             src={location}
-            style={{ paddingLeft: "5px" }}
+            style={{
+              paddingLeft: "5px",
+              userSelect: "none",
+              pointerEvents: "none",
+            }}
           />
           <span className="p-1">{ctx.location}</span>
         </div>

@@ -4,7 +4,7 @@ const EmailSubscription = () => {
   return (
     <div className="fixed bottom-0 flex justify-center w-full bg-stone-50 p-5 border-t-indigo-500">
       <div className="text-gray-700 text-xl m-2 flex items-center">
-        Get new intern and grad roles sent to
+        Get new intern and grad jobs sent to
       </div>
       <input
         type="email"
