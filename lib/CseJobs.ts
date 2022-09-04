@@ -65,7 +65,7 @@ export const jobs: Array<IJobAdd> = [
   },
   {
     company: "Amazon Web Services",
-    role: "Associate Solutions Architect - Early Career",
+    role: "Solutions Architect - Early Career",
     logo: "https://media-exp1.licdn.com/dms/image/C560BAQE_4UwvNNtNTQ/company-logo_200_200/0/1640205885683?e=1670457600&v=beta&t=CovIlu3Ln8nzI2C11w6Tf3QztsTks-O5k5CYcvatARQ",
     posted: 1662279603459,
     type: "grad",

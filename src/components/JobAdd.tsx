@@ -90,7 +90,9 @@ const JobAdd = (ctx: IJobAdd) => {
         </div>
         {/* <div className="flex flex-col"> */}
         <div className="flex px-4 lg:px-0 flex-col w-4/6 lg:w-2/6 items-start">
-          <div className="font-medium lg:text-lg text-xl">{ctx.company}</div>
+          <div className="font-medium lg:text-lg text-xl text-start">
+            {ctx.company}
+          </div>
           <div className="font-bold lg:text-xl text-start lg:text-center">
             {ctx.role}
           </div>
