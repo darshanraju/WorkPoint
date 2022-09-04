@@ -109,7 +109,7 @@ const JobAdd = (ctx: IJobAdd) => {
           </div>
         </div>
         <div className="flex lg:w-2/6 items-center flex-wrap hidden lg:flex">
-          {ctx.tags.map((tag, idx) => (
+          {ctx.tags?.map((tag, idx) => (
             <Tag tag={tag} key={idx} />
           ))}
         </div>
