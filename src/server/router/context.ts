@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // src/server/router/context.ts
 import * as trpc from "@trpc/server";
 import * as trpcNext from "@trpc/server/adapters/next";
@@ -23,7 +24,7 @@ export const createContextInner = async (opts: CreateContextOptions) => {
  * @link https://trpc.io/docs/context
  **/
 export const createContext = async (
-  opts: trpcNext.CreateNextContextOptions,
+  opts: trpcNext.CreateNextContextOptions
 ) => {
   return await createContextInner({});
 };

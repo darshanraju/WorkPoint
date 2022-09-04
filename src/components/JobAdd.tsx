@@ -6,6 +6,7 @@ export interface IJobAdd {
   company: string;
   tags: Array<string>;
   role: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   logo: any;
   posted: number;
   type: "grad" | "intern";
