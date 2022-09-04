@@ -15,6 +15,7 @@ const jobs: Array<IJobAdd> = [
     posted: 1659312000000,
     type: "grad",
     location: "Sydney - Australia",
+    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
   },
   {
     company: "Uber",
@@ -24,6 +25,7 @@ const jobs: Array<IJobAdd> = [
     posted: 1662078009000,
     type: "intern",
     location: "Melbourne - Australia",
+    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
   },
   {
     company: "Tesla",
@@ -33,6 +35,7 @@ const jobs: Array<IJobAdd> = [
     posted: 1662085209000,
     type: "intern",
     location: "Melbourne - Australia",
+    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
   },
   {
     company: "Lyft",
@@ -42,6 +45,7 @@ const jobs: Array<IJobAdd> = [
     posted: 1659406809000,
     type: "intern",
     location: "Perth - Australia",
+    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
   },
   {
     company: "Lyft",
@@ -51,6 +55,7 @@ const jobs: Array<IJobAdd> = [
     posted: 1660962009000,
     type: "grad",
     location: "Perth - Australia",
+    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
   },
   {
     company: "Lyft",
@@ -60,6 +65,7 @@ const jobs: Array<IJobAdd> = [
     posted: 1661134809000,
     type: "grad",
     location: "Sydney - Australia",
+    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
   },
   {
     company: "Uber",
@@ -69,6 +75,7 @@ const jobs: Array<IJobAdd> = [
     posted: 1661480409000,
     type: "intern",
     location: "Remote - Australia",
+    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
   },
   {
     company: "CSE Gigs",
@@ -78,6 +85,7 @@ const jobs: Array<IJobAdd> = [
     posted: 1661473209000,
     type: "intern",
     location: "Remote - Australia",
+    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
   },
   {
     company: "Microsoft",
@@ -87,6 +95,7 @@ const jobs: Array<IJobAdd> = [
     posted: 1661127609000,
     type: "intern",
     location: "Remote - Australia",
+    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
   },
   {
     company: "Lyft",
@@ -96,6 +105,7 @@ const jobs: Array<IJobAdd> = [
     posted: 1661138409000,
     type: "intern",
     location: "Remote - Australia",
+    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
   },
 ];
 
@@ -142,6 +152,7 @@ const Home: NextPage = () => {
               posted={job.posted}
               type={job.type}
               location={job.location}
+              link={job.link}
               key={idx}
             />
           ))}

@@ -29,6 +29,7 @@ export interface IJobAdd {
   type: "grad" | "intern";
   location: string;
   jobInfo?: IJobInfo;
+  link: string;
 }
 
 const mockJobInfo: IJobInfo = {
@@ -115,8 +116,13 @@ const JobAdd = (ctx: IJobAdd) => {
         <div className="flex w-1/6 lg:w-1/6 items-center font-semibold justify-center">
           {snowManMethod(now, ctx.posted)}
         </div>
-        <div className="flex items-center">
-          <button className="btn btn-secondary">Apply</button>
+        <div className="flex items-center" onClick={() => 42}>
+          <button
+            className="btn btn-secondary"
+            onClick={() => window.open(ctx.link, "_blank")}
+          >
+            Apply
+          </button>
         </div>
       </div>
       {open && (
@@ -128,6 +134,7 @@ const JobAdd = (ctx: IJobAdd) => {
           role={ctx.role}
           tags={ctx.tags}
           type={ctx.type}
+          link={ctx.link}
           jobInfo={mockJobInfo}
         />
       )}
