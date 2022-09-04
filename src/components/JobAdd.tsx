@@ -1,5 +1,5 @@
 import Image from "next/image";
-import location from "../../public/cursor.png";
+import location from "../../public/location.png";
 import React from "react";
 
 export interface IJobAdd {
@@ -26,12 +26,12 @@ const JobAdd = (ctx: IJobAdd) => {
         <div className="font-bold text-l pt-2">
           <Image
             height={15}
-            width={25}
+            width={22}
             alt="location_pointer"
             src={location}
-            style={{ paddingLeft: "5px", paddingRight: "5px" }}
+            style={{ paddingLeft: "5px" }}
           />
-          <span>{ctx.location}</span>
+          <span className="p-1">{ctx.location}</span>
         </div>
       </div>
       <div className="flex w-2/6 items-center">
@@ -79,8 +79,6 @@ const snowManMethod = (date_now: number, date_posted: number) => {
     d -= r[key] * s[key];
   });
 
-  // for example: {year:0,month:0,week:1,day:2,hour:34,minute:56,second:7}
-  console.log(r);
   if (r["month"] !== 0) return `${r["month"]}m`;
   if (r["week"] !== 0) return `${r["week"]}w`;
   if (r["day"] !== 0) return `${r["day"]}d`;
