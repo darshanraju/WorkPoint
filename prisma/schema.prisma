@@ -20,4 +20,10 @@ model CSEJobs {
     posted   DateTime @updatedAt
     type     String
     location String
+    expire   DateTime
+}
+
+model subscribers {
+    id    String @id @default(cuid())
+    email String
 }
