@@ -123,7 +123,7 @@ const Home: NextPage = () => {
       <Head>
         <title>CSE Gigs</title>
         <meta name="description" content="Compsci/Seng Student Gigs" />
-        <link rel="icon" href="/faviconV2.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4 ">
@@ -132,7 +132,7 @@ const Home: NextPage = () => {
         </h1>
         {/* <Stats /> */}
         <Filter checked={checked} setChecked={setChecked} />
-        <div className="grid gap-4 pt-6 text-center md:grid-cols-1 lg:w-3/4 mb-40">
+        <div className="grid lg:gap-4 pt-6 pb-40 text-center md:grid-cols-1 w-full lg:w-3/4lg:mb-40">
           {filtedJobs.map((job, idx) => (
             <JobAdd
               company={job.company}

@@ -16,15 +16,24 @@ export interface IJobAdd {
 const JobAdd = (ctx: IJobAdd) => {
   const now = Date.now();
   return (
-    <div className="flex p-4 duration-500 border-2 border-gray-500 rounded-lg shadow-xl motion-safe:hover:scale-105 hover:bg-slate-200 hover:cursor-pointer">
-      <div className="w-1/6">
-        <Image src={ctx.logo} height="80px" width="80px" alt="company_logo" />
+    <div className="flex p-4 duration-500 lg:border-2 border-gray-500 rounded-lg shadow-xl motion-safe:hover:scale-105 hover:bg-slate-200 hover:cursor-pointer">
+      <div className="w-1/6 lg:w-1/6 relative">
+        {/* <Image src={ctx.logo} height="80px" width="80px" alt="company_logo" /> */}
+        <Image
+          src={ctx.logo}
+          layout="fill" // required
+          objectFit="contain" // change to suit your needs
+          // className="rounded-full" // just an example
+          alt="company_logo"
+        />
       </div>
       {/* <div className="flex flex-col"> */}
-      <div className="flex flex-col w-2/6 items-start">
-        <div className="font-medium text-lg">{ctx.company}</div>
-        <div className="font-bold text-xl">{ctx.role}</div>
-        <div className="font-bold text-l pt-2">
+      <div className="flex px-4 lg:px-0 flex-col w-4/6 lg:w-2/6 items-start">
+        <div className="font-medium lg:text-lg text-xl">{ctx.company}</div>
+        <div className="font-bold lg:text-xl text-start lg:text-center">
+          {ctx.role}
+        </div>
+        <div className="font-bold lg:text-lg pt-2 text-start lg:text-center">
           <Image
             height={15}
             width={22}
@@ -39,12 +48,12 @@ const JobAdd = (ctx: IJobAdd) => {
           <span className="p-1">{ctx.location}</span>
         </div>
       </div>
-      <div className="flex w-2/6 items-center">
+      <div className="flex lg:w-2/6 items-center flex-wrap hidden lg:flex">
         {ctx.tags.map((tag, idx) => (
           <Tag tag={tag} key={idx} />
         ))}
       </div>
-      <div className="flex w-1/6 items-center font-semibold">
+      <div className="flex w-1/6 lg:w-1/6 items-center font-semibold justify-center">
         {snowManMethod(now, ctx.posted)}
       </div>
     </div>
@@ -57,7 +66,7 @@ interface ITag {
 
 const Tag = ({ tag }: ITag) => {
   return (
-    <div className="badge badge-outline badge-lg hover:border-2 border-gray-500 p-3 mr-2">
+    <div className="badge badge-outline badge-lg hover:border-2 border-gray-500 lg:p-3 lg:mr-2 ">
       {tag}
     </div>
   );
