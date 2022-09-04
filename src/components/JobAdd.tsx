@@ -77,7 +77,8 @@ const JobAdd = (ctx: IJobAdd) => {
         className="flex p-4 hover:cursor-pointer"
         onClick={() => setOpen(!open)}
       >
-        <div className="w-1/6 lg:w-1/6 relative">
+        <div className="w-1/6 lg:w-1/6  relative">
+          {/* <div className="w-1/6 lg:w-1/6  rounded-full"> */}
           {/* <Image src={ctx.logo} height="80px" width="80px" alt="company_logo" /> */}
           <Image
             src={ctx.logo}
@@ -135,7 +136,7 @@ const JobAdd = (ctx: IJobAdd) => {
           tags={ctx.tags}
           type={ctx.type}
           link={ctx.link}
-          jobInfo={mockJobInfo}
+          jobInfo={ctx.jobInfo}
         />
       )}
     </div>

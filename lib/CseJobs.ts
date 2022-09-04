@@ -5,7 +5,7 @@ export const jobs: Array<IJobAdd> = [
     company: "Amazon Web Services",
     role: "2022/23 Software Development Graduate",
     // tags: ["remote", "react", "saas"],
-    logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    logo: "https://media-exp1.licdn.com/dms/image/C560BAQE_4UwvNNtNTQ/company-logo_200_200/0/1640205885683?e=1670457600&v=beta&t=CovIlu3Ln8nzI2C11w6Tf3QztsTks-O5k5CYcvatARQ",
     posted: 1662279603459,
     type: "grad",
     location: "Brisbane - Australia",
@@ -493,6 +493,250 @@ export const jobs: Array<IJobAdd> = [
           title: "",
           text: [
             "At Airwallex we like to ensure we create the best environment for our people providing a collaborative open office space, PlayStation and table tennis to unwind, a fully stocked kitchen which includes breakfast, snacks, fruit, beers, you name it! We also organise regular team building events, encourage flexible/remote working and offer learning and development opportunities. Most importantly, we give our people the freedom to be creative.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    company: "Tesla",
+    role: "Product Engineering Intern",
+    logo: "https://cardea.imgix.net/media/companies/logos/mkxozts4fsvkj73azuls_P14VGHC.png?auto=format&fit=fill&fill=solid&fill-color=white&ixlib=react-9.0.3&h=60&w=60&q=75&dpr=1",
+    type: "intern",
+    tags: ["Elon Musk"],
+    posted: 1662279603459,
+    link: "https://www.tesla.com/careers/search/job/product-engineering-intern-141526?source=LinkedIn",
+    location: "Melbourne - Australia",
+    jobInfo: {
+      preText: [
+        {
+          title: "What to Expect",
+          text: [
+            "The Tesla Energy Product Engineering team is responsible for diagnosing and resolving product issues and escalations from Field Service teams to drive the best customer experience and fleet availability. In this internship you will identify and help resolve fleet-wide performance, operation, and maintenance challenges across the growing fleet of energy products by creating analytics that provide insights to drive action to maintain and improve the fleet.",
+          ],
+        },
+      ],
+      lists: [
+        {
+          title: "What You’ll Do",
+          points: [
+            "Troubleshoot and resolve hardware, software, and firmware issues that cause downtime for Tesla’s Industrial Storage customers. ",
+            "Define the actions that need to be taken by the field service and technical support teams when a specific failure mode occurs, publish those actions in Tesla’s Service tools, and develop any specialized training required to complete those actions.",
+            "Provide support on escalated customer cases from around the world in order to minimize system downtime for Tesla’s customers. ",
+            "Work with field service and technical support teams to create the documentation and training necessary to commission, operate, repair, and service Tesla’s Industrial Storage products installed globally.",
+          ],
+        },
+        {
+          title: "What You’ll Bring",
+          points: [
+            "Currently working towards a degree in Electrical Engineering or relevant program ",
+            "Strong engineering fundamentals and intuition, applied to firmware/software-enabled systems ",
+            "Remain engaged, proactive, and positive while solving very challenging problems",
+            "This role is full time and for a 6 month contract",
+          ],
+        },
+        {
+          title: "Desired Competencies",
+          points: [
+            "Experience with battery systems and power systems ",
+            "Experience using Python or equivalent for data analysis on very large databases ",
+            "Knowledge of CAN Bus communication ",
+            "Experience with developing, managing or maintaining equipment running Linux based applications ",
+          ],
+        },
+      ],
+      postText: [
+        {
+          title: "",
+          text: [
+            "Tesla is an Equal Opportunity / Affirmative Action employer committed to diversity in the workplace. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, age, national origin, disability, protected veteran status, gender identity or any other factor protected by applicable federal, state or local laws.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    company: "Mastercard",
+    role: "Summer Internship , Software Engineer",
+    link: "https://www.linkedin.com/jobs/view/3237733495/?eBP=JOB_SEARCH_ORGANIC&recommendedFlavor=JOB_SEEKER_QUALIFIED&refId=haTsv%2Bq0l%2BryPFiTcHwz2w%3D%3D&trackingId=hsrWlBtyWfMpc4dRLnFltg%3D%3D&trk=flagship3_search_srp_jobs",
+    type: "intern",
+    location: "Sydney - Australia",
+    logo: "https://media-exp1.licdn.com/dms/image/C560BAQGOW4NIyYRRqQ/company-logo_200_200/0/1519856263087?e=1670457600&v=beta&t=AMNuOGr2c2Dwt_AU2_H3Fpt9ppQpKtyRPNw-HNIQH5I",
+    posted: 1662279603459,
+    jobInfo: {
+      preText: [
+        {
+          title: "Our Purpose",
+          text: [
+            "We work to connect and power an inclusive, digital economy that benefits everyone, everywhere by making transactions safe, simple, smart and accessible. Using secure data and networks, partnerships and passion, our innovations and solutions help individuals, financial institutions, governments and businesses realize their greatest potential. Our decency quotient, or DQ, drives our culture and everything we do inside and outside of our company. We cultivate a culture of inclusion for all employees that respects their individual strengths, views, and experiences. We believe that our differences enable us to be a better team – one that makes better decisions, drives innovation and delivers better business results.",
+            "We are the global technology company behind the world’s fastest payments processing network. We are a vehicle for commerce, a connection to financial systems for the previously excluded, a technology innovation lab, and the home of Priceless®. We ensure every employee has the opportunity to be a part of something bigger and to change lives. We believe as our company grows, so should you. We believe in connecting everyone to endless, priceless possibilities.",
+            "The Mastercard Intern Program is a comprehensive program where students will gain hands on real work-life skills while having fun and contributing to a global company. As an intern, you will be challenged with completing projects that will enhance your skills as well as contribute to the department’s goals and objectives. Successful candidates will be assigned to a business unit within International Markets for 8 - 12 weeks.",
+          ],
+        },
+      ],
+      lists: [
+        {
+          title: "",
+          points: [
+            "Are you passionate about operations & technology?",
+            "Do you want to work for a company that offers above and beyond benefits including paid parental leave, flexible work hours, gift matching, and even volunteer incentives while encouraging your own professional learning and development?",
+            "Do you thrive in a place where you are continuously learning more while growing your skills and career?",
+            "Do you want to join a Company that offers a competitive benefits-and rewards program that attracts, develops and retains the most talented employees around the world?",
+            "Do you want to join an inclusive culture where employees, in all their diversity, feel valued, respected and who can bring their authentic selves to work? Learn more at Mastercard’s Corporate Sustainability Report.",
+          ],
+        },
+        {
+          title: "Business Unit",
+          points: [
+            "Hands-on developer who writes high quality, secure code for a small to mid-sized component or feature that is modular, functional and testable.",
+            "Contribute to all parts of the software’s development including design, development, documentation, and testing.",
+            "Have strong ownership of your team’s software and are deep in the maintenance characteristics, runtime properties and dependencies including hardware, operating system, and build.",
+            "Communicate, collaborate and work effectively in a global environment.",
+          ],
+        },
+        {
+          title: "Program Dates & Components",
+          points: [
+            "Impactful assignments that drive business results",
+            "Networking sessions and leadership speakers series",
+            "Volunteer and team building experiences",
+          ],
+        },
+        {
+          title: "Experience And Skills Needed",
+          points: [
+            "Currently enrolled in a bachelor’s or master’s degree program majoring in Computer Science or a related field with a graduation date between June 2023 to January 2024.",
+            "Strong foundation in algorithms, data structures and core computer science concepts.",
+            "Evidence of working with object-oriented development and design patterns.",
+            "Proficiency in one or more modern programming languages such as Java, Python, C++ etc.",
+            "Strong written and verbal English communications skills.",
+            "Strong analytical and excellent problem-solving skills.",
+            "Experience working in an Agile environment. ",
+          ],
+        },
+        {
+          title: "Responsibilities",
+          points: [
+            "Abide by Mastercard’s security policies and practices",
+            "Ensure the confidentiality and integrity of the information being accessed",
+            "Report any suspected information security violation or breach, and",
+            "Complete all periodic mandatory security trainings in accordance with Mastercard’s guidelines.",
+          ],
+        },
+      ],
+      postText: [
+        {
+          title:
+            "Please upload your CV, cover letter & transcripts as one combined PDF document in your application.",
+          text: [],
+        },
+      ],
+    },
+  },
+  {
+    company: "Jump Trading LLC",
+    role: "Software / Hardware Engineer Intern",
+    location: "Sydey - Australia",
+    logo: "https://media-exp1.licdn.com/dms/image/C4E0BAQEXnIY9IgMYDg/company-logo_200_200/0/1519888992804?e=1670457600&v=beta&t=OtVRMn-lyWiujUahQVvww98LgwUWhrRp9yD3jpd-Bls",
+    link: "https://www.jumptrading.com/careers/4072128/?gh_jid=4072128",
+    posted: 1662279603459,
+    type: "intern",
+    jobInfo: {
+      preText: [
+        {
+          title: "",
+          text: [
+            "We’re looking for talented software and hardware engineering students to join our new Sydney office to help us build ultra-low-latency hardware and software systems that power trading on a global scale.",
+            "If you have interest in low-level or embedded software, operating systems, networking, and/or hardware, you’ll enjoy working with us.",
+            "You’ll join our small team of engineers in Sydney who work with FPGAs, tinker with the linux kernel, write high performance C++, and more to build some of the fastest electronic trades in the world (think time-scale of nanoseconds).",
+            "Prior experience in trading is not expected, we’ll teach you everything you need to know.",
+            "We have opportunities for students interested in software engineering, hardware engineering, and the intersection of both!",
+          ],
+        },
+      ],
+      lists: [
+        {
+          title: "Skills You'll Need",
+          points: [
+            "Undergraduate or Graduate concentration in Electrical Engineering, Computer Engineering, Computer Science, or related areas",
+            "Experience and interest in one or both of the following",
+            "Low-level / embedded software development",
+            "FPGAs or other hardware/systems design",
+            "Experience with C, C++, or Python",
+            "Experience with RTL development (SystemVerilog/Verilog/VHDL), if interested in working with hardware",
+            "Excellent marks in courses such as operating systems, distributed systems, digital circuits, networking, computer architecture",
+            "Passion for solving complex problems and ability to draw upon knowledge and experience from a variety of technical areas to produce extremely high-performance solutions",
+          ],
+        },
+        {
+          title: "Other Helpful And Related Experience",
+          points: [
+            "lowRISC or RISC-V",
+            "CocoTB, Chisel, Opencore, or Bluespec",
+            "HLS or OpenCL",
+            "Any programming close to the metal with CPU, GPU, microprocessors, etc.",
+            "Linux kernel and driver programming",
+            "Robotics, Telecommunications, or High Speed Networking",
+            "Raspberry Pi or Arduino",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    company: "Amazon Web Services",
+    role: "Graduate and Internship Opportunities",
+    location: "Sydney - Australia",
+    logo: "https://media-exp1.licdn.com/dms/image/C560BAQE_4UwvNNtNTQ/company-logo_200_200/0/1640205885683?e=1670457600&v=beta&t=CovIlu3Ln8nzI2C11w6Tf3QztsTks-O5k5CYcvatARQ",
+    link: "https://www.amazon.jobs/en/jobs/1528725/aws-graduate-and-internship-opportunities-2022-2023",
+    type: "intern",
+    posted: 1662279603459,
+    jobInfo: {
+      preText: [
+        {
+          title: "",
+          text: [
+            "Register your interest for 2022/2023 Campus Opportunities at AWS across Austrilia and New Zealand",
+          ],
+        },
+        {
+          title: "Why register interest?",
+          text: [
+            "We have lots of teams hiring across Australia and New Zealand in 2022 and 2023, once we have your application we will get in touch if we have a relevant opening that matches your skillset.",
+            "When you join Amazon Web Services as a student or recent graduate, you’ll have the chance for your voice to not just be heard—but to be amplified. That’s because our teams here are looking to learn as much from you as you’ll learn from them. Whether you’re graduating with an undergraduate degree, Master’s degree, MBA, or PhD, we offer a range of early career opportunities across the globe.",
+            "At AWS, you’ll work alongside some of the brightest minds in the industry and gain invaluable hands-on experience from day one. You’ll also get an insider’s look at the way we work and the thinking that drives what we do.",
+            "This is an interest list for graduates of the Early Careers Innovation Program. The AWS Early Careers Innovation Program (ECIP) is a cohort-based program for tertiary education students interested in learning more about cloud computing and careers at Amazon Web Services.",
+            "Having completed the program, we want you to be the first to know about upcoming AWS early career opportunities.",
+          ],
+        },
+      ],
+      lists: [
+        {
+          title: "Available Internships:",
+          points: [
+            "Business Analyst Intern",
+            "Solutions Architect Internship",
+            "Professional Services Consultant Internship",
+            "Network Development Engineer Intern",
+            "Business Developer Intern",
+            "Software Developer Engineer Intern",
+            "Cloud Support Associate Intern",
+            "System Developer Engineer Intern",
+          ],
+        },
+        {
+          title: "BASIC QUALIFICATIONS",
+          points: [
+            "We require students to be in their penultimate and pre-penultimate year for internships (graduating from July 2022 onwards)",
+            "Have foundation knowledge around AWS cloud services and the cloud ecosystem",
+          ],
+        },
+      ],
+      postText: [
+        {
+          title: "PREFERRED QUALIFICATIONS",
+          text: [
+            "We are an equal opportunity employer and value diversity at our company. We do not discriminate on the basis of race, religion, color, national origin, gender, sexual orientation, age, marital status, veteran status, or disability status.",
           ],
         },
       ],

@@ -7,7 +7,7 @@ import EmailSubscription from "../components/EmailSubscription";
 import Filter from "../components/Filter";
 import { useEffect, useState } from "react";
 // import Stats from "../components/Stats";
-const jobs: Array<IJobAdd> = [
+const jobsOld: Array<IJobAdd> = [
   {
     company: "Lyft",
     role: "Software Engineer Grad",
@@ -110,6 +110,8 @@ const jobs: Array<IJobAdd> = [
   },
 ];
 
+import { jobs } from "../../lib/CseJobs";
+
 export enum filterStates {
   grad = "grad",
   intern = "intern",
@@ -154,6 +156,7 @@ const Home: NextPage = () => {
               type={job.type}
               location={job.location}
               link={job.link}
+              jobInfo={job.jobInfo}
               key={idx}
             />
           ))}
