@@ -744,4 +744,362 @@ export const jobs: Array<IJobAdd> = [
       ],
     },
   },
+  {
+    company: "Nexus Silicon Technologies",
+    role: ".Net Developer Intern",
+    logo: "https://media-exp1.licdn.com/dms/image/C560BAQHuMu6ApjfyGg/company-logo_200_200/0/1641804394967?e=1670457600&v=beta&t=u5lHqBql7wD4kb5PoiTl3cxhnPZx35oll6SeCb0Bso4",
+    link: "https://www.linkedin.com/jobs/view/3251622167/?eBP=JOB_SEARCH_ORGANIC&recommendedFlavor=ACTIVELY_HIRING_COMPANY&refId=F9rYGvHCpd%2B0o5wz6AE9qw%3D%3D&trackingId=HLZT65tcviGtHuLRcseCnA%3D%3D&trk=flagship3_search_srp_jobs",
+    location: "Melbourne - Australia",
+    posted: 1662279603459,
+    type: "intern",
+    tags: ["C#", ".NET"],
+    jobInfo: {
+      preText: [
+        {
+          title: "Internship Title: .Net Developer Intern",
+          text: [
+            "We are searching for an organized, ambitious .NET developer intern to generate software using .NET's infrastructure. The .NET developer's duties include sourcing project requirements, deciding on the most appropriate software solutions, and ensuring that developments are error-free. You should also ensure that the final products are well-presented and engaging.",
+            "To ensure success as a .NET developer, you should be able to create code using one of the preferred languages.",
+          ],
+        },
+      ],
+      lists: [
+        {
+          title: "",
+          points: [
+            "NET Developer Intern Responsibilities",
+            "Utilizing Microsoft's .NET infrastructure to create software solutions that meet clients' requirements.",
+            "Collaborating with co workers to facilitate the creation of large, complex developments, as required.",
+            "Reformulating existing code to ensure adherence to stipulated guidelines.",
+            "Checking your code to detect and remedy errors and omissions.",
+            "Testing your outputs to ensure that they are in excellent working order.",
+            "Ensuring that outputs are visually appealing, user-friendly, and engaging.",
+            "Deploying developments and monitoring uptake by the target audience.",
+            "Using clients' feedback to inform the creation of subsequent versions of each development.",
+            "Remaining abreast of coding and technological changes that will impact your work.",
+            "NET Developer Intern Requirements:",
+            "Degree in web design, software engineering, or similar.",
+            "Prior experience as a .NET Developer.",
+            "Advanced proficiency in C# or VB.NET.",
+            "Capacity to use Database with ease.",
+            "A flair for creating well-presented software that is technically sound.",
+            "Outstanding analytical, problem-solving, and communication skills.",
+            "Excellent organizational and time management skills.",
+            "Self-driven, flexible, and innovative.",
+          ],
+        },
+      ],
+      postText: [
+        {
+          title: "About us",
+          text: [
+            "Nexus Silicon was formed with the goal of becoming the supplier of choice for clients, employees, and contingent workers. Today, we’re one of the fastest-growing companies in Australia and ranked as one of the best companies to work for by Staffing Industry Analysts and Australia Business. Nexus Silicon provides high-volume staffing, IT managed Services, IT Consulting, Software & Mobile App development, Accounting Outsourcing, IT support, Cloud Infrastructure support & Outsourcing, SOW, and pay rolling services to structured contingent workforce programs and projects across Australia, Nepal & India. We also offer contract-to-hire and direct placement. Our “No-Sell, Service-Only” approach has resulted in “Accelerated Hires,” lower costs, reduced risks, and better service for Fortune 2000 Companies, Large System Integrators, and Government Agencies",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    company: "Nexus Silicon Technologies",
+    role: "AI Engineer Intern",
+    type: "intern",
+    link: "https://www.linkedin.com/jobs/view/3233040686/?eBP=JOB_SEARCH_ORGANIC&recommendedFlavor=ACTIVELY_HIRING_COMPANY&refId=zfQarKSvstL%2BgbokD%2Bc%2FWQ%3D%3D&trackingId=1RSmtRkHBHEBXkphBafMNQ%3D%3D&trk=flagship3_search_srp_jobs",
+    posted: 1662279603459,
+    logo: "https://media-exp1.licdn.com/dms/image/C560BAQHuMu6ApjfyGg/company-logo_200_200/0/1641804394967?e=1670457600&v=beta&t=u5lHqBql7wD4kb5PoiTl3cxhnPZx35oll6SeCb0Bso4",
+    location: "Canberra - Australia",
+    jobInfo: {
+      preText: [
+        {
+          title: "Job Title: AI Engineer Intern",
+          text: [
+            "We are looking for a highly capable AI Engineer Intern to optimize our AI systems. You will be evaluating existing (AI) processes, performing statistical analysis to resolve data set problems, and enhancing the accuracy of our AI software's predictive automation capabilities.",
+          ],
+        },
+      ],
+      lists: [
+        {
+          title: "AI Engineer Intern Responsibilities:",
+          points: [
+            "Consulting with managers to determine and refine artificial intelligence objectives.",
+            "Designing machine learning systems and self-running artificial intelligence (AI) software to automate predictive models.",
+            "Transforming data science prototypes and applying appropriate AI algorithms and tools.",
+            "Ensuring that algorithms generate accurate user recommendations.",
+            "Turning unstructured data into useful information by auto-tagging images and text-to-speech conversions.",
+            "Solving complex problems with multi-layered data sets, as well as optimizing existing machine learning libraries and frameworks.",
+            "Developing AI algorithms to analyze huge volumes of historical data to make predictions.",
+            "Running tests, performing statistical analysis, and interpreting test results.",
+            "Documenting machine learning processes.",
+            "Keeping abreast of developments in machine learning.",
+          ],
+        },
+        {
+          title: "AI Engineer Intern Requirements:",
+          points: [
+            "Bachelor's degree in computer science, data science, mathematics, or a related field.",
+            "Advanced proficiency with Python, Java, and R code writing.",
+            "Extensive knowledge of AI frameworks, libraries, data structures, data modeling, and software architecture.",
+            "In-depth knowledge of mathematics, statistics, and algorithms.",
+            "Superb analytical and problem-solving abilities.",
+            "Great communication and collaboration skills.",
+            "Excellent time management and organizational abilities.",
+          ],
+        },
+      ],
+      postText: [
+        {
+          title: "About Us:",
+          text: [
+            "Nexus Silicon was formed with the goal of becoming the supplier of choice for clients, employees, and contingent workers. Today, we’re one of the fastest-growing companies in Australia and ranked as one of the best companies to work for by Staffing Industry Analysts and Australia Business. Nexus Silicon provides high-volume staffing, IT managed Services, IT Consulting, Software & Mobile App development, Accounting Outsourcing, IT support, Cloud Infrastructure support & Outsourcing, SOW, and pay rolling services to structured contingent workforce programs and projects across Australia, Nepal & India. We also offer contract-to-hire and direct placement. Our “No-Sell, Service-Only” approach has resulted in “Accelerated Hires,” lower costs, reduced risks, and better service for Fortune 2000 Companies, Large System Integrators, and Government Agencies.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    company: "Agilent Technologies",
+    role: "Software Engineering Intern",
+    location: "Melbourne - Australia",
+    link: "https://recruiting.adp.com/srccar/public/RTI.home?r=5000872492106&c=2167807&d=External&rb=???&SID=850",
+    logo: "https://media-exp1.licdn.com/dms/image/C4E0BAQGj8V7ecGQq5g/company-logo_200_200/0/1656927106726?e=1670457600&v=beta&t=NHZn_-PVmq0ozN7um0JlqZl-ad4oP3gACJjLbcne7Sc",
+    type: "intern",
+    posted: 1662279603459,
+    jobInfo: {
+      preText: [
+        {
+          title: "",
+          text: [
+            "Agilent inspires and supports discoveries that advance the quality of life. We provide life science, diagnostic and applied market laboratories worldwide with instruments, services, consumables, applications, and expertise. Agilent enables customers to gain the answers and insights they seek – so they can do what they do best: improve the world around us. Information about Agilent is available at www.agilent.com.",
+            "Want to be at the cutting edge of Research and Development?",
+            "As a global company, you’ll experience enterprise level practices of the business and see first- hand what it’s like to work in a large company environment. Join the software and quality engineering teams that take world-leading Agilent products from design to production. You’ll be developing the software that supports and drives the use of scientific instruments for our end users. You'll learn about specifying components, how to utilize broad engineering concepts and research techniques, while also documenting research and design specifications to ensure high-quality software platforms.",
+            "You will also be learning test automation including Functional/Load/Performance testing using the latest tools and technologies. You will be exposed to the complete software development life cycle and will attend multiple cross functional meetings to get a well-rounded experience.",
+          ],
+        },
+      ],
+      lists: [
+        {
+          title:
+            "As part of the software and quality engineering teams, you’ll also be working with other project stakeholders such as:",
+          points: [
+            "Firmware engineers",
+            "Marketing",
+            "Product support",
+            "Chemists/applications engineers",
+            "Electronic and Mechanical Engineers",
+          ],
+        },
+        {
+          title: "You will learn about:",
+          points: [
+            "Agile Scrum",
+            "Software development lifecycle (SDLC)",
+            "Programming in C#, HTML5, CSS, TypeScript and Angular",
+            "Cloud technologies",
+            "Coding best practices",
+            "Test automation with tools like TestComplete, Playwright, Selenium, JMeter, Gremlin",
+            "Continuous integration",
+          ],
+        },
+      ],
+      postText: [
+        {
+          title: "",
+          text: [
+            "This is a fantastic intern opportunity to gain real world industry experience in a company that prides itself in quality, world-leading best practices and has a strong culture of team engagement and collaboration.",
+            "While experience isn't essential, you'll need to be currently pursuing a university bachelor or Master's degree. A positive, proactive approach to problem solving, willingness to learn and an eagerness to build a pioneering career in R&D or SW Quality are just as important.",
+            "To be eligible for this internship you must be an enrolled student, have at least 12 months remaining on your course and be available to work full time for a 12 month period.",
+            "Agilent Technologies Inc. is an equal opportunity employer. Qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, protected veteran status, disability or any other protected categories under all applicable laws.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    company: "CM Group",
+    type: "grad",
+    role: "Software Engineer - Graduate",
+    posted: 1662279603459,
+    link: "https://campaignmonitor.wd5.myworkdayjobs.com/CM_Group/job/Sydney-Australia/Fullstack-Software-Engineer_R505?source=Linkedin",
+    logo: "https://media-exp1.licdn.com/dms/image/C4E0BAQHC-f0oY03Z2w/company-logo_200_200/0/1611928592475?e=1670457600&v=beta&t=OBBHcvo_jOdKnBzqQLnu5pvrWP1rvSIr8pBAIlW8_iA",
+    location: "Sydney - Australia",
+    jobInfo: {
+      preText: [
+        {
+          title: "",
+          text: [
+            "We're looking for Computing Science / IT graduates who are keen to join either one of our core feature or platform teams, working on major new, customer-facing functionality or back-end capability for Campaign Monitor. This role is perfect for someone looking to help build software that hundreds of thousands of people genuinely love to use.",
+            "Our technology stack is mainly C#, Java, ReactJS, and SQL. You will get great opportunities to work with multiple technologies and tools such as Docker, Kafka, AWS, NodeJS, NoSQL and much more!",
+          ],
+        },
+      ],
+      lists: [
+        {
+          title: "So what is in it for you?",
+          points: [
+            "Remote-first position, or work from our amazing Sydney office if you prefer!",
+            "Competitive salary",
+            "Generous annual leave and holiday schedule",
+            "Flexible work hours (we believe in the importance of work-life/personal-life balance)",
+            "It's your birthday? Take the day off on us.",
+            "Paid time off to volunteer in our community",
+            "Training budget to ensure you are always learning and growing",
+            "Fully catered breakfast, lunch (selected days), with snacks, drinks options and barista coffee when you are working in our Sydney office",
+            "Personal fitness, yoga classes, swimming passes, team sports fully funded by Campaign Monitor when you are working from the Sydney office",
+            "Salary Continuance and Life Insurance",
+            "An awesome work environment using the best available equipment",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    company: "Palantir Technologies",
+    type: "grad",
+    location: "Sydney - Australia",
+    logo: "https://media-exp1.licdn.com/dms/image/C4D0BAQGxa0XGCRty6A/company-logo_200_200/0/1644957302142?e=1670457600&v=beta&t=JQOhK9s1WcDqjvVo6jo9rba34HMqsW0Yhq4_O8iCaXs",
+    link: "https://jobs.lever.co/palantir/6db3b287-f063-4b64-bb6e-e8b00ff12902?lever-source%255B%255D=Job%2520Board%3A%2520LinkedIn&lever-origin=applied",
+    role: "Forward Deployed Software Engineer Grad",
+    posted: 1662279603459,
+    jobInfo: {
+      preText: [
+        {
+          title: "A World-Changing Company",
+          text: [
+            "At Palantir, we’re passionate about building software that solves problems. We partner with the most important institutions in the world to transform how they use data and technology. Our software has been used to stop terrorist attacks, discover new medicines, gain an edge in global financial markets, and more. If these types of projects excite you, we'd love for you to join us.",
+          ],
+        },
+        {
+          title: "The Role",
+          text: [
+            "Forward Deployed Software Engineers (FDSEs) work directly with customers to quickly understand their greatest problems and design and implement solutions to use data against them. Our customers rely on Palantir’s platforms for some of their most critical operations, and projects often start with an open ended question like “Why are we delaying so many flights?” or “How can we better identify instances of money laundering?” As an FDSE, you’ll apply your problem solving ability, creativity, and technical skills to help organizations use their data to drive a real impact in the world. You’ll have the opportunity to gain rare insight into and contribute to some of the world’s most important industries and institutions.",
+            "As an FDSE your responsibilities look similar to those of a startup CTO: you’ll work in small teams with minimal supervision and own end-to-end execution of high stakes projects. Your day might span discussing architecture with fellow engineers, wrangling massive-scale data, coding a custom web app, speaking with customer executives, or establishing strategy for your team. ",
+          ],
+        },
+      ],
+      lists: [
+        {
+          title: "Our Principles",
+          points: [
+            "Impact: We take on meaningful and challenging projects that change the world for the better.",
+            "Ownership: We see projects through from beginning to end, working through any obstacles we may encounter.",
+            "Collaboration: We work internally with people from a variety of backgrounds — such as other FDSEs, product teams, and Deployment Strategists. We also work externally with our customers, often on site, to understand and solve their problems.",
+            "Trust: We trust each other to effectively manage time and priorities and give people the space to think for themselves.",
+            "Growth: We encourage ourselves and our peers to seek new challenges and opportunities for growth, as well as find new ways to innovate and share knowledge",
+            "Learning: We often face entirely novel problems where we need to pick up a lot of new knowledge and learn how to use it to make progress. We believe experiential learning is one of the best teachers.",
+          ],
+        },
+        {
+          title: "What We Value",
+          points: [
+            "Engineering background, preferred in fields such as Computer Science, Mathematics, Software Engineering, Physics, and Data Science.",
+            "A highly analytical mindset and eagerness to solve technical problems with data structures, storage systems, cloud infrastructure, front-end frameworks, and other technical tools.",
+            "Experience or interest in working with and using large scale data to solve valuable business problems.",
+            "Proficiency with one or more programming languages, such as Python, Java, C++, TypeScript/JavaScript, or similar.",
+            "Ability to collaborate effectively in teams of technical and non-technical individuals, and comfortable working in a rapidly changing environment with dynamic objectives and iteration with users.",
+            "Ability to continuously learn, work independently, and make decisions with minimal supervision.",
+            "Willingness and interest to travel as needed to client sites. Ability to travel 25-50% preferred, but requirements vary by team and location.",
+          ],
+        },
+        {
+          title: "To apply, please include the following:",
+          points: [
+            "An updated resume / CV",
+            "Thoughtful responses to our application questions",
+          ],
+        },
+      ],
+      postText: [
+        {
+          title: "Offer Deadline",
+          text: [
+            "In an effort to build more transparency into our recruitment process, we’d like to share our offer deadline expectations. By applying to this position, you commit to confirming your decision within two weeks of receiving your written offer.",
+            "Palantir is committed to promoting a culture of diversity, equity, and inclusion. We believe that all Palantirians share the responsibility of upholding our commitment to these values and encourage candidates from a wide range of backgrounds, perspectives, and lived experiences to join us in solving the world’s hardest problems.",
+            "Palantir is committed to making the job application process accessible to everyone. If you are living with a disability (visible or not visible) and need to request a reasonable accommodation for any part of the application or hiring process, please reach out and let us know how we can help.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    company: "ResMed",
+    role: "Software (App) Engineering Grad",
+    link: "https://resmed.wd3.myworkdayjobs.com/ResMed_External_Careers/job/Sydney-NSW-Australia/Graduate-Software--App--Engineering_JR_017816-1?source=LinkedIn",
+    type: "grad",
+    location: "Sydney - Australia",
+    posted: 1662279603459,
+    logo: "https://media-exp1.licdn.com/dms/image/C560BAQFDnYiOHN6AbA/company-logo_200_200/0/1519902203575?e=1670457600&v=beta&t=4FEj6pN8FbLqx7TxtvybyeIbptaHToeGRDpP_aysvsQ",
+    jobInfo: {
+      preText: [
+        {
+          title: "",
+          text: [
+            "Digital Health Technology team powers digital experiences and engagement to enhance the lives of millions of people every day through connected care. We build, deliver and manage a portfolio of data management platforms and mobile offerings in support of our core businesses. We thrive on simple and elegant architecture and agility. You’ll be immersed in a dynamic high-growth environment and empowered to excel, take informed risks, and drive ingenuity across the enterprise.",
+            "Do you have a passion for building solutions that will spring ResMed’s Digital Healthcare products into the next decade? Are you keen to work for an organization that is focused on building a platform that is enabling and re-imagining the connected healthcare space? Do you have a wide variety of experience deploying services that are cloud native and meet high quality standards? We want you to work with a great team creating a device and patient therapy focused platform serving healthcare professionals across the globe.",
+            "In Sydney a stellar engineering team, within the Digital Health Technology Group of ResMed, is advancing digital solutions that manage, monitor and support patient’s health needs in over 140 different countries.",
+          ],
+        },
+        {
+          title: "About The Team:",
+          text: [
+            "We are a small cross-functional product team with a broad range of responsibilities and duties. We collaborate with product managers and other development teams globally across the Digital Health Technology group of ResMed. We’re passionate about solving problems across the entire software development lifecycle – whether that’s investigating new technologies, frameworks, and cloud services, developing new features, improving our CI/CD pipelines and test automation, or figuring out how to better automate our release process. We’re always up for a challenge and love learning new things!",
+          ],
+        },
+        {
+          title: "What We Are Looking For:",
+          text: [
+            "We’re looking for a Graduate Software Engineer who is proficient in front-end technologies including Angular. You will also be able to fluently explain your software architecture and why certain things were done in a particular way.",
+            "You love learning the intricate details of a certain language or framework and when something unknown comes your way, you have that passion and drive to dig deep and find it out. Some experience on the backend side of things is preferable using any object oriented language.",
+            "You’ll be comfortable working both autonomously and as part of a team and will be willing to lend your talents and experience to other team members when they need it.",
+            "We are not looking for a unicorn. If you do not have some of the skills mentioned below its fine as long as you show as you have that hunger to learn and adapt.",
+          ],
+        },
+      ],
+      lists: [
+        {
+          title: "Some of the tasks you’ll be performing include:",
+          points: [
+            "Get involved in our micro-frontend journey as we get ready to break up an age old monolith",
+            "Expanding on the existing frameworks and services to implement new features and innovate on our software products",
+            "Designing and architecting new microservices and micro-frontends.",
+            "Working with others to design, implement and support our AWS infrastructure and services",
+            "Production support (occasionally)",
+          ],
+        },
+        {
+          title: "Required Skills and Experience:",
+          points: [
+            "1+ year of software engineering experience mostly working with front-end technologies",
+            "Experience with Angular. You hopefully eat Angular for breakfast, Typescript for lunch ending with a nice dinner with HTML and CSS",
+            "Experience with microservice and micro-frontend architectures",
+            "Solid ability in writing clean maintainable code",
+            "CI/CD pipeline tools and infrastructure (preferably experience in Jenkins, Terraform, AWS CodeBuild and AWS CodePipeline)",
+            "Strong problem solving and analytical skills",
+            "Experience writing automated tests",
+            "Experience with a cloud platform, preferably AWS",
+            "Bachelor’s degree in computer science or equivalent",
+            "Excellent oral and written communication skills",
+          ],
+        },
+        {
+          title: "Desirable Skills and Experience:",
+          points: [
+            "Languages: Java (currently our primary language for the backend), Python(mostly used for automation)",
+            "Some experience with the Spring framework or willingness to learn if required",
+            "AWS certifications are a bonus",
+            "Interest in digital health and medical devices",
+          ],
+        },
+        {
+          title: "Why Join Us:",
+          points: [
+            "You’ll have the full support of the team as you get up to speed and learn our system",
+            "As you gain experience, you’ll have the opportunity to take and set the direction of the systems you work on",
+            "We believe in continual learning and development. We have access to several online learning platforms",
+            "We support each other’s personal development goals and as a team look for opportunities for everyone to gain experience in their areas of interest",
+            "We understand everyone has a way of working that is most efficient for them, as such we have adopted a flexible working model and most of the team primarily work from home.",
+            "We have a fantastic campus in Bella Vista with subsidised lunches and coffee, free on-site parking, and free 24/7 access to our on-site gym and pool",
+          ],
+        },
+      ],
+    },
+  },
 ];
