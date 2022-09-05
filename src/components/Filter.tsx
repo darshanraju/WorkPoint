@@ -14,8 +14,8 @@ const Filter = ({ checked, setChecked }: IFilter) => {
         <input
           type="radio"
           name="options"
-          data-title="a Grad role"
-          className="btn "
+          data-title="a Grad role "
+          className="btn btn-xs md:btn-sm xl:btn px-3"
           checked={checked === filterStates.grad}
           onClick={() => setChecked(filterStates.grad)}
         />
@@ -23,7 +23,7 @@ const Filter = ({ checked, setChecked }: IFilter) => {
           type="radio"
           name="options"
           data-title="an Internship"
-          className="btn"
+          className="btn btn-xs md:btn-sm xl:btn px-3"
           checked={checked === filterStates.intern}
           onClick={() => setChecked(filterStates.intern)}
         />
@@ -31,7 +31,7 @@ const Filter = ({ checked, setChecked }: IFilter) => {
           type="radio"
           name="options"
           data-title="BOTH!"
-          className="btn"
+          className="btn btn-xs md:btn-sm xl:btn px-3"
           checked={checked === filterStates.both}
           onClick={() => setChecked(filterStates.both)}
         />

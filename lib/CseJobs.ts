@@ -253,6 +253,7 @@ export const jobs: Array<IJobAdd> = [
     location: "Sydney - Australia",
     posted: 1662279603459,
     type: "grad",
+    tags: ["C++", "OpenCV", "AWS", "1-2y exp"],
     jobInfo: {
       lists: [
         {
@@ -397,7 +398,7 @@ export const jobs: Array<IJobAdd> = [
     type: "grad",
     logo: "https://media-exp1.licdn.com/dms/image/C4E0BAQE5InV7BZ_Wjg/company-logo_200_200/0/1659345131555?e=1670457600&v=beta&t=9gLNtzZGZQsV15GD14ANA_RJiogKeFQQpbr1sWUfAZc",
     link: "https://optiver.com/working-at-optiver/career-opportunities/5912209002/?source=Applicant_Source_LinkedIn&gh_src=9fb491cd2&gh_src=9fb491cd2",
-    tags: ["250k"],
+    tags: ["250k TC"],
     jobInfo: {
       preText: [
         {
@@ -682,6 +683,7 @@ export const jobs: Array<IJobAdd> = [
         },
       ],
     },
+    tags: ["C", "C++"],
   },
   {
     company: "Amazon Web Services",
