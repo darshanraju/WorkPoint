@@ -10,7 +10,7 @@ const Filter = ({ checked, setChecked }: IFilter) => {
   return (
     <div>
       <div className="text-center stat-value m-5">{"I'm looking for"}</div>
-      <div className="btn-group m-5">
+      <div className="btn-group m-5 w-full">
         <input
           type="radio"
           name="options"
