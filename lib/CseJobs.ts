@@ -558,7 +558,7 @@ export const jobs: Array<IJobAdd> = [
   },
   {
     company: "Mastercard",
-    role: "Summer Internship , Software Engineer",
+    role: "Summer Internship, Software Engineer",
     link: "https://www.linkedin.com/jobs/view/3237733495/?eBP=JOB_SEARCH_ORGANIC&recommendedFlavor=JOB_SEEKER_QUALIFIED&refId=haTsv%2Bq0l%2BryPFiTcHwz2w%3D%3D&trackingId=hsrWlBtyWfMpc4dRLnFltg%3D%3D&trk=flagship3_search_srp_jobs",
     type: "intern",
     location: "Sydney - Australia",

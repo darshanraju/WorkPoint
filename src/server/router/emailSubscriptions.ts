@@ -10,12 +10,11 @@ export const emailSubscriptions = createRouter().mutation("subscribe", {
   input: z.string(),
   async resolve({ input, ctx }) {
     // Here some login stuff would happen
-    const res = await ctx.prisma.subscribers.create({
+    await ctx.prisma.subscribers.create({
       data: {
         email: input,
       },
     });
-    console.log("RES: ", res);
     return;
   },
 });
