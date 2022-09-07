@@ -345,51 +345,7 @@ export const jobs: Array<IJobAdd> = [
       ],
     },
   },
-  {
-    company: "ServiceNow",
-    role: "Associate Site Reliability Engineer",
-    location: "Sydney - Australia",
-    posted: 1662279603459,
-    type: "grad",
-    link: "https://careers.servicenow.com/careers/jobs/743999848385821EXT?lang=en-us&src=linkedin&sid=2d92f286-613b-4daf-9dfa-6340ffbecf73",
-    logo: "https://media-exp1.licdn.com/dms/image/C560BAQEuzVBzTq8wqA/company-logo_200_200/0/1642492123759?e=1670457600&v=beta&t=ytHVXh3_MpIKnNRtiR6MI6VcriwRH14nCOIcIepwbsQ",
-    tags: ["4 days a week", "Devops"],
-    jobInfo: {
-      preText: [
-        {
-          title: "Company Description",
-          text: [
-            "At ServiceNow, our technology makes the world work for everyone, and our people make it possible. We move fast because the world can’t wait, and we innovate in ways no one else can for our customers and communities. By joining ServiceNow, you are part of an ambitious team of change makers who have a restless curiosity and a drive for ingenuity. We know that your best work happens when you live your best life and share your unique talents, so we do everything we can to make that possible. We dream big together, supporting each other to make our individual and collective dreams come true. The future is ours, and it starts with you.",
-            "With more than 7,400+ customers, we serve approximately 80% of the Fortune 500, and we're proud to be one of FORTUNE's 100 Best Companies to Work For® and World's Most Admired Companies® 2022.",
-            "Learn more on Life at Now blog and hear from our employees about their experiences working at ServiceNow.",
-            "Unsure if you meet all the qualifications of a job description but are deeply excited about the role? We still encourage you to apply! At ServiceNow, we are committed to creating an inclusive environment where all voices are heard, valued, and respected. We welcome all candidates, including individuals from non-traditional, varied backgrounds, that might not come from a typical path connected to this role. We believe skills and experience are transferrable, and the desire to dream big makes for great candidates.",
-          ],
-        },
-      ],
-      lists: [
-        {
-          title: "What you get to do in this role",
-          points: [
-            "Provide relief and sustainable resolution to issues within our infrastructure.",
-            "Use your experience in software development, systems engineering and networking to proactively prevent repeatable issues.",
-            "Drive initiatives with partner teams to improve the reliability and performance of the infrastructure through improved system design.",
-            "Drive a culture of intolerance to manual activity which results in a highly automated environment delivering scalable solutions.",
-          ],
-        },
-        {
-          title: "To be successful in this role you have",
-          points: [
-            "Knowledge of Linux systems.",
-            "Coding experience, we normally prefer Python or JavaScript.",
-            "Networking skills, IP addressing, routing protocols.",
-            "Monitoring of large and scalable systems, applications and networks.",
-            "Uncompromising attention to detail.",
-            "Ability to work in shifts that cover one weekend day.",
-          ],
-        },
-      ],
-    },
-  },
+
   {
     company: "Optiver",
     role: "Graduate FPGA Developer - 2022 or 2023",
@@ -850,64 +806,6 @@ export const jobs: Array<IJobAdd> = [
           title: "About Us:",
           text: [
             "Nexus Silicon was formed with the goal of becoming the supplier of choice for clients, employees, and contingent workers. Today, we’re one of the fastest-growing companies in Australia and ranked as one of the best companies to work for by Staffing Industry Analysts and Australia Business. Nexus Silicon provides high-volume staffing, IT managed Services, IT Consulting, Software & Mobile App development, Accounting Outsourcing, IT support, Cloud Infrastructure support & Outsourcing, SOW, and pay rolling services to structured contingent workforce programs and projects across Australia, Nepal & India. We also offer contract-to-hire and direct placement. Our “No-Sell, Service-Only” approach has resulted in “Accelerated Hires,” lower costs, reduced risks, and better service for Fortune 2000 Companies, Large System Integrators, and Government Agencies.",
-          ],
-        },
-      ],
-    },
-  },
-  {
-    company: "Agilent Technologies",
-    role: "Software Engineering Intern",
-    location: "Melbourne - Australia",
-    link: "https://recruiting.adp.com/srccar/public/RTI.home?r=5000872492106&c=2167807&d=External&rb=???&SID=850",
-    logo: "https://media-exp1.licdn.com/dms/image/C4E0BAQGj8V7ecGQq5g/company-logo_200_200/0/1656927106726?e=1670457600&v=beta&t=NHZn_-PVmq0ozN7um0JlqZl-ad4oP3gACJjLbcne7Sc",
-    type: "intern",
-    posted: 1662279603459,
-    jobInfo: {
-      preText: [
-        {
-          title: "",
-          text: [
-            "Agilent inspires and supports discoveries that advance the quality of life. We provide life science, diagnostic and applied market laboratories worldwide with instruments, services, consumables, applications, and expertise. Agilent enables customers to gain the answers and insights they seek – so they can do what they do best: improve the world around us. Information about Agilent is available at www.agilent.com.",
-            "Want to be at the cutting edge of Research and Development?",
-            "As a global company, you’ll experience enterprise level practices of the business and see first- hand what it’s like to work in a large company environment. Join the software and quality engineering teams that take world-leading Agilent products from design to production. You’ll be developing the software that supports and drives the use of scientific instruments for our end users. You'll learn about specifying components, how to utilize broad engineering concepts and research techniques, while also documenting research and design specifications to ensure high-quality software platforms.",
-            "You will also be learning test automation including Functional/Load/Performance testing using the latest tools and technologies. You will be exposed to the complete software development life cycle and will attend multiple cross functional meetings to get a well-rounded experience.",
-          ],
-        },
-      ],
-      lists: [
-        {
-          title:
-            "As part of the software and quality engineering teams, you’ll also be working with other project stakeholders such as:",
-          points: [
-            "Firmware engineers",
-            "Marketing",
-            "Product support",
-            "Chemists/applications engineers",
-            "Electronic and Mechanical Engineers",
-          ],
-        },
-        {
-          title: "You will learn about:",
-          points: [
-            "Agile Scrum",
-            "Software development lifecycle (SDLC)",
-            "Programming in C#, HTML5, CSS, TypeScript and Angular",
-            "Cloud technologies",
-            "Coding best practices",
-            "Test automation with tools like TestComplete, Playwright, Selenium, JMeter, Gremlin",
-            "Continuous integration",
-          ],
-        },
-      ],
-      postText: [
-        {
-          title: "",
-          text: [
-            "This is a fantastic intern opportunity to gain real world industry experience in a company that prides itself in quality, world-leading best practices and has a strong culture of team engagement and collaboration.",
-            "While experience isn't essential, you'll need to be currently pursuing a university bachelor or Master's degree. A positive, proactive approach to problem solving, willingness to learn and an eagerness to build a pioneering career in R&D or SW Quality are just as important.",
-            "To be eligible for this internship you must be an enrolled student, have at least 12 months remaining on your course and be available to work full time for a 12 month period.",
-            "Agilent Technologies Inc. is an equal opportunity employer. Qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, protected veteran status, disability or any other protected categories under all applicable laws.",
           ],
         },
       ],
