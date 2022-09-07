@@ -7,14 +7,38 @@ interface IFilter {
 }
 
 const Filter = ({ checked, setChecked }: IFilter) => {
+  const classMaker = (btn: filterStates) => {
+    if (checked === btn) {
+      return "btn btn-sm lg:btn px-3 btn-active hover:bg-sky-700";
+    }
+    return "btn btn-sm lg:btn px-3 hover:none";
+  };
   return (
     <div>
       <div className="text-center stat-value m-5">{"I'm looking for"}</div>
       <div className="btn-group m-5 w-full">
-        <input
+        <button
+          onClick={() => setChecked(filterStates.grad)}
+          className={classMaker(filterStates.grad)}
+        >
+          a Grad role
+        </button>
+        <button
+          onClick={() => setChecked(filterStates.intern)}
+          className={classMaker(filterStates.intern)}
+        >
+          an Internship
+        </button>
+        <button
+          onClick={() => setChecked(filterStates.both)}
+          className={classMaker(filterStates.both)}
+        >
+          BOTH!
+        </button>
+        {/* <input
           type="radio"
           name="options"
-          data-title="a Grad role "
+          data-title="a Grad role"
           // className="btn btn-xs md:btn-sm xl:btn px-3"
           className="btn btn-sm xl:btn px-3"
           checked={checked === filterStates.grad}
@@ -34,10 +58,10 @@ const Filter = ({ checked, setChecked }: IFilter) => {
           name="options"
           data-title="BOTH!"
           // className="btn btn-xs md:btn-sm xl:btn px-3"
-          className="btn btn-sm xl:btn px-3"
+          className=" btn-sm lg:btn px-3"
           checked={checked === filterStates.both}
           onClick={() => setChecked(filterStates.both)}
-        />
+        /> */}
       </div>
     </div>
   );
