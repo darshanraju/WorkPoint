@@ -9,9 +9,9 @@ interface IFilter {
 const Filter = ({ checked, setChecked }: IFilter) => {
   const classMaker = (btn: filterStates) => {
     if (checked === btn) {
-      return "btn btn-sm lg:btn px-3 btn-active hover:bg-sky-700";
+      return "btn btn-sm lg:btn px-3 btn-active";
     }
-    return "btn btn-sm lg:btn px-3 hover:none";
+    return "btn btn-sm lg:btn px-3";
   };
   return (
     <div>
