@@ -6,6 +6,7 @@ import companyLogo from "../../public/companies/Microsoft.png";
 import EmailSubscription from "../components/EmailSubscription";
 import Filter from "../components/Filter";
 import { useEffect, useState } from "react";
+import favicon from "../../public/favicon.png";
 // import Stats from "../components/Stats";
 const jobsOld: Array<IJobAdd> = [
   {
@@ -136,6 +137,11 @@ const Home: NextPage = () => {
       <Head>
         <title>CSE Gigs</title>
         <meta name="description" content="Compsci/Seng Student Gigs" />
+        <meta
+          property="og:image"
+          content="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn1.iconfinder.com%2Fdata%2Ficons%2Femoji-of-smiley-color%2F100%2Fsmiley_nerd-512.png&f=1&nofb=1"
+        />
+
         <link rel="icon" href="/favicon.png" />
       </Head>
 
