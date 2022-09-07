@@ -94,9 +94,7 @@ const JobAdd = (ctx: IJobAdd) => {
           <div className="font-medium text-sm lg:text-lg text-start">
             {ctx.company}
           </div>
-          <div className="font-bold lg:text-xl text-start lg:text-center">
-            {ctx.role}
-          </div>
+          <div className="font-bold lg:text-xl text-start">{ctx.role}</div>
           <div className="flex items-center font-bold text-sm lg:text-lg pt-2 text-start lg:text-center">
             {/* <Image
               height={15}
