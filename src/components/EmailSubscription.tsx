@@ -1,4 +1,4 @@
-import React, { FormEvent, FormEventHandler, useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { trpc } from "../utils/trpc";
 
 const EmailSubscription = () => {

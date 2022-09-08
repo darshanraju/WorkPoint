@@ -1,115 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import JobAdd, { IJobAdd } from "../components/JobAdd";
-// import { trpc } from "../utils/trpc";
-import companyLogo from "../../public/companies/Microsoft.png";
+import JobAdd from "../components/JobAdd";
 import EmailSubscription from "../components/EmailSubscription";
 import Filter from "../components/Filter";
 import { useEffect, useState } from "react";
-import favicon from "../../public/favicon.png";
-// import Stats from "../components/Stats";
-const jobsOld: Array<IJobAdd> = [
-  {
-    company: "Lyft",
-    role: "Software Engineer Grad",
-    tags: ["remote", "react", "saas"],
-    logo: companyLogo,
-    posted: 1659312000000,
-    type: "grad",
-    location: "Sydney - Australia",
-    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
-  },
-  {
-    company: "Uber",
-    role: "Software Engineer Intern",
-    tags: ["remote", "managing", "saas"],
-    logo: companyLogo,
-    posted: 1662078009000,
-    type: "intern",
-    location: "Melbourne - Australia",
-    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
-  },
-  {
-    company: "Tesla",
-    role: "CEO Intern",
-    tags: ["hybrid", "react", "saas"],
-    logo: companyLogo,
-    posted: 1662085209000,
-    type: "intern",
-    location: "Melbourne - Australia",
-    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
-  },
-  {
-    company: "Lyft",
-    role: "Software Engineer Intern",
-    tags: ["remote", "react", "saas"],
-    logo: companyLogo,
-    posted: 1659406809000,
-    type: "intern",
-    location: "Perth - Australia",
-    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
-  },
-  {
-    company: "Lyft",
-    role: "Software Engineer Grad",
-    tags: ["remote", "react", "saas"],
-    logo: companyLogo,
-    posted: 1660962009000,
-    type: "grad",
-    location: "Perth - Australia",
-    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
-  },
-  {
-    company: "Lyft",
-    role: "Software Engineer Grad",
-    tags: ["remote", "react", "saas"],
-    logo: companyLogo,
-    posted: 1661134809000,
-    type: "grad",
-    location: "Sydney - Australia",
-    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
-  },
-  {
-    company: "Uber",
-    role: "Software Engineer Intern",
-    tags: ["remote", "managing", "saas"],
-    logo: companyLogo,
-    posted: 1661480409000,
-    type: "intern",
-    location: "Remote - Australia",
-    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
-  },
-  {
-    company: "CSE Gigs",
-    role: "Intern",
-    tags: ["hybrid", "react", "saas"],
-    logo: companyLogo,
-    posted: 1661473209000,
-    type: "intern",
-    location: "Remote - Australia",
-    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
-  },
-  {
-    company: "Microsoft",
-    role: "Software Engineer Intern",
-    tags: ["remote", "react", "saas"],
-    logo: companyLogo,
-    posted: 1661127609000,
-    type: "intern",
-    location: "Remote - Australia",
-    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
-  },
-  {
-    company: "Lyft",
-    role: "Software Engineer Intern",
-    tags: ["remote", "react", "saas"],
-    logo: companyLogo,
-    posted: 1661138409000,
-    type: "intern",
-    location: "Remote - Australia",
-    link: "https://boards.greenhouse.io/embed/job_app?token=6200801002&gh_src=uwvxb4jc2&s=LinkedIn&source=LinkedIn",
-  },
-];
 
 import { jobs } from "../../lib/CseJobs";
 
@@ -120,7 +14,6 @@ export enum filterStates {
 }
 
 const Home: NextPage = () => {
-  // const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
   const [checked, setChecked] = useState(filterStates.both);
   const [filtedJobs, setFilteredJobs] = useState(jobs);
   useEffect(() => {
