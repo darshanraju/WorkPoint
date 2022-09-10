@@ -127,7 +127,13 @@ const JobAdd = (ctx: IJobAddV3) => {
             </svg>
             {/* </div> */}
 
-            <span className="p-1">{ctx.location}</span>
+            <span className="p-1">
+              {ctx.location.replace(/, Australia$/, "")}
+              {/* // .replace(/ Queensland,/g, "")
+                // .replace(/ New South Wales,/g, "")
+                // .replace(/ Victoria,/g, "")
+                // .replace(/ Australian Capital Territory,/g, "")} */}
+            </span>
           </div>
         </div>
         <div className="flex lg:w-2/6 items-center flex-wrap hidden lg:flex">
