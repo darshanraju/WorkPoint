@@ -19,7 +19,7 @@ const ExpandedContent = (ctx: IJobAddV3) => {
               .replace(/<\/ol/, "")
           )}
       </div>
-      <div className=" items-center lg:hidden" onClick={() => 42}>
+      <div className=" items-center lg:hidden pt-4" onClick={() => 42}>
         <button
           className="btn btn-secondary"
           onClick={() => window.open(ctx.link, "_blank")}
