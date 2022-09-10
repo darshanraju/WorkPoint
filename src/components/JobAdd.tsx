@@ -18,6 +18,23 @@ export interface IJobInfo {
   postText?: Array<Section>;
 }
 
+interface headingOrText {
+  type: "heading" | "text";
+  content: string;
+}
+
+interface points {
+  type: "list";
+  content: Array<string>;
+}
+
+// interface part {
+//   type: "heading" | "text" | "list";
+//   content: string | Array<string>;
+// }
+
+type part = headingOrText | points;
+
 export interface IJobAdd {
   company: string;
   tags?: Array<string>;
@@ -31,7 +48,33 @@ export interface IJobAdd {
   link: string;
 }
 
-const JobAdd = (ctx: IJobAdd) => {
+export interface IJobAddV2 {
+  company: string;
+  tags?: Array<string>;
+  jobTitle: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  logo: any;
+  posted: number;
+  type: "grad" | "intern";
+  location: string;
+  jobDesc?: Array<part>;
+  link: string;
+}
+
+export interface IJobAddV3 {
+  company: string;
+  tags?: Array<string>;
+  jobTitle: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  logo: any;
+  posted: number;
+  type: "grad" | "intern";
+  location: string;
+  jobDesc?: string;
+  link: string;
+}
+
+const JobAdd = (ctx: IJobAddV3) => {
   const now = Date.now();
   const [open, setOpen] = useState<boolean>(false);
   return (
@@ -57,7 +100,7 @@ const JobAdd = (ctx: IJobAdd) => {
           <div className="font-medium text-sm lg:text-lg text-start">
             {ctx.company}
           </div>
-          <div className="font-bold lg:text-xl text-start">{ctx.role}</div>
+          <div className="font-bold lg:text-xl text-start">{ctx.jobTitle}</div>
           <div className="flex items-center font-bold text-sm lg:text-lg pt-2 text-start lg:text-center">
             {/* <Image
               height={15}
@@ -110,11 +153,11 @@ const JobAdd = (ctx: IJobAdd) => {
           location={ctx.location}
           logo={ctx.logo}
           posted={ctx.posted}
-          role={ctx.role}
+          jobTitle={ctx.jobTitle}
           tags={ctx.tags}
           type={ctx.type}
           link={ctx.link}
-          jobInfo={ctx.jobInfo}
+          jobDesc={ctx.jobDesc}
         />
       )}
     </div>

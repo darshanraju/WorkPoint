@@ -1,17 +1,21 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import JobAdd from "../components/JobAdd";
+import JobAdd, { IJobAddV2, IJobAddV3 } from "../components/JobAdd";
 import EmailSubscription from "../components/EmailSubscription";
 import Filter from "../components/Filter";
 import { useEffect, useState } from "react";
 
-import { jobs } from "../../lib/CseJobs";
+// import { jobs } from "../../lib/CseJobs";
+// import { jobs } from "../../lib/CseJobsV2";
+import jobsJson from "../../lib/jobs.json";
 
 export enum filterStates {
   grad = "grad",
   intern = "intern",
   both = "both",
 }
+
+const jobs = jobsJson as unknown as Array<IJobAddV3>;
 
 const Home: NextPage = () => {
   const [checked, setChecked] = useState(filterStates.both);
@@ -48,14 +52,14 @@ const Home: NextPage = () => {
           {filtedJobs.map((job, idx) => (
             <JobAdd
               company={job.company}
-              role={job.role}
+              jobTitle={job.jobTitle}
               tags={job.tags}
               logo={job.logo}
               posted={job.posted}
               type={job.type}
               location={job.location}
               link={job.link}
-              jobInfo={job.jobInfo}
+              jobDesc={job.jobDesc}
               key={idx}
             />
           ))}

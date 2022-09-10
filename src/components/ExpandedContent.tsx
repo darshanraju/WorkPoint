@@ -1,22 +1,24 @@
 import React from "react";
-import { IJobAdd, Section, List } from "./JobAdd";
+import { IJobAddV3 } from "./JobAdd";
+import parse from "html-react-parser";
 
-const ExpandedContent = (ctx: IJobAdd) => {
+const ExpandedContent = (ctx: IJobAddV3) => {
   return (
     <div className="p-5 lg:p-10">
       <div className="text-lg lg:text-2xl text-start">
         {ctx.company} is hiring a
       </div>
-      <div className="text-xl lg:text-3xl text-start">{ctx.role}</div>
-      {ctx.jobInfo?.preText?.map((section, idx) => {
-        return <Section text={section.text} title={section.title} key={idx} />;
-      })}
-      {ctx.jobInfo?.lists?.map((list, idx) => {
-        return <List points={list.points} title={list.title} key={idx} />;
-      })}
-      {ctx.jobInfo?.postText?.map((section, idx) => {
-        return <Section text={section.text} title={section.title} key={idx} />;
-      })}
+      <div className="text-xl lg:text-3xl text-start">{ctx.jobTitle}</div>
+      <div className="text-start">
+        {ctx.jobDesc &&
+          parse(
+            ctx.jobDesc
+              .replace(/<ul>/g, "")
+              .replace(/<\/ul>/g, "")
+              .replace(/<ol>/g, "")
+              .replace(/<\/ol/, "")
+          )}
+      </div>
       <div className=" items-center lg:hidden" onClick={() => 42}>
         <button
           className="btn btn-secondary"
@@ -25,36 +27,6 @@ const ExpandedContent = (ctx: IJobAdd) => {
           Apply
         </button>
       </div>
-    </div>
-  );
-};
-
-const Section = ({ title, text }: Section) => {
-  return (
-    <div className="py-5">
-      <div className="text-start font-bold lg:text-l">{title}</div>
-      {text.map((part, idx) => {
-        return (
-          <div key={idx} className="text-start py-2">
-            {part}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
-const List = ({ title, points }: List) => {
-  return (
-    <div className="py-5">
-      <div className="text-start font-bold lg:text-l">{title}</div>
-      {points.map((point, idx) => {
-        return (
-          <li key={idx} className="text-start py-2">
-            {point}
-          </li>
-        );
-      })}
     </div>
   );
 };
