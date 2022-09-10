@@ -84,9 +84,7 @@ const JobAdd = (ctx: IJobAddV3) => {
         className="flex p-4 hover:cursor-pointer"
         onClick={() => setOpen(!open)}
       >
-        <div className="w-1/6 lg:w-1/6  relative">
-          {/* <div className="w-1/6 lg:w-1/6  rounded-full"> */}
-          {/* <Image src={ctx.logo} height="80px" width="80px" alt="company_logo" /> */}
+        <div className="w-1/6 lg:w-1/6 relative">
           <Image
             src={ctx.logo}
             layout="fill" // required
@@ -95,25 +93,12 @@ const JobAdd = (ctx: IJobAddV3) => {
             alt="company_logo"
           />
         </div>
-        {/* <div className="flex flex-col"> */}
-        <div className="flex px-4 lg:px-0 flex-col w-4/6 lg:w-2/6 items-start">
+        <div className="flex px-4 lg:px-0 flex-col w-4/6 lg:w-3/6 items-start">
           <div className="font-medium text-sm lg:text-lg text-start">
             {ctx.company}
           </div>
           <div className="font-bold lg:text-xl text-start">{ctx.jobTitle}</div>
           <div className="flex items-center font-bold text-sm lg:text-lg pt-2 text-start lg:text-center">
-            {/* <Image
-              height={15}
-              width={22}
-              alt="location_pointer"
-              src={location}
-              style={{
-                paddingLeft: "5px",
-                userSelect: "none",
-                pointerEvents: "none",
-              }}
-            /> */}
-            {/* <div class> */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -136,7 +121,7 @@ const JobAdd = (ctx: IJobAddV3) => {
             </span>
           </div>
         </div>
-        <div className="flex lg:w-2/6 items-center flex-wrap hidden lg:flex">
+        <div className="flex lg:w-1/6 items-center flex-wrap hidden lg:flex">
           {ctx.tags?.map((tag, idx) => (
             <Tag tag={tag} key={idx} />
           ))}
