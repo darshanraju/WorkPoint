@@ -17,15 +17,19 @@ export enum filterStates {
 
 const jobs = jobsJson as unknown as Array<IJobAddV3>;
 
+const sortByLatest = (jobsToSort: Array<IJobAddV3>): Array<IJobAddV3> =>
+  jobsToSort.sort((a, b) => b.posted - a.posted);
+
 const Home: NextPage = () => {
   const [checked, setChecked] = useState(filterStates.both);
-  const [filtedJobs, setFilteredJobs] = useState(jobs);
+  const [filtedJobs, setFilteredJobs] = useState(sortByLatest(jobs));
   useEffect(() => {
     if (checked === filterStates.both) {
-      setFilteredJobs(jobs);
+      setFilteredJobs(sortByLatest(jobs));
       return;
     }
-    setFilteredJobs(jobs.filter((job) => job.type === checked));
+
+    setFilteredJobs(sortByLatest(jobs.filter((job) => job.type === checked)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checked]);
 
