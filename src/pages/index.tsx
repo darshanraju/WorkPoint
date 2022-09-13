@@ -4,9 +4,6 @@ import JobAdd, { IJobAddV2, IJobAddV3 } from "../components/JobAdd";
 import EmailSubscription from "../components/EmailSubscription";
 import Filter from "../components/Filter";
 import { useEffect, useState } from "react";
-
-// import { jobs } from "../../lib/CseJobs";
-// import { jobs } from "../../lib/CseJobsV2";
 import jobsJson from "../../lib/jobs.json";
 
 export enum filterStates {
