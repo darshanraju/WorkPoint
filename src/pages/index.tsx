@@ -5,6 +5,7 @@ import EmailSubscription from "../components/EmailSubscription";
 import Filter from "../components/Filter";
 import { useEffect, useState } from "react";
 import jobsJson from "../../lib/jobs.json";
+import Header from "../components/Header";
 
 export enum filterStates {
   grad = "grad",
@@ -34,7 +35,7 @@ const Home: NextPage = () => {
   }, [checked]);
 
   return (
-    <div className="bg-stone-100">
+    <div className="bg-gray-900">
       <Head>
         <title>CSE Gigs</title>
         <meta name="description" content="Compsci/Seng Student Gigs" />
@@ -47,9 +48,14 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
-        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700 select-none">
+        <Header />
+        {/* <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700 select-none">
           CSE <span className="text-purple-300">Gigs</span>
-        </h1>
+        </h1> */}
+        {/* <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto text-center">
+          Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam
+          voluptatum cupiditate veritatis in accusamus quisquam.
+        </p> */}
         {/* <Stats /> */}
         <Filter checked={checked} setChecked={setChecked} />
         <div className="grid lg:gap-4 pt-6 pb-40 text-center md:grid-cols-1 w-full lg:w-3/4lg:mb-40">

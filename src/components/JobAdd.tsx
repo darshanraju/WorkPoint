@@ -78,7 +78,7 @@ const JobAdd = (ctx: IJobAddV3) => {
   const now = Date.now();
   const [open, setOpen] = useState<boolean>(false);
   return (
-    <div className="flex flex-col lg:border-2 border-gray-500 rounded-lg shadow-xl hover:bg-slate-200 ">
+    <div className="text-white hover:text-black flex flex-col lg:border-2 border-gray-500 rounded-lg shadow-xl hover:bg-slate-200 ">
       {/* <div className="flex flex-col  duration-500 lg:border-2 border-gray-500 rounded-lg shadow-xl  motion-safe:hover:scale-105 hover:bg-slate-200 "> */}
       <div
         className="flex p-4 hover:cursor-pointer"

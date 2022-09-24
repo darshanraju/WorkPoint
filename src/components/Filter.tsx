@@ -13,55 +13,40 @@ const Filter = ({ checked, setChecked }: IFilter) => {
     }
     return "btn btn-sm lg:btn px-3";
   };
+
+  const classMakerV2 = (btn: filterStates) => {
+    if (checked === btn) {
+      return "block w-full px-12 py-3 text-sm font-medium text-white border border-blue-600 rounded sm:w-auto active:text-opacity-75 hover:bg-transparent hover:text-white focus:outline-none focus:ring bg-blue-600 cursor-pointer";
+    }
+    return "block w-full px-12 py-3 text-sm font-medium text-white border border-blue-600 rounded sm:w-auto hover:bg-blue-600 active:bg-blue-500 focus:outline-none focus:ring cursor-pointer";
+  };
   return (
     <div>
-      <div className="text-center stat-value m-5">{"I'm looking for"}</div>
-      <div className="btn-group m-5 w-full">
-        <button
-          onClick={() => setChecked(filterStates.grad)}
-          className={classMaker(filterStates.grad)}
-        >
-          a Grad role
-        </button>
-        <button
+      <div className="text-center stat-value m-5 text-white">
+        {"I'm looking for..."}
+      </div>
+
+      <div className="flex flex-wrap justify-center mt-8 gap-4">
+        <a
+          className={classMakerV2(filterStates.intern)}
           onClick={() => setChecked(filterStates.intern)}
-          className={classMaker(filterStates.intern)}
         >
-          an Internship
-        </button>
-        <button
+          An Internship
+        </a>
+
+        <a
+          className={classMakerV2(filterStates.grad)}
+          onClick={() => setChecked(filterStates.grad)}
+        >
+          A Grad Role
+        </a>
+
+        <a
+          className={classMakerV2(filterStates.both)}
           onClick={() => setChecked(filterStates.both)}
-          className={classMaker(filterStates.both)}
         >
           BOTH!
-        </button>
-        {/* <input
-          type="radio"
-          name="options"
-          data-title="a Grad role"
-          // className="btn btn-xs md:btn-sm xl:btn px-3"
-          className="btn btn-sm xl:btn px-3"
-          checked={checked === filterStates.grad}
-          onClick={() => setChecked(filterStates.grad)}
-        />
-        <input
-          type="radio"
-          name="options"
-          data-title="an Internship"
-          // className="btn btn-xs md:btn-sm xl:btn px-3"
-          className="btn btn-sm xl:btn px-3"
-          checked={checked === filterStates.intern}
-          onClick={() => setChecked(filterStates.intern)}
-        />
-        <input
-          type="radio"
-          name="options"
-          data-title="BOTH!"
-          // className="btn btn-xs md:btn-sm xl:btn px-3"
-          className=" btn-sm lg:btn px-3"
-          checked={checked === filterStates.both}
-          onClick={() => setChecked(filterStates.both)}
-        /> */}
+        </a>
       </div>
     </div>
   );
