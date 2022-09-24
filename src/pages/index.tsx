@@ -17,16 +17,19 @@ const jobs = jobsJson as unknown as Array<IJobAddV3>;
 const sortByLatest = (jobsToSort: Array<IJobAddV3>): Array<IJobAddV3> =>
   jobsToSort.sort((a, b) => b.posted - a.posted);
 
+const sortByCompany = (jobsToSort: Array<IJobAddV3>): Array<IJobAddV3> =>
+  jobsToSort.sort((a, b) => a.company.localeCompare(b.company));
+
 const Home: NextPage = () => {
   const [checked, setChecked] = useState(filterStates.both);
-  const [filtedJobs, setFilteredJobs] = useState(sortByLatest(jobs));
+  const [filtedJobs, setFilteredJobs] = useState(sortByCompany(jobs));
   useEffect(() => {
     if (checked === filterStates.both) {
-      setFilteredJobs(sortByLatest(jobs));
+      setFilteredJobs(sortByCompany(jobs));
       return;
     }
 
-    setFilteredJobs(sortByLatest(jobs.filter((job) => job.type === checked)));
+    setFilteredJobs(sortByCompany(jobs.filter((job) => job.type === checked)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checked]);
 
