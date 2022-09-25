@@ -29,17 +29,22 @@ const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
 
   const handleSortChange = (sortKey: string) => {
     console.log("TRYING TO SORT", sortKey);
-    switch (sortKey) {
-      case "Newly Added":
-        setJobFilter({ ...jobFilter, sortState: sortStates.latest });
-        // sorts.latest(jobs);
-        break;
-      case "Company":
-        setJobFilter({ ...jobFilter, sortState: sortStates.company });
-
-        // sorts.company(jobs);
-        break;
+    if (sortKey.includes("Newly Added")) {
+      setJobFilter({ ...jobFilter, sortState: sortStates.latest });
+    } else if (sortKey.includes("Company")) {
+      setJobFilter({ ...jobFilter, sortState: sortStates.company });
     }
+    // switch (sortKey) {
+    //   case "Newly Added 🕓":
+    //     setJobFilter({ ...jobFilter, sortState: sortStates.latest });
+    //     // sorts.latest(jobs);
+    //     break;
+    //   case "Company &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 💻":
+    //     setJobFilter({ ...jobFilter, sortState: sortStates.company });
+
+    //     // sorts.company(jobs);
+    //     break;
+    // }
   };
 
   return (
@@ -82,11 +87,11 @@ const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
           className="select select-success max-w-xs"
           onChange={(e) => handleSortChange(e.target.value)}
         >
-          <option disabled selected>
+          <option disabled selected className="text-lg py-3">
             Sort by
           </option>
-          <option>Newly Added</option>
-          <option>Company</option>
+          <option className="text-lg py-3">🕓 Newly Added</option>
+          <option className="text-lg py-3">💻 Company</option>
         </select>
         {/* <select className="select select-success  max-w-xs">
           <option disabled selected>
