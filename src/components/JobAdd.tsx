@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import ExpandedContent from "./ExpandedContent";
 
 export interface Section {
@@ -77,9 +77,18 @@ export interface IJobAddV3 {
 const JobAdd = (ctx: IJobAddV3) => {
   const now = Date.now();
   const [open, setOpen] = useState<boolean>(false);
+  const [seeApply, setSeeApply] = useState<boolean>(false);
+
+  const applyClass = seeApply
+    ? "items-center sm:hidden lg:flex"
+    : "items-center sm:hidden lg:invisible lg:flex";
+
   return (
-    <div className="text-white hover:text-black flex flex-col lg:border-2 border-gray-500 rounded-lg shadow-xl hover:bg-slate-200 ">
-      {/* <div className="flex flex-col  duration-500 lg:border-2 border-gray-500 rounded-lg shadow-xl  motion-safe:hover:scale-105 hover:bg-slate-200 "> */}
+    <div
+      className="dark:text-white hover:text-black flex flex-col lg:border-2 border-gray-200 rounded-lg shadow-lg hover:bg-slate-100 transition ease-in-out delay-100"
+      onMouseEnter={() => setSeeApply(true)}
+      onMouseLeave={() => setSeeApply(false)}
+    >
       <div
         className="flex p-4 hover:cursor-pointer"
         onClick={() => setOpen(!open)}
@@ -87,9 +96,8 @@ const JobAdd = (ctx: IJobAddV3) => {
         <div className="w-1/6 lg:w-1/6 relative">
           <Image
             src={ctx.logo}
-            layout="fill" // required
-            objectFit="contain" // change to suit your needs
-            // className="rounded-full" // just an example
+            layout="fill"
+            objectFit="contain"
             alt="company_logo"
           />
         </div>
@@ -123,7 +131,7 @@ const JobAdd = (ctx: IJobAddV3) => {
         <div className="flex w-1/6 lg:w-1/6 items-center font-semibold justify-center">
           {snowManMethod(now, ctx.posted)}
         </div>
-        <div className=" items-center hidden lg:flex" onClick={() => 42}>
+        <div className={applyClass} onClick={() => 42}>
           <button
             className="btn btn-secondary"
             onClick={() => window.open(ctx.link, "_blank")}

@@ -6,6 +6,9 @@ import Filter from "../components/Filter";
 import { useEffect, useState } from "react";
 import jobsJson from "../../lib/jobs.json";
 import Header from "../components/Header";
+import wave from "../../public/wave.svg";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const arraySort = require("array-sort");
 
 export enum filterStates {
   grad = "grad",
@@ -13,29 +16,67 @@ export enum filterStates {
   both = "both",
 }
 
+export enum sortStates {
+  latest = "latest",
+  company = "company",
+}
+
+export interface IJobFilter {
+  JobType: filterStates;
+  sortState: sortStates;
+}
+
 const jobs = jobsJson as unknown as Array<IJobAddV3>;
 
-const sortByLatest = (jobsToSort: Array<IJobAddV3>): Array<IJobAddV3> =>
-  jobsToSort.sort((a, b) => b.posted - a.posted);
-
-const sortByCompany = (jobsToSort: Array<IJobAddV3>): Array<IJobAddV3> =>
-  jobsToSort.sort((a, b) => a.company.localeCompare(b.company));
-
 const Home: NextPage = () => {
-  const [checked, setChecked] = useState(filterStates.both);
-  const [filtedJobs, setFilteredJobs] = useState(sortByCompany(jobs));
-  useEffect(() => {
-    if (checked === filterStates.both) {
-      setFilteredJobs(sortByCompany(jobs));
-      return;
+  const [jobFilter, setJobFilter] = useState<IJobFilter>({
+    JobType: filterStates.both,
+    sortState: sortStates.company,
+  });
+
+  const [filtedJobs, setFilteredJobs] = useState(
+    jobs.sort((a, b) => a.company.localeCompare(b.company))
+  );
+
+  const sortByAll = (jobs: Array<IJobAddV3>): void => {
+    console.log("Job Filter Changed");
+    console.log(jobFilter);
+    let newJobs = [...jobs];
+
+    // Sort by job role
+    if (jobFilter.JobType !== filterStates.both) {
+      newJobs = newJobs.filter((job) => job.type === jobFilter.JobType);
     }
 
-    setFilteredJobs(sortByCompany(jobs.filter((job) => job.type === checked)));
+    // Sort by sort by
+    if (jobFilter.sortState === sortStates.latest) {
+      newJobs = newJobs.sort((a, b) => b.posted - a.posted);
+    } else {
+      newJobs = newJobs.sort((a, b) => a.company.localeCompare(b.company));
+    }
+
+    setFilteredJobs(newJobs);
+  };
+
+  const sortByLatest = (jobsToSort: Array<IJobAddV3>): void => {
+    console.log("Sort by latest");
+    console.log(jobsToSort.sort((a, b) => a.posted - b.posted));
+    setFilteredJobs(jobsToSort.sort((a, b) => a.posted - b.posted));
+  };
+
+  const sortByCompany = (jobsToSort: Array<IJobAddV3>): void => {
+    setFilteredJobs(
+      jobsToSort.sort((a, b) => a.company.localeCompare(b.company))
+    );
+  };
+
+  useEffect(() => {
+    sortByAll(jobs);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [checked]);
+  }, [jobFilter]);
 
   return (
-    <div className="bg-gray-900">
+    <div className="dark:bg-gray-900">
       <Head>
         <title>CSE Gigs</title>
         <meta name="description" content="Compsci/Seng Student Gigs" />
@@ -49,15 +90,12 @@ const Home: NextPage = () => {
 
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
         <Header />
-        {/* <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700 select-none">
-          CSE <span className="text-purple-300">Gigs</span>
-        </h1> */}
-        {/* <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto text-center">
-          Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam
-          voluptatum cupiditate veritatis in accusamus quisquam.
-        </p> */}
-        {/* <Stats /> */}
-        <Filter checked={checked} setChecked={setChecked} />
+        <Filter
+          sorts={{ company: sortByCompany, latest: sortByLatest }}
+          jobs={filtedJobs}
+          jobFilter={jobFilter}
+          setJobFilter={setJobFilter}
+        />
         <div className="grid lg:gap-4 pt-6 pb-40 text-center md:grid-cols-1 w-full lg:w-3/4lg:mb-40">
           {filtedJobs.map((job, idx) => (
             <JobAdd
