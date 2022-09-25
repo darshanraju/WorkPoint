@@ -76,7 +76,7 @@ const Home: NextPage = () => {
   }, [jobFilter]);
 
   return (
-    <div className="dark:bg-gray-900 bg-white">
+    <div className="bg-white">
       <Head>
         <title>CSE Gigs</title>
         <meta name="description" content="Compsci/Seng Student Gigs" />
