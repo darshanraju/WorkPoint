@@ -14,7 +14,7 @@ interface IFilter {
 const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
   const classMakerV2 = (btn: filterStates) => {
     const common =
-      "block w-full px-12 py-3 text-sm font-medium dark:text-white border border-blue-600 rounded sm:w-auto ";
+      "text-center lock px-4 lg:px-12 py-3 text-sm font-medium dark:text-white border border-blue-600 rounded sm:w-auto ";
     if (jobFilter.JobType === btn) {
       return (
         common +
@@ -44,11 +44,11 @@ const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
 
   return (
     <div className="w-full">
-      <div className="text-center stat-value m-5 dark:text-white">
+      <div className="text-center text-xl font-bold lg:text-3xl m-5 dark:text-white">
         {"I'm looking for..."}
       </div>
 
-      <div className="flex flex-wrap justify-center mt-4 gap-4 pb-8">
+      <div className="flex flex-wrap justify-center mt-4 gap-1 md:gap-4 pb-8">
         <a
           className={classMakerV2(filterStates.intern)}
           onClick={() =>

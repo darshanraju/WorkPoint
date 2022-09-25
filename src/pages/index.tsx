@@ -88,7 +88,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
+      <main className="container mx-auto flex flex-col items-center justify-center min-h-screen py-4 lg:px-4">
         <Header />
         <Filter
           sorts={{ company: sortByCompany, latest: sortByLatest }}
