@@ -35,7 +35,7 @@ const features = [
 // max-w-screen-xl
 export default function Header() {
   return (
-    <section className="dark:text-white dark:bg-gray-900 w-full">
+    <section className="dark:text-white dark:bg-gray-900 w-full bg-white">
       <div className="px-4 py-6 xlg:py-20 mx-auto lg:items-center lg:flex">
         <div className=" mx-auto text-center w-full">
           <h1 className="text-5xl md:text-[5rem] font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 py-3">
