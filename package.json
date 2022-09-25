@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "test:chrome": "npx playwright test --headed --browser=chromium",
+    "test:firefox": "npx playwright test --headed --browser=firefox",
+    "test:safari": "npx playwright test --headed --browser=webkit"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.11",
@@ -28,6 +31,7 @@
     "zod": "^3.18.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.26.0",
     "@types/array-sort": "^1.0.0",
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",

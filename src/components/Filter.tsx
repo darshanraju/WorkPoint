@@ -34,17 +34,6 @@ const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
     } else if (sortKey.includes("Company")) {
       setJobFilter({ ...jobFilter, sortState: sortStates.company });
     }
-    // switch (sortKey) {
-    //   case "Newly Added 🕓":
-    //     setJobFilter({ ...jobFilter, sortState: sortStates.latest });
-    //     // sorts.latest(jobs);
-    //     break;
-    //   case "Company &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 💻":
-    //     setJobFilter({ ...jobFilter, sortState: sortStates.company });
-
-    //     // sorts.company(jobs);
-    //     break;
-    // }
   };
 
   return (
