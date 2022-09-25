@@ -82,13 +82,16 @@ const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
         </a>
       </div>
 
-      <div className="flex w-full justify-end">
+      <div className="flex w-full justify-end items-end px-2">
+        {/* <div className="lg:text-lg font-semibold">
+          {jobs.length} active intern and grad jobs.
+        </div> */}
         <select
           className="select select-success max-w-xs"
           onChange={(e) => handleSortChange(e.target.value)}
         >
           <option disabled selected className="text-lg py-3">
-            Sort by
+            ❓ Sort by
           </option>
           <option className="text-lg py-3">🕓 Newly Added</option>
           <option className="text-lg py-3">💻 Company</option>
