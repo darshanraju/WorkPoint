@@ -22,7 +22,9 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs",
-    "lib/JobScraper.js"
+    "lib/JobScraper.js",
+    "src/utils/darkMode.js",
+    "postcss.config.js"
   ],
   "exclude": ["node_modules"]
 }

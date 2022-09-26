@@ -81,27 +81,27 @@ const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
         </a>
       </div> */}
 
-      <div className="flex w-full justify-between items-end px-2">
+      <div className="flex w-full justify-between items-end px-2 ">
         <select
-          className="select select-success max-w-xs bg-white"
+          className="select select-success max-w-xs bg-white dark:bg-[#222222] dark:text-[#bfbfbf] lg:text-xl"
           onChange={(e) => handleJobTypeChange(e.target.value)}
         >
-          <option disabled selected className="text-lg py-3">
+          <option disabled selected className="lg:text-xl py-3">
             🔍 Job Type
           </option>
-          <option className="text-lg py-3">👶 Internship</option>
-          <option className="text-lg py-3">💼 Graduate</option>
-          <option className="text-lg py-3">😎 Intern and Grad</option>
+          <option className="lg:text-xl py-3">👶 Internship</option>
+          <option className="lg:text-xl py-3">💼 Graduate</option>
+          <option className="lg:text-xl py-3">😎 Intern and Grad</option>
         </select>
         <select
-          className="select select-success max-w-xs bg-white"
+          className="select select-success max-w-xs bg-white dark:bg-[#222222] dark:text-[#bfbfbf] lg:text-xl"
           onChange={(e) => handleSortChange(e.target.value)}
         >
-          <option disabled selected className="text-lg py-3">
+          <option disabled selected className="lg:text-xl py-3">
             ❓ Sort by
           </option>
-          <option className="text-lg py-3">🕓 Newly Added</option>
-          <option className="text-lg py-3">💻 Company</option>
+          <option className="lg:text-xl py-3">🕓 Newly Added</option>
+          <option className="lg:text-xl py-3">💻 Company</option>
         </select>
         {/* <select className="select select-success  max-w-xs">
           <option disabled selected>

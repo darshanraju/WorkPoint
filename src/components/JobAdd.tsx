@@ -94,7 +94,7 @@ const JobAdd = (ctx: IJobAddV3) => {
 
   return (
     <div
-      className="dark:text-white hover:text-black flex flex-col border-2 border-gray-200 lg:rounded-lg lg:shadow-lg hover:bg-slate-100 transition ease-in-out delay-100"
+      className="dark:text-[#bfbfbf] hover:text-black flex flex-col border-t-2 md:border-2 border-gray-200 lg:rounded-lg lg:shadow-lg hover:bg-slate-100 transition ease-in-out delay-100 dark:border-[#28395c] dark:bg-[#192339] hover:dark:bg-[#212e4b]"
       onMouseEnter={() => setSeeApply(true)}
       onMouseLeave={() => setSeeApply(false)}
     >
@@ -115,7 +115,7 @@ const JobAdd = (ctx: IJobAddV3) => {
             {ctx.company}
           </div>
           <div className="font-bold lg:text-xl text-start">{ctx.jobTitle}</div>
-          <div className="flex items-center font-bold text-sm lg:text-lg pt-2 text-start lg:text-center">
+          <div className="flex items-center font-bold text-sm lg:text-lg pt-2 text-start lg:text-center ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

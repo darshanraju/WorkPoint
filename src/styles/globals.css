@@ -5,3 +5,7 @@
 ::selection {
   background: #fff38f;
 }
+
+.display-none {
+  @apply hidden;
+}

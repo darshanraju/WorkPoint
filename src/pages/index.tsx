@@ -7,6 +7,10 @@ import { useEffect, useState } from "react";
 import jobsJson from "../../lib/jobs.json";
 import Header from "../components/Header";
 import wave from "../../public/wave.svg";
+import moon from "../../public/moon.svg";
+import sun from "../../public/sun.svg";
+import Image from "next/image";
+import Script from "next/script";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const arraySort = require("array-sort");
 
@@ -29,6 +33,9 @@ export interface IJobFilter {
 const jobs = jobsJson as unknown as Array<IJobAddV3>;
 
 const Home: NextPage = () => {
+  // const [darkMode, setDarkMode] = useState(
+  //   localStorage.getItem("cseGigsTheme") === "dark" ? true : false
+  // );
   const [jobFilter, setJobFilter] = useState<IJobFilter>({
     JobType: filterStates.both,
     sortState: sortStates.company,
@@ -39,8 +46,6 @@ const Home: NextPage = () => {
   );
 
   const sortByAll = (jobs: Array<IJobAddV3>): void => {
-    console.log("Job Filter Changed");
-    console.log(jobFilter);
     let newJobs = [...jobs];
 
     // Sort by job role
@@ -59,7 +64,6 @@ const Home: NextPage = () => {
   };
 
   const sortByLatest = (jobsToSort: Array<IJobAddV3>): void => {
-    console.log("Sort by latest");
     console.log(jobsToSort.sort((a, b) => a.posted - b.posted));
     setFilteredJobs(jobsToSort.sort((a, b) => a.posted - b.posted));
   };
@@ -76,7 +80,7 @@ const Home: NextPage = () => {
   }, [jobFilter]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       <Head>
         <title>CSE Gigs</title>
         <meta name="description" content="Compsci/Seng Student Gigs" />
@@ -89,13 +93,35 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen py-4 lg:px-4">
+        <div className="flex justify-end w-full">
+          <Image
+            className="sun cursor-pointer"
+            alt="sun"
+            src={sun}
+            color="white"
+            onClick={(e) => {
+              localStorage.setItem("cseGigsTheme", "light");
+              document.documentElement.classList.remove("dark");
+            }}
+          />
+
+          <Image
+            className="moon cursor-pointer"
+            alt="sun"
+            src={moon}
+            onClick={() => {
+              localStorage.setItem("cseGigsTheme", "dark");
+              document.documentElement.classList.add("dark");
+            }}
+          />
+        </div>
         <Header />
         <Filter
           sorts={{ company: sortByCompany, latest: sortByLatest }}
           jobs={filtedJobs}
           jobFilter={jobFilter}
           setJobFilter={setJobFilter}
-        />
+        />{" "}
         <div className="grid lg:gap-4 pt-6 pb-40 text-center md:grid-cols-1 w-full lg:w-3/4lg:mb-40">
           {filtedJobs.map((job, idx) => (
             <JobAdd
@@ -113,6 +139,7 @@ const Home: NextPage = () => {
           ))}
         </div>
         <EmailSubscription />
+        <Script src="../utils/darkMode.js" />
       </main>
     </div>
   );
