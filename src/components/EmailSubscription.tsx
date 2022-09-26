@@ -29,7 +29,7 @@ const EmailSubscription = () => {
           <input
             type="email"
             placeholder="Your email"
-            className="input input-bordered input-primary w-full max-w-xs m-2 text-center"
+            className="input input-bordered input-primary w-full max-w-xs m-2 text-center bg-white"
             value={email}
             onChange={(value) => setEmail(value.target.value)}
           />

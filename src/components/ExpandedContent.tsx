@@ -19,13 +19,17 @@ const ExpandedContent = (ctx: IJobAddV3) => {
               .replace(/<\/ol/, "")
           )}
       </div>
-      <div className=" items-center lg:hidden pt-4" onClick={() => 42}>
+      <div className="flex-col items-center pt-4" onClick={() => 42}>
         <button
-          className="btn btn-secondary"
+          className="btn btn-secondary lg:w-1/3 lg:text-lg"
           onClick={() => window.open(ctx.link, "_blank")}
         >
-          Apply
+          <div>{"Apply"}</div>
         </button>
+        <div className="text-lg p-2">
+          👉 Please reference you found the job on CSE Gigs, this helps us get
+          more companies to post here, thanks!
+        </div>
       </div>
     </div>
   );

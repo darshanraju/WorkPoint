@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import ExpandedContent from "./ExpandedContent";
 
 export interface Section {
@@ -74,26 +74,43 @@ export interface IJobAddV3 {
   link: string;
 }
 
+const showCity = (location: string) => {
+  if (location.includes(",")) {
+    return location.split(",")[0];
+  }
+  return location;
+};
+
 const JobAdd = (ctx: IJobAddV3) => {
   const now = Date.now();
   const [open, setOpen] = useState<boolean>(false);
+  const [seeApply, setSeeApply] = useState<boolean>(false);
+
+  //"items-center sm:hidden lg:invisible lg:flex
+
+  const applyClass = seeApply
+    ? "items-center hidden lg:flex"
+    : "items-center items-center hidden md:flex lg:invisible";
+
   return (
-    <div className="flex flex-col lg:border-2 border-gray-500 rounded-lg shadow-xl hover:bg-slate-200 ">
-      {/* <div className="flex flex-col  duration-500 lg:border-2 border-gray-500 rounded-lg shadow-xl  motion-safe:hover:scale-105 hover:bg-slate-200 "> */}
+    <div
+      className="dark:text-white hover:text-black flex flex-col border-2 border-gray-200 lg:rounded-lg lg:shadow-lg hover:bg-slate-100 transition ease-in-out delay-100"
+      onMouseEnter={() => setSeeApply(true)}
+      onMouseLeave={() => setSeeApply(false)}
+    >
       <div
-        className="flex p-4 hover:cursor-pointer"
+        className="flex pl-2 lg:p-4 hover:cursor-pointer"
         onClick={() => setOpen(!open)}
       >
         <div className="w-1/6 lg:w-1/6 relative">
           <Image
             src={ctx.logo}
-            layout="fill" // required
-            objectFit="contain" // change to suit your needs
-            // className="rounded-full" // just an example
+            layout="fill"
+            objectFit="contain"
             alt="company_logo"
           />
         </div>
-        <div className="flex px-4 lg:px-0 flex-col w-4/6 lg:w-3/6 items-start">
+        <div className="flex pl-4 lg:px-0 flex-col w-4/6 lg:w-3/6 items-start">
           <div className="font-medium text-sm lg:text-lg text-start">
             {ctx.company}
           </div>
@@ -110,8 +127,11 @@ const JobAdd = (ctx: IJobAddV3) => {
               <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
               <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
             </svg>
-            <span className="p-1">
+            <span className="p-1 hidden lg:flex">
               {ctx.location?.replace(/, Australia$/, "")}
+            </span>
+            <span className="p-1 md:hidden">
+              {showCity(ctx.location?.replace(/, Australia$/, ""))}
             </span>
           </div>
         </div>
@@ -123,7 +143,7 @@ const JobAdd = (ctx: IJobAddV3) => {
         <div className="flex w-1/6 lg:w-1/6 items-center font-semibold justify-center">
           {snowManMethod(now, ctx.posted)}
         </div>
-        <div className=" items-center hidden lg:flex" onClick={() => 42}>
+        <div className={applyClass}>
           <button
             className="btn btn-secondary"
             onClick={() => window.open(ctx.link, "_blank")}
