@@ -76,7 +76,7 @@ const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
           {jobs.length} active intern and grad jobs.
         </div> */}
         <select
-          className="select select-success max-w-xs"
+          className="select select-success max-w-xs bg-white"
           onChange={(e) => handleSortChange(e.target.value)}
         >
           <option disabled selected className="text-lg py-3">
