@@ -42,7 +42,7 @@ const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
         {"I'm looking for..."}
       </div>
 
-      <div className="flex flex-wrap justify-center mt-4 gap-1 md:gap-4 pb-8">
+      <div className="flex flex-wrap justify-center mt-4 space-x-1 md:space-x-4 pb-8">
         <a
           className={classMakerV2(filterStates.intern)}
           onClick={() =>
