@@ -36,13 +36,23 @@ const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
     }
   };
 
+  const handleJobTypeChange = (jobType: string) => {
+    if (jobType.includes("Internship")) {
+      setJobFilter({ ...jobFilter, JobType: filterStates.intern });
+    } else if (jobType.includes("Graduate")) {
+      setJobFilter({ ...jobFilter, JobType: filterStates.grad });
+    } else if (jobType.includes("Intern and Grad")) {
+      setJobFilter({ ...jobFilter, JobType: filterStates.both });
+    }
+  };
+
   return (
     <div className="w-full">
-      <div className="text-center text-xl font-bold lg:text-3xl m-5 dark:text-white">
+      {/* <div className="text-center text-xl font-bold lg:text-3xl m-5 dark:text-white">
         {"I'm looking for..."}
-      </div>
+      </div> */}
 
-      <div className="flex flex-wrap justify-center mt-4 space-x-1 md:space-x-4 pb-8">
+      {/* <div className="flex flex-wrap justify-center mt-4 space-x-1 md:space-x-4 pb-8">
         <a
           className={classMakerV2(filterStates.intern)}
           onClick={() =>
@@ -69,12 +79,20 @@ const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
         >
           BOTH!
         </a>
-      </div>
+      </div> */}
 
-      <div className="flex w-full justify-end items-end px-2">
-        {/* <div className="lg:text-lg font-semibold">
-          {jobs.length} active intern and grad jobs.
-        </div> */}
+      <div className="flex w-full justify-between items-end px-2">
+        <select
+          className="select select-success max-w-xs bg-white"
+          onChange={(e) => handleJobTypeChange(e.target.value)}
+        >
+          <option disabled selected className="text-lg py-3">
+            🔍 Job Type
+          </option>
+          <option className="text-lg py-3">👶 Internship</option>
+          <option className="text-lg py-3">💼 Graduate</option>
+          <option className="text-lg py-3">😎 Intern and Grad</option>
+        </select>
         <select
           className="select select-success max-w-xs bg-white"
           onChange={(e) => handleSortChange(e.target.value)}
