@@ -100,32 +100,36 @@ const Home: NextPage = () => {
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen py-4 lg:px-4">
         <div className="flex justify-end w-full">
           {darkMode ? (
-            <Image
-              className="sun cursor-pointer"
-              alt="sun"
-              src={sun}
-              color="white"
-              height="40px"
-              width="40px"
-              onClick={(e) => {
-                localStorage.setItem("cseGigsTheme", "light");
-                document.documentElement.classList.remove("dark");
-                setDarkMode(!darkMode);
-              }}
-            />
+            <div className="mx-4 lg-mx-0">
+              <Image
+                className="sun cursor-pointer"
+                alt="sun"
+                src={sun}
+                color="white"
+                height="40px"
+                width="40px"
+                onClick={(e) => {
+                  localStorage.setItem("cseGigsTheme", "light");
+                  document.documentElement.classList.remove("dark");
+                  setDarkMode(!darkMode);
+                }}
+              />
+            </div>
           ) : (
-            <Image
-              className="moon cursor-pointer"
-              height="40px"
-              width="40px"
-              alt="sun"
-              src={moon}
-              onClick={() => {
-                localStorage.setItem("cseGigsTheme", "dark");
-                document.documentElement.classList.add("dark");
-                setDarkMode(!darkMode);
-              }}
-            />
+            <div className="mx-4 lg-mx-0">
+              <Image
+                className="moon cursor-pointer px-4"
+                height="40px"
+                width="40px"
+                alt="sun"
+                src={moon}
+                onClick={() => {
+                  localStorage.setItem("cseGigsTheme", "dark");
+                  document.documentElement.classList.add("dark");
+                  setDarkMode(!darkMode);
+                }}
+              />
+            </div>
           )}
         </div>
         <Header />
