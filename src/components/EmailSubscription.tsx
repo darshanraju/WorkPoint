@@ -20,7 +20,7 @@ const EmailSubscription = () => {
   return (
     <div className="fixed bottom-0 w-full border-1 border-t-4 bg-stone-50 dark:bg-[#192339] dark:border-[#28395c] text-gray-700 dark:text-[#bfbfbf] ">
       <div className="m-1 text-base lg:hidden font-medium text-center">
-        Get new intern and grad jobs sent to 28395c
+        Get new intern and grad jobs sent to
       </div>
       <div className="flex justify-center ">
         <div className="lg:text-xl m-2  items-center hidden lg:flex">
