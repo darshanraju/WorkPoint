@@ -23,6 +23,7 @@
     "**/*.cjs",
     "**/*.mjs",
     "lib/JobScraper.js",
+    "lib/JobScraperUtils.js",
     "src/utils/darkMode.js",
     "src/utils/darkModeTest.js",
     "postcss.config.js"
