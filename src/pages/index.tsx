@@ -33,13 +33,25 @@ export interface IJobFilter {
 const jobs = jobsJson as unknown as Array<IJobAddV3>;
 
 const Home: NextPage = () => {
-  const [darkMode, setDarkMode] = useState(
-    typeof window !== "undefined"
-      ? localStorage.getItem("cseGigsTheme") === "darl"
-        ? true
-        : false
-      : false
-  );
+  const currentTheme = (): boolean => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("cseGigsTheme") === "dark") {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    const resp = currentTheme();
+    setDarkMode(resp);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [typeof window]);
+
+  const [darkMode, setDarkMode] = useState(currentTheme());
 
   const [jobFilter, setJobFilter] = useState<IJobFilter>({
     JobType: filterStates.both,
@@ -103,15 +115,14 @@ const Home: NextPage = () => {
             <div className="mx-4 lg-mx-0">
               <Image
                 className="sun cursor-pointer"
-                alt="sun"
-                src={sun}
-                color="white"
                 height="40px"
                 width="40px"
-                onClick={(e) => {
+                alt="sun"
+                src={sun}
+                onClick={() => {
                   localStorage.setItem("cseGigsTheme", "light");
                   document.documentElement.classList.remove("dark");
-                  setDarkMode(!darkMode);
+                  setDarkMode(false);
                 }}
               />
             </div>
@@ -119,14 +130,15 @@ const Home: NextPage = () => {
             <div className="mx-4 lg-mx-0">
               <Image
                 className="moon cursor-pointer px-4"
+                alt="moon"
+                src={moon}
+                color="white"
                 height="40px"
                 width="40px"
-                alt="sun"
-                src={moon}
-                onClick={() => {
+                onClick={(e) => {
                   localStorage.setItem("cseGigsTheme", "dark");
                   document.documentElement.classList.add("dark");
-                  setDarkMode(!darkMode);
+                  setDarkMode(true);
                 }}
               />
             </div>
