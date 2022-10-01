@@ -24,7 +24,10 @@ const ExpandedContent = (ctx: IJobAddV3) => {
       </div>
 
       {/* </div> */}
-      <div className="flex-col items-center pt-4" onClick={() => 42}>
+      <div
+        className="flex-col items-center pt-4 text-center"
+        onClick={() => 42}
+      >
         <button
           className="btn btn-secondary lg:w-1/3 lg:text-lg"
           onClick={() => window.open(ctx.link, "_blank")}
