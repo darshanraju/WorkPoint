@@ -35,38 +35,23 @@ const jobs = jobsJson as unknown as Array<IJobAddV3>;
 const Home: NextPage = () => {
   const currentTheme = (): boolean => {
     if (typeof window !== "undefined") {
-      console.log("THEME IS: ", localStorage.getItem("cseGigsTheme"));
       if (localStorage.getItem("cseGigsTheme") === "dark") {
-        console.log("SHOULD BE DARK MODE");
         return true;
       } else {
-        console.log("SHOULD NOT BE DARK MODE");
         return false;
       }
     } else {
-      console.log("Window hasn't loaded yet");
       return false;
     }
   };
 
   useEffect(() => {
     const resp = currentTheme();
-    console.log("Settings to: ", resp);
     setDarkMode(resp);
-    console.log("Window CHANGE");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typeof window]);
 
   const [darkMode, setDarkMode] = useState(currentTheme());
-  // const [darkMode, setDarkMode] = useState(currentTheme());
-
-  // const [darkMode, setDarkMode] = useState(
-  //   typeof window !== "undefined"
-  //     ? localStorage.getItem("cseGigsTheme") === "dark"
-  //       ? true
-  //       : false
-  //     : false
-  // );
 
   const [jobFilter, setJobFilter] = useState<IJobFilter>({
     JobType: filterStates.both,
