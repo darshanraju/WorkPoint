@@ -86,12 +86,14 @@ const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
           className="select select-success max-w-xs bg-white dark:bg-[#222222] dark:text-[#bfbfbf] lg:text-xl"
           onChange={(e) => handleJobTypeChange(e.target.value)}
         >
-          <option disabled selected className="lg:text-xl py-3">
+          {/* <option disabled selected className="lg:text-xl py-3">
             🔍 Job Type
-          </option>
+          </option> */}
           <option className="lg:text-xl py-3">👶 Internship</option>
           <option className="lg:text-xl py-3">💼 Graduate</option>
-          <option className="lg:text-xl py-3">😎 Intern and Grad</option>
+          <option selected className="lg:text-xl py-3">
+            😎 Intern and Grad
+          </option>
         </select>
         <select
           className="select select-success max-w-xs bg-white dark:bg-[#222222] dark:text-[#bfbfbf] lg:text-xl"
