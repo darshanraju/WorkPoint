@@ -33,13 +33,40 @@ export interface IJobFilter {
 const jobs = jobsJson as unknown as Array<IJobAddV3>;
 
 const Home: NextPage = () => {
-  const [darkMode, setDarkMode] = useState(
-    typeof window !== "undefined"
-      ? localStorage.getItem("cseGigsTheme") === "darl"
-        ? true
-        : false
-      : false
-  );
+  const currentTheme = (): boolean => {
+    if (typeof window !== "undefined") {
+      console.log("THEME IS: ", localStorage.getItem("cseGigsTheme"));
+      if (localStorage.getItem("cseGigsTheme") === "dark") {
+        console.log("SHOULD BE DARK MODE");
+        return true;
+      } else {
+        console.log("SHOULD NOT BE DARK MODE");
+        return false;
+      }
+    } else {
+      console.log("Window hasn't loaded yet");
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    const resp = currentTheme();
+    console.log("Settings to: ", resp);
+    setDarkMode(resp);
+    console.log("Window CHANGE");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [typeof window]);
+
+  const [darkMode, setDarkMode] = useState(currentTheme());
+  // const [darkMode, setDarkMode] = useState(currentTheme());
+
+  // const [darkMode, setDarkMode] = useState(
+  //   typeof window !== "undefined"
+  //     ? localStorage.getItem("cseGigsTheme") === "dark"
+  //       ? true
+  //       : false
+  //     : false
+  // );
 
   const [jobFilter, setJobFilter] = useState<IJobFilter>({
     JobType: filterStates.both,
@@ -103,15 +130,14 @@ const Home: NextPage = () => {
             <div className="mx-4 lg-mx-0">
               <Image
                 className="sun cursor-pointer"
-                alt="sun"
-                src={sun}
-                color="white"
                 height="40px"
                 width="40px"
-                onClick={(e) => {
+                alt="sun"
+                src={sun}
+                onClick={() => {
                   localStorage.setItem("cseGigsTheme", "light");
                   document.documentElement.classList.remove("dark");
-                  setDarkMode(!darkMode);
+                  setDarkMode(false);
                 }}
               />
             </div>
@@ -119,14 +145,15 @@ const Home: NextPage = () => {
             <div className="mx-4 lg-mx-0">
               <Image
                 className="moon cursor-pointer px-4"
+                alt="moon"
+                src={moon}
+                color="white"
                 height="40px"
                 width="40px"
-                alt="sun"
-                src={moon}
-                onClick={() => {
+                onClick={(e) => {
                   localStorage.setItem("cseGigsTheme", "dark");
                   document.documentElement.classList.add("dark");
-                  setDarkMode(!darkMode);
+                  setDarkMode(true);
                 }}
               />
             </div>

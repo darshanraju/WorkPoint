@@ -25,6 +25,13 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           });
     `}
       </Script>
+      <Script id="set-document-theme" strategy="lazyOnload">
+        {`
+          if (localStorage.getItem("cseGigsTheme") === "dark") {
+            document.documentElement.classList.add("dark");
+          }
+        `}
+      </Script>
       <Component {...pageProps} />
     </>
   );

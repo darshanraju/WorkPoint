@@ -24,6 +24,7 @@
     "**/*.mjs",
     "lib/JobScraper.js",
     "src/utils/darkMode.js",
+    "src/utils/darkModeTest.js",
     "postcss.config.js"
   ],
   "exclude": ["node_modules"]
