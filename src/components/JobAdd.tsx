@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import ExpandedContent from "./ExpandedContent";
 
 export interface Section {
@@ -18,60 +18,17 @@ export interface IJobInfo {
   postText?: Array<Section>;
 }
 
-interface headingOrText {
-  type: "heading" | "text";
-  content: string;
-}
-
-interface points {
-  type: "list";
-  content: Array<string>;
-}
-
-// interface part {
-//   type: "heading" | "text" | "list";
-//   content: string | Array<string>;
-// }
-
-type part = headingOrText | points;
-
 export interface IJobAdd {
-  company: string;
+  company?: string;
   tags?: Array<string>;
-  role: string;
+  jobTitle?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  logo: any;
+  logo?: any;
   posted: number;
-  type: "grad" | "intern";
-  location: string;
-  jobInfo?: IJobInfo;
-  link: string;
-}
-
-export interface IJobAddV2 {
-  company: string;
-  tags?: Array<string>;
-  jobTitle: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  logo: any;
-  posted: number;
-  type: "grad" | "intern";
-  location: string;
-  jobDesc?: Array<part>;
-  link: string;
-}
-
-export interface IJobAddV3 {
-  company: string;
-  tags?: Array<string>;
-  jobTitle: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  logo: any;
-  posted: number;
-  type: "grad" | "intern";
-  location: string;
+  type?: "grad" | "intern";
+  location?: string;
   jobDesc?: string;
-  link: string;
+  link?: string;
 }
 
 const showCity = (location: string) => {
@@ -81,7 +38,7 @@ const showCity = (location: string) => {
   return location;
 };
 
-const JobAdd = (ctx: IJobAddV3) => {
+const JobAdd = (ctx: IJobAdd) => {
   const now = Date.now();
   const [open, setOpen] = useState<boolean>(false);
   const [seeApply, setSeeApply] = useState<boolean>(false);
@@ -94,23 +51,29 @@ const JobAdd = (ctx: IJobAddV3) => {
 
   return (
     <div
-      className="dark:text-[#bfbfbf] hover:text-black flex flex-col border-t-2 md:border-2 border-gray-200 lg:rounded-lg lg:shadow-lg hover:bg-slate-100 transition ease-in-out delay-100 dark:border-[#28395c] dark:bg-[#192339] hover:dark:bg-[#212e4b] w-full"
+      className="dark:text-[#bfbfbf] hover:text-black flex flex-col border-t-2 md:border-2 border-gray-200 lg:rounded-lg lg:shadow-lg hover:bg-slate-100 transition ease-in-out delay-100 dark:border-[#28395c] dark:bg-[#192339] hover:dark:bg-[#212e4b] w-full min-h-100"
       onMouseEnter={() => setSeeApply(true)}
       onMouseLeave={() => setSeeApply(false)}
     >
       <div
-        className="flex pl-2 lg:p-4 hover:cursor-pointer"
+        className="flex pl-2 lg:p-4 hover:cursor-pointer h-full"
         onClick={() => setOpen(!open)}
       >
-        <div className="w-1/6 lg:w-1/6 relative">
-          <Image
-            src={ctx.logo}
-            layout="fill"
-            objectFit="contain"
-            alt="company_logo"
-          />
-        </div>
-        <div className="flex pl-4 lg:px-0 flex-col w-4/6 lg:w-3/6 items-start">
+        {ctx.logo && (
+          <div className="w-1/6 lg:w-1/7 relative">
+            {/* <div className="flex w-3/4"> */}
+            <Image
+              src={ctx.logo}
+              // layout="fill"
+              height="100%"
+              width="100%"
+              objectFit="contain"
+              alt="company_logo"
+            />
+            {/* </div> */}
+          </div>
+        )}
+        <div className="flex pl-4 lg:px-0 flex-col w-4/6 lg:w-2/6 items-start">
           <div className="font-medium text-sm lg:text-lg text-start">
             {ctx.company}
           </div>
@@ -131,11 +94,12 @@ const JobAdd = (ctx: IJobAddV3) => {
               {ctx.location?.replace(/, Australia$/, "")}
             </span>
             <span className="p-1 md:hidden">
-              {showCity(ctx.location?.replace(/, Australia$/, ""))}
+              {ctx.location &&
+                showCity(ctx.location.replace(/, Australia$/, ""))}
             </span>
           </div>
         </div>
-        <div className="flex lg:w-1/6 items-center flex-wrap hidden lg:flex">
+        <div className="flex items-end lg:w-2/6  flex-wrap hidden lg:flex">
           {ctx.tags?.map((tag, idx) => (
             <Tag tag={tag} key={idx} />
           ))}
@@ -175,7 +139,7 @@ interface ITag {
 
 const Tag = ({ tag }: ITag) => {
   return (
-    <div className="badge badge-outline badge-lg hover:border-2 border-gray-500 lg:p-3 lg:mr-2 ">
+    <div className="p-2 m-1 badge badge-accent hover:badge-accent cursor-pointer">
       {tag}
     </div>
   );

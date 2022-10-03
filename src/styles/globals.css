@@ -9,3 +9,50 @@
 .display-none {
   @apply hidden;
 }
+
+:root.dark .ql-toolbar .ql-stroke {
+  fill: none;
+  stroke: #fff;
+}
+
+:root.dark .ql-toolbar .ql-fill {
+  fill: #fff;
+  stroke: none;
+}
+
+:root.dark .ql-toolbar .ql-picker {
+  color: #fff;
+}
+
+.ql-snow.ql-toolbar button.ql-active .ql-stroke {
+  color: rgb(95, 205, 78) !important;
+  stroke: rgb(95, 205, 78) !important;
+}
+
+.ql-editor {
+  font-size: 16px;
+}
+
+:root.dark .ql-container .ql-snow {
+  background-color: #fff38f;
+}
+
+ql-container ql-snow {
+  background-color: #fff38f;
+}
+
+:root.dark .ql-container.ql-snow {
+  background-color: #212e4b;
+}
+
+:root.dark .quill {
+  background-color: #212e4b;
+}
+
+:root.dark .ql-picker-options {
+  background-color: #212e4b;
+}
+
+:root.dark .ql-snow.ql-toolbar .ql-picker-label.ql-active {
+  color: white;
+}
