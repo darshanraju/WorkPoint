@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, useState } from "react";
 import dynamic from "next/dynamic";
 const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
@@ -10,7 +10,7 @@ const TextEditor = ({
   currentData,
 }: {
   updateData: Dispatch<IJobForm>;
-  currentData: any;
+  currentData: IJobForm;
 }) => {
   const [value, setValue] = useState("");
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unescaped-entities */
 
 import { Dispatch, SetStateAction, useState } from "react";
@@ -54,9 +55,10 @@ const AddJobForm = () => {
     "flex flex-col border-t-2 md:border-2 border-gray-200 lg:rounded-lg lg:shadow-lg hover:bg-slate-100 transition ease-in-out delay-100 dark:border-[#28395c] dark:bg-[#192339] dark:text-[#bfbfbf]";
   const defaultClass = "bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 ";
   const classNameMerged = `${darkClasses} ${defaultClass}`;
-  const [file, setFile] = useState();
+  const [file, setFile] = useState<string>();
   const [data, setData] = useState<IJobForm>({
     benefits: [],
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     primaryJobTag: jobTypes[0]!.name,
   });
   const handleChange = (e: any) => {

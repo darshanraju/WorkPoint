@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/ban-types */
-import { Dispatch, Fragment, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { IJobForm } from "./AddJobForm";
@@ -27,7 +28,7 @@ const JobTypeSelect = ({
   const handleChange = (newValue: { id: number; name: string }) => {
     setSelected(newValue);
     const newData = { ...currentData };
-    newData[formKey] = newValue.name;
+    newData[formKey]! = newValue.name;
     updateData(newData);
   };
 

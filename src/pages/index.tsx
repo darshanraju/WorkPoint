@@ -1,19 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import JobAdd, { IJobAddV2, IJobAddV3 } from "../components/JobAdd";
+import JobAdd, { IJobAdd } from "../components/JobAdd";
 import EmailSubscription from "../components/EmailSubscription";
 import Filter from "../components/Filter";
 import { useEffect, useState } from "react";
 import jobsJson from "../../lib/jobs.json";
 import Header from "../components/Header";
-import wave from "../../public/wave.svg";
-import moon from "../../public/moon.svg";
-import sun from "../../public/sun.svg";
-import Image from "next/image";
 import Script from "next/script";
 import DarkModeToggle from "../components/DarkModeToggle";
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const arraySort = require("array-sort");
 
 export enum filterStates {
   grad = "grad",
@@ -31,7 +25,7 @@ export interface IJobFilter {
   sortState: sortStates;
 }
 
-const jobs = jobsJson as unknown as Array<IJobAddV3>;
+const jobs = jobsJson as unknown as Array<IJobAdd>;
 
 const Home: NextPage = () => {
   const [jobFilter, setJobFilter] = useState<IJobFilter>({
@@ -40,10 +34,21 @@ const Home: NextPage = () => {
   });
 
   const [filtedJobs, setFilteredJobs] = useState(
-    jobs.sort((a, b) => a.company.localeCompare(b.company))
+    jobs.sort((a, b) => {
+      if (a.company && b.company) {
+        return a.company.localeCompare(b.company);
+      }
+      if (!a.company && !b.company) {
+        return 0;
+      }
+      if (!b.company) {
+        return 1;
+      }
+      return -1;
+    })
   );
 
-  const sortByAll = (jobs: Array<IJobAddV3>): void => {
+  const sortByAll = (jobs: Array<IJobAdd>): void => {
     let newJobs = [...jobs];
 
     // Sort by job role
@@ -55,20 +60,42 @@ const Home: NextPage = () => {
     if (jobFilter.sortState === sortStates.latest) {
       newJobs = newJobs.sort((a, b) => b.posted - a.posted);
     } else {
-      newJobs = newJobs.sort((a, b) => a.company.localeCompare(b.company));
+      newJobs = newJobs.sort((a, b) => {
+        if (a.company && b.company) {
+          return a.company.localeCompare(b.company);
+        }
+        if (!a.company && !b.company) {
+          return 0;
+        }
+        if (!b.company) {
+          return 1;
+        }
+        return -1;
+      });
     }
 
     setFilteredJobs(newJobs);
   };
 
-  const sortByLatest = (jobsToSort: Array<IJobAddV3>): void => {
+  const sortByLatest = (jobsToSort: Array<IJobAdd>): void => {
     console.log(jobsToSort.sort((a, b) => a.posted - b.posted));
     setFilteredJobs(jobsToSort.sort((a, b) => a.posted - b.posted));
   };
 
-  const sortByCompany = (jobsToSort: Array<IJobAddV3>): void => {
+  const sortByCompany = (jobsToSort: Array<IJobAdd>): void => {
     setFilteredJobs(
-      jobsToSort.sort((a, b) => a.company.localeCompare(b.company))
+      jobsToSort.sort((a, b) => {
+        if (a.company && b.company) {
+          return a.company.localeCompare(b.company);
+        }
+        if (!a.company && !b.company) {
+          return 0;
+        }
+        if (!b.company) {
+          return 1;
+        }
+        return -1;
+      })
     );
   };
 

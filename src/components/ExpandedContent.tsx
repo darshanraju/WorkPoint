@@ -1,8 +1,8 @@
 import React from "react";
-import { IJobAddV3 } from "./JobAdd";
+import { IJobAdd } from "./JobAdd";
 import parse from "html-react-parser";
 
-const ExpandedContent = (ctx: IJobAddV3) => {
+const ExpandedContent = (ctx: IJobAdd) => {
   return (
     <div className="box-border px-3 w-full lg:p-10 text-start ">
       <div className="text-lg lg:text-2xl ">{ctx.company} is hiring a</div>

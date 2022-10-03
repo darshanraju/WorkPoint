@@ -1,14 +1,14 @@
 import React from "react";
 import { filterStates, IJobFilter, sortStates } from "../pages";
-import { IJobAddV3 } from "./JobAdd";
+import { IJobAdd } from "./JobAdd";
 interface IFilter {
   jobFilter: IJobFilter;
   setJobFilter: React.Dispatch<React.SetStateAction<IJobFilter>>;
   sorts: {
-    latest: (jobsToSort: Array<IJobAddV3>) => void;
-    company: (jobsToSort: Array<IJobAddV3>) => void;
+    latest: (jobsToSort: Array<IJobAdd>) => void;
+    company: (jobsToSort: Array<IJobAdd>) => void;
   };
-  jobs: IJobAddV3[];
+  jobs: IJobAdd[];
 }
 
 const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
@@ -28,7 +28,6 @@ const Filter = ({ sorts, jobs, setJobFilter, jobFilter }: IFilter) => {
   };
 
   const handleSortChange = (sortKey: string) => {
-    console.log("TRYING TO SORT", sortKey);
     if (sortKey.includes("Newly Added")) {
       setJobFilter({ ...jobFilter, sortState: sortStates.latest });
     } else if (sortKey.includes("Company")) {

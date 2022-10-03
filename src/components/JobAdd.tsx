@@ -38,7 +38,17 @@ const showCity = (location: string) => {
   return location;
 };
 
-const JobAdd = (ctx: IJobAdd) => {
+const JobAdd = ({
+  company = "",
+  jobDesc = "",
+  jobTitle = "",
+  location = "",
+  link = "",
+  type = "grad",
+  posted,
+  logo,
+  tags,
+}: IJobAdd) => {
   const now = Date.now();
   const [open, setOpen] = useState<boolean>(false);
   const [seeApply, setSeeApply] = useState<boolean>(false);
@@ -59,11 +69,11 @@ const JobAdd = (ctx: IJobAdd) => {
         className="flex pl-2 lg:p-4 hover:cursor-pointer h-full"
         onClick={() => setOpen(!open)}
       >
-        {ctx.logo && (
+        {logo && (
           <div className="w-1/6 lg:w-1/7 relative">
             {/* <div className="flex w-3/4"> */}
             <Image
-              src={ctx.logo}
+              src={logo}
               // layout="fill"
               height="100%"
               width="100%"
@@ -75,9 +85,9 @@ const JobAdd = (ctx: IJobAdd) => {
         )}
         <div className="flex pl-4 lg:px-0 flex-col w-4/6 lg:w-2/6 items-start">
           <div className="font-medium text-sm lg:text-lg text-start">
-            {ctx.company}
+            {company}
           </div>
-          <div className="font-bold lg:text-xl text-start">{ctx.jobTitle}</div>
+          <div className="font-bold lg:text-xl text-start">{jobTitle}</div>
           <div className="flex items-center font-bold text-sm lg:text-lg pt-2 text-start lg:text-center ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -91,26 +101,25 @@ const JobAdd = (ctx: IJobAdd) => {
               <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
             </svg>
             <span className="p-1 hidden lg:flex">
-              {ctx.location?.replace(/, Australia$/, "")}
+              {location?.replace(/, Australia$/, "")}
             </span>
             <span className="p-1 md:hidden">
-              {ctx.location &&
-                showCity(ctx.location.replace(/, Australia$/, ""))}
+              {location && showCity(location.replace(/, Australia$/, ""))}
             </span>
           </div>
         </div>
         <div className="flex items-end lg:w-2/6  flex-wrap hidden lg:flex">
-          {ctx.tags?.map((tag, idx) => (
+          {tags?.map((tag, idx) => (
             <Tag tag={tag} key={idx} />
           ))}
         </div>
         <div className="flex w-1/6 lg:w-1/6 items-center font-semibold justify-center">
-          {snowManMethod(now, ctx.posted)}
+          {snowManMethod(now, posted)}
         </div>
         <div className={applyClass}>
           <button
             className="btn btn-secondary"
-            onClick={() => window.open(ctx.link, "_blank")}
+            onClick={() => window.open(link, "_blank")}
           >
             Apply
           </button>
@@ -118,15 +127,15 @@ const JobAdd = (ctx: IJobAdd) => {
       </div>
       {open && (
         <ExpandedContent
-          company={ctx.company}
-          location={ctx.location}
-          logo={ctx.logo}
-          posted={ctx.posted}
-          jobTitle={ctx.jobTitle}
-          tags={ctx.tags}
-          type={ctx.type}
-          link={ctx.link}
-          jobDesc={ctx.jobDesc}
+          company={company}
+          location={location}
+          logo={logo}
+          posted={posted}
+          jobTitle={jobTitle}
+          tags={tags}
+          type={type}
+          link={link}
+          jobDesc={jobDesc}
         />
       )}
     </div>
