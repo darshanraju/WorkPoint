@@ -8,6 +8,7 @@ import jobsJson from "../../lib/jobs.json";
 import Header from "../components/Header";
 import Script from "next/script";
 import DarkModeToggle from "../components/DarkModeToggle";
+import Navbar from "../components/Navbar";
 
 export enum filterStates {
   grad = "grad",
@@ -122,6 +123,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen py-4 lg:px-4">
+        <Navbar />
         <DarkModeToggle />
         <Header />
         <Filter

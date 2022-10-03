@@ -93,7 +93,7 @@ const AddJobForm = () => {
             </div>
             <div className="mt-5 space-y-6 md:col-span-2 md:mt-0">
               <div className="grid grid-cols-6 gap-6">
-                <div className="col-span-3 sm:col-span-6 lg:col-span-3">
+                <div className="col-span-6 sm:col-span-6 lg:col-span-3">
                   <label htmlFor="jobTitle" className="block text-sm font-bold">
                     Job Title
                   </label>
@@ -106,7 +106,7 @@ const AddJobForm = () => {
                   />
                 </div>
 
-                <div className="col-span-3 sm:col-span-6 lg:col-span-3">
+                <div className="col-span-6 lg:col-span-3">
                   <label htmlFor="company" className="block text-sm font-bold">
                     Company
                   </label>
@@ -119,7 +119,7 @@ const AddJobForm = () => {
                   />
                 </div>
 
-                <div className="col-span-3 sm:col-span-6 lg:col-span-3">
+                <div className="col-span-6 lg:col-span-3">
                   <label
                     htmlFor="primaryJobTag"
                     className="block text-sm font-bold"
@@ -134,7 +134,7 @@ const AddJobForm = () => {
                   />
                 </div>
 
-                <div className="col-span-3 sm:col-span-6 lg:col-span-3">
+                <div className="col-span-6 lg:col-span-3">
                   <label htmlFor="jobLevel" className="block text-sm font-bold">
                     Job Level
                   </label>
@@ -146,7 +146,7 @@ const AddJobForm = () => {
                   />
                 </div>
 
-                <div className="col-span-3 sm:col-span-6 lg:col-span-3">
+                <div className="col-span-6 lg:col-span-3">
                   <label
                     htmlFor="jobLocation"
                     className="block text-sm font-bold"
@@ -261,6 +261,7 @@ const AddJobForm = () => {
           jobDesc={data.jobDescription}
           key="toPost"
           tags={data.benefits}
+          posting={true}
         />
 
         <div className={classNameMerged}>

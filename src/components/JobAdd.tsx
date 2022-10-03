@@ -29,6 +29,7 @@ export interface IJobAdd {
   location?: string;
   jobDesc?: string;
   link?: string;
+  posting?: boolean;
 }
 
 const showCity = (location: string) => {
@@ -48,13 +49,11 @@ const JobAdd = ({
   posted,
   logo,
   tags,
+  posting = false,
 }: IJobAdd) => {
   const now = Date.now();
   const [open, setOpen] = useState<boolean>(false);
   const [seeApply, setSeeApply] = useState<boolean>(false);
-
-  //"items-center sm:hidden lg:invisible lg:flex
-
   const applyClass = seeApply
     ? "items-center hidden lg:flex"
     : "items-center items-center hidden md:flex lg:invisible";
@@ -89,23 +88,27 @@ const JobAdd = ({
           </div>
           <div className="font-bold lg:text-xl text-start">{jobTitle}</div>
           <div className="flex items-center font-bold text-sm lg:text-lg pt-2 text-start lg:text-center ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-geo-alt"
-              viewBox="0 0 16 16"
-            >
-              <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
-              <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-            </svg>
-            <span className="p-1 hidden lg:flex">
-              {location?.replace(/, Australia$/, "")}
-            </span>
-            <span className="p-1 md:hidden">
-              {location && showCity(location.replace(/, Australia$/, ""))}
-            </span>
+            {location && (
+              <div className="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-geo-alt"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                <span className="p-1 hidden lg:flex">
+                  {location?.replace(/, Australia$/, "")}
+                </span>
+                <span className="p-1 md:hidden">
+                  {location && showCity(location.replace(/, Australia$/, ""))}
+                </span>
+              </div>
+            )}
           </div>
         </div>
         <div className="flex items-end lg:w-2/6  flex-wrap hidden lg:flex">
@@ -114,18 +117,20 @@ const JobAdd = ({
           ))}
         </div>
         <div className="flex w-1/6 lg:w-1/6 items-center font-semibold justify-center">
-          {snowManMethod(now, posted)}
+          {!posting && snowManMethod(now, posted)}
         </div>
         <div className={applyClass}>
-          <button
-            className="btn btn-secondary"
-            onClick={() => window.open(link, "_blank")}
-          >
-            Apply
-          </button>
+          {link && (
+            <button
+              className="btn btn-secondary"
+              onClick={() => window.open(link, "_blank")}
+            >
+              Apply
+            </button>
+          )}
         </div>
       </div>
-      {open && (
+      {open && company && jobTitle && (
         <ExpandedContent
           company={company}
           location={location}
@@ -136,6 +141,7 @@ const JobAdd = ({
           type={type}
           link={link}
           jobDesc={jobDesc}
+          posting={posting}
         />
       )}
     </div>

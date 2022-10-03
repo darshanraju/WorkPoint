@@ -2,6 +2,7 @@ import Head from "next/head";
 import React from "react";
 import AddJobForm from "../components/AddJobForm";
 import DarkModeToggle from "../components/DarkModeToggle";
+import Navbar from "../components/Navbar";
 
 const AddJob = () => {
   return (
