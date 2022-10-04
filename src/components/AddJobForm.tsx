@@ -518,7 +518,9 @@ const AddJobForm = () => {
                         htmlFor="fileUpload"
                         className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500 bg-transparent"
                       >
-                        <div className="badge badge-accent">Upload a file</div>
+                        <div className="badge badge-accent bg-green-300">
+                          Upload a file
+                        </div>
                         <input
                           id="fileUpload"
                           name="fileUpload"
