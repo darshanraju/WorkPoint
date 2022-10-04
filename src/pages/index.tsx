@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-css-tags */
 import type { NextPage } from "next";
 import Head from "next/head";
 import JobAdd, { IJobAdd } from "../components/JobAdd";
@@ -119,6 +120,11 @@ const Home: NextPage = () => {
         <link
           rel="stylesheet"
           href="https://unpkg.com/react-quill@1.3.3/dist/quill.snow.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="//github.com/downloads/lafeber/world-flags-sprite/flags32.css"
         />
       </Head>
 

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-css-tags */
 import Head from "next/head";
 import React from "react";
 import AddJobForm from "../components/AddJobForm";
@@ -20,8 +21,18 @@ const AddJob = () => {
           rel="stylesheet"
           href="https://unpkg.com/react-quill@1.3.3/dist/quill.snow.css"
         />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="//github.com/downloads/lafeber/world-flags-sprite/flags32.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://jsuites.net/v4/jsuites.css"
+          type="text/css"
+        />
       </Head>
-      <main className="container mx-auto flex flex-col items-center justify-center min-h-screen py-4 lg:px-4 dark:bg-gray-900 min-w-screen">
+      <main className="container mx-auto flex flex-col items-center justify-center min-h-screen py-4 lg:px-4 dark:bg-gray-900 min-w-screen w-full m-0">
         <DarkModeToggle />
         <div className="flex flex-col items-center">
           <Head>
@@ -38,9 +49,12 @@ const AddJob = () => {
               href="https://unpkg.com/react-quill@1.3.3/dist/quill.snow.css"
             />
           </Head>
-          <div className="w-3/4 py-10">
+          <div className="w-full py-10">
             <AddJobForm />
           </div>
+          <li className="flag arg">Argentina</li>
+          <li className="flag aus">Australia</li>
+          <li className="flag aut">Austria</li>
         </div>
       </main>
     </div>

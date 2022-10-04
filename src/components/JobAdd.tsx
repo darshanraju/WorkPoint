@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import ExpandedContent from "./ExpandedContent";
-
+import TempCompanyLogo from "../../public/tempCompanyLogo.png";
+import TempCompanyLogoV2 from "../../public/questionMark.svg";
 export interface Section {
   title: string;
   text: Array<string>;
@@ -47,14 +48,16 @@ const JobAdd = ({
   link = "",
   type = "grad",
   posted,
-  logo,
+  logo = TempCompanyLogoV2,
   tags,
   posting = false,
 }: IJobAdd) => {
   const now = Date.now();
   const [open, setOpen] = useState<boolean>(false);
   const [seeApply, setSeeApply] = useState<boolean>(false);
-  const applyClass = seeApply
+  const applyClass = posting
+    ? "items-center flex"
+    : seeApply
     ? "items-center hidden lg:flex"
     : "items-center items-center hidden md:flex lg:invisible";
 
@@ -69,7 +72,7 @@ const JobAdd = ({
         onClick={() => setOpen(!open)}
       >
         {logo && (
-          <div className="w-1/6 lg:w-1/7 relative">
+          <div className="w-1/6 lg:w-1/7 relative flex justify-center">
             {/* <div className="flex w-3/4"> */}
             <Image
               src={logo}
@@ -82,33 +85,37 @@ const JobAdd = ({
             {/* </div> */}
           </div>
         )}
-        <div className="flex pl-4 lg:px-0 flex-col w-4/6 lg:w-2/6 items-start">
+        <div className="flex pl-4 lg:px-0 flex-col w-4/6 lg:w-2/6 items-start justify-center">
           <div className="font-medium text-sm lg:text-lg text-start">
-            {company}
+            {company || "Your Company"}
           </div>
-          <div className="font-bold lg:text-xl text-start">{jobTitle}</div>
+          <div className="font-bold lg:text-xl text-start">
+            {jobTitle || "Example Job Title"}
+          </div>
           <div className="flex items-center font-bold text-sm lg:text-lg pt-2 text-start lg:text-center ">
-            {location && (
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-geo-alt"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
-                  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                </svg>
-                <span className="p-1 hidden lg:flex">
-                  {location?.replace(/, Australia$/, "")}
-                </span>
-                <span className="p-1 md:hidden">
-                  {location && showCity(location.replace(/, Australia$/, ""))}
-                </span>
-              </div>
-            )}
+            <div className="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-geo-alt"
+                viewBox="0 0 16 16"
+              >
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+              </svg>
+              <span className="p-1 hidden lg:flex">
+                {location
+                  ? location.replace(/, Australia$/, "")
+                  : "The Job Location"}
+              </span>
+              <span className="p-1 md:hidden">
+                {location
+                  ? showCity(location.replace(/, Australia$/, ""))
+                  : "The Job Location"}
+              </span>
+            </div>
           </div>
         </div>
         <div className="flex items-end lg:w-2/6  flex-wrap hidden lg:flex">
@@ -120,14 +127,14 @@ const JobAdd = ({
           {!posting && snowManMethod(now, posted)}
         </div>
         <div className={applyClass}>
-          {link && (
-            <button
-              className="btn btn-secondary"
-              onClick={() => window.open(link, "_blank")}
-            >
-              Apply
-            </button>
-          )}
+          <button
+            className="btn btn-secondary"
+            onClick={() => {
+              link && window.open(link, "_blank");
+            }}
+          >
+            Apply
+          </button>
         </div>
       </div>
       {open && company && jobTitle && (

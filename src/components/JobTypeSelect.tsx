@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/ban-types */
 import { Dispatch, Fragment, useState } from "react";
@@ -8,21 +9,28 @@ import { IJobForm } from "./AddJobForm";
 function classNames(...classes: Array<string>) {
   return classes.filter(Boolean).join(" ");
 }
-// eslint-disable-next-line @typescript-eslint/ban-types
+
+interface IOption {
+  id: number;
+  name: string;
+  image?: string;
+}
+
+interface IJobTypeSelect {
+  updateData: Dispatch<IJobForm>;
+  currentData: any;
+  selectOptions: Array<IOption>;
+  formKey: string;
+  isFlag?: boolean;
+}
+
 const JobTypeSelect = ({
   updateData,
   currentData,
   selectOptions,
   formKey,
-}: {
-  updateData: Dispatch<IJobForm>;
-  currentData: any;
-  selectOptions: Array<{
-    id: number;
-    name: string;
-  }>;
-  formKey: string;
-}) => {
+  isFlag = false,
+}: IJobTypeSelect) => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const [selected, setSelected] = useState(selectOptions[0]!);
   const handleChange = (newValue: { id: number; name: string }) => {
@@ -39,7 +47,18 @@ const JobTypeSelect = ({
           <>
             <div className="relative mt-1">
               <Listbox.Button className="dark:bg-[#212e4b] relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
-                <span className="block truncate">{selected.name}</span>
+                <span className="block truncate">
+                  <div className="flex">
+                    {selected.image && (
+                      <img
+                        src={selected.image}
+                        className="h-6 w-6 flex-shrink-0 mr-1"
+                        alt=""
+                      />
+                    )}
+                    <div>{selected.name}</div>
+                  </div>
+                </span>
                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                   <ChevronUpDownIcon className="h-5 w-5" aria-hidden="true" />
                 </span>
@@ -74,7 +93,16 @@ const JobTypeSelect = ({
                               "block truncate"
                             )}
                           >
-                            {option.name}
+                            <div className="flex">
+                              {option.image && (
+                                <img
+                                  src={option.image}
+                                  className="h-6 w-6 flex-shrink-0 mr-1"
+                                  alt=""
+                                />
+                              )}
+                              {option.name}
+                            </div>
                           </span>
 
                           {selected ? (
