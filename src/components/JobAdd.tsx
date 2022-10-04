@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import ExpandedContent from "./ExpandedContent";
 import TempCompanyLogo from "../../public/tempCompanyLogo.png";
 import TempCompanyLogoV2 from "../../public/questionMark.svg";
+import { jobTypeValues } from "./AddJobForm";
+import { info } from "console";
 export interface Section {
   title: string;
   text: Array<string>;
@@ -19,6 +21,11 @@ export interface IJobInfo {
   postText?: Array<Section>;
 }
 
+export enum JobTypes {
+  grad = "grad",
+  intern = "intern",
+}
+
 export interface IJobAdd {
   company?: string;
   tags?: Array<string>;
@@ -26,11 +33,12 @@ export interface IJobAdd {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   logo?: any;
   posted: number;
-  type?: "grad" | "intern";
+  type?: JobTypes;
   location?: string;
   jobDesc?: string;
   link?: string;
   posting?: boolean;
+  primaryJobTag: jobTypeValues;
 }
 
 const showCity = (location: string) => {
@@ -46,11 +54,12 @@ const JobAdd = ({
   jobTitle = "",
   location = "",
   link = "",
-  type = "grad",
+  type = JobTypes.grad,
   posted,
   logo = TempCompanyLogoV2,
   tags,
   posting = false,
+  primaryJobTag,
 }: IJobAdd) => {
   const now = Date.now();
   const [open, setOpen] = useState<boolean>(false);
@@ -92,6 +101,7 @@ const JobAdd = ({
           <div className="font-bold lg:text-xl text-start">
             {jobTitle || "Example Job Title"}
           </div>
+
           <div className="flex items-center font-bold text-sm lg:text-lg pt-2 text-start lg:text-center ">
             <div className="flex items-center">
               <svg
@@ -110,6 +120,7 @@ const JobAdd = ({
                   ? location.replace(/, Australia$/, "")
                   : "The Job Location"}
               </span>
+
               <span className="p-1 md:hidden">
                 {location
                   ? showCity(location.replace(/, Australia$/, ""))
@@ -117,10 +128,18 @@ const JobAdd = ({
               </span>
             </div>
           </div>
+          <span>
+            {type === "grad" ? (
+              <JobTypeTag tag="💼 Graduate" />
+            ) : (
+              <JobTypeTag tag="👶 Internship" />
+            )}
+            <PrimaryJobTag tag={primaryJobTag} />
+          </span>
         </div>
         <div className="flex items-end lg:w-2/6  flex-wrap hidden lg:flex">
           {tags?.map((tag, idx) => (
-            <Tag tag={tag} key={idx} />
+            <BenefitTag tag={tag} key={idx} />
           ))}
         </div>
         <div className="flex w-1/6 lg:w-1/6 items-center font-semibold justify-center">
@@ -149,6 +168,7 @@ const JobAdd = ({
           link={link}
           jobDesc={jobDesc}
           posting={posting}
+          primaryJobTag={primaryJobTag}
         />
       )}
     </div>
@@ -159,12 +179,77 @@ interface ITag {
   tag: string;
 }
 
-const Tag = ({ tag }: ITag) => {
+const BenefitTag = ({ tag }: ITag) => {
   return (
     <div className="p-2 m-1 badge badge-accent hover:badge-accent cursor-pointer">
       {tag}
     </div>
   );
+};
+
+const JobTypeTag = ({ tag }: ITag) => {
+  return tag.includes("Graduate") ? (
+    <div className="p-2 m-1 badge badge-lg badge-success bg-green-300">
+      {tag}
+    </div>
+  ) : (
+    <div className="p-2 m-1 badge badge-lg badge-info bg-sky-300">
+      <div className="text-bold">{tag}</div>
+    </div>
+  );
+};
+
+const PrimaryJobTag = ({ tag }: { tag: jobTypeValues }) => {
+  switch (tag) {
+    case jobTypeValues.backendEngineer:
+      return (
+        <div className="p-2 m-1 badge badge-lg bg-purple-300 text-black">
+          {tag}
+        </div>
+      );
+    case jobTypeValues.consulting:
+      return (
+        <div className="p-2 m-1 badge badge-lg bg-lime-300 text-black">
+          {tag}
+        </div>
+      );
+    case jobTypeValues.dataScientist:
+      return (
+        <div className="p-2 m-1 badge badge-lg bg-teal-300 text-black">
+          {tag}
+        </div>
+      );
+    case jobTypeValues.devops:
+      return (
+        <div className="p-2 m-1 badge badge-lg  bg-yellow-300 text-black">
+          {tag}
+        </div>
+      );
+    case jobTypeValues.frontendEngineer:
+      return (
+        <div className="p-2 m-1 badge badge-lg bg-pink-300 text-black">
+          {tag}
+        </div>
+      );
+    case jobTypeValues.fullstackEngineer:
+      return (
+        <div className="p-2 m-1 badge badge-lg bg-red-300 text-black">
+          {tag}
+        </div>
+      );
+    case jobTypeValues.softwareEngineer:
+      return (
+        <div className="p-2 m-1 badge badge-lg bg-indigo-300 text-black">
+          {tag}
+        </div>
+      );
+    case jobTypeValues.ux:
+      return (
+        <div className="p-2 m-1 badge badge-lg bg-rose-300 text-black">
+          {tag}
+        </div>
+      );
+  }
 };
 
 const snowManMethod = (date_now: number, date_posted: number) => {

@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import JobAdd from "./JobAdd";
+import JobAdd, { JobTypes } from "./JobAdd";
 import JobTypeSelect from "./JobTypeSelect";
 import TextEditor from "./TextEditor";
 
@@ -21,20 +21,31 @@ const Benefits = [
   "💸 Equity Compensation",
 ];
 
+export enum jobTypeValues {
+  softwareEngineer = "🖥️ Software Engineer",
+  frontendEngineer = "🖌️ Frontend Engineer",
+  backendEngineer = "🤓 Backend Engineer",
+  fullstackEngineer = "👩‍💻 Fullstack Engineer",
+  dataScientist = "🔬 Data Scientist",
+  devops = "👷 Devops",
+  consulting = "🕴 Consulting",
+  ux = "🎨 UX",
+}
+
 const jobTypes = [
-  { id: 0, name: "🖥️ Software Engineer" },
-  { id: 1, name: "🖌️ Frontend Engineer" },
-  { id: 2, name: "🤓 Backend Engineer" },
-  { id: 3, name: "👩‍💻 Fullstack Engineer" },
-  { id: 4, name: "🔬 Data Scientist" },
-  { id: 5, name: "👷 Devops" },
-  { id: 6, name: "🕴 Consulting" },
-  { id: 7, name: "🎨 UX" },
+  { id: 0, name: jobTypeValues.softwareEngineer },
+  { id: 1, name: jobTypeValues.frontendEngineer },
+  { id: 2, name: jobTypeValues.backendEngineer },
+  { id: 3, name: jobTypeValues.fullstackEngineer },
+  { id: 4, name: jobTypeValues.dataScientist },
+  { id: 5, name: jobTypeValues.devops },
+  { id: 6, name: jobTypeValues.consulting },
+  { id: 7, name: jobTypeValues.ux },
 ];
 
-const jobLevels = [
-  { id: 0, name: "👶 Internship" },
-  { id: 1, name: "💼 Graduate" },
+const jobLevels: Array<any> = [
+  { id: "intern", name: "👶 Internship" },
+  { id: "grad", name: "💼 Graduate" },
 ];
 
 const jobCountries: Array<any> = [
@@ -290,9 +301,10 @@ const jobCountries: Array<any> = [
 export interface IJobForm {
   jobTitle?: string;
   company?: string;
+  primaryJobTag: jobTypeValues;
+  jobLevel: string;
   jobCity?: string;
-  jobCountry?: string;
-  primaryJobTag?: string;
+  jobCountry: string;
   jobLink?: string;
   jobDescription?: string;
   benefits: Array<string>;
@@ -319,6 +331,8 @@ const AddJobForm = () => {
     benefits: [],
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     primaryJobTag: jobTypes[0]!.name,
+    jobLevel: jobLevels[0]!.name,
+    jobCountry: jobCountries[13]!.name,
   });
   const handleChange = (e: any) => {
     console.log(e.target.files);
@@ -529,11 +543,16 @@ const AddJobForm = () => {
           location={data.jobCountry}
           posted={Date.now()}
           logo={file}
-          type="grad"
+          type={
+            data.jobLevel.includes("Internship")
+              ? JobTypes.intern
+              : JobTypes.grad
+          }
           jobDesc={data.jobDescription}
           key="toPost"
           tags={data.benefits}
           posting={true}
+          primaryJobTag={data.primaryJobTag}
         />
         <div className={classNameMerged}>
           <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -631,13 +650,6 @@ const AddJobForm = () => {
             <div className="mt-5 md:col-span-2 md:mt-0">
               <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-6">
-                  {/* <label
-                    htmlFor="feedback"
-                    className="block text-sm text-md font-bold"
-                  >
-                    Feedback
-                  </label> */}
-
                   <textarea
                     rows={4}
                     name="Feedback"
