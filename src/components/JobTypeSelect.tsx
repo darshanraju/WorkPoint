@@ -21,6 +21,7 @@ interface IJobTypeSelect {
   currentData: any;
   selectOptions: Array<IOption>;
   formKey: string;
+  defaultOption?: IOption;
 }
 
 const JobTypeSelect = ({
@@ -28,9 +29,12 @@ const JobTypeSelect = ({
   currentData,
   selectOptions,
   formKey,
+  defaultOption,
 }: IJobTypeSelect) => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const [selected, setSelected] = useState(selectOptions[0]!);
+  const [selected, setSelected] = useState(
+    defaultOption ? defaultOption : selectOptions[0]!
+  );
   const handleChange = (newValue: { id: number; name: string }) => {
     setSelected(newValue);
     const newData = { ...currentData };
@@ -76,7 +80,7 @@ const JobTypeSelect = ({
                       className={({ active }) =>
                         classNames(
                           active
-                            ? "text-white dark:bg-indigo-600"
+                            ? "text-black  dark:text-white dark:bg-indigo-600 bg-indigo-400"
                             : "dark:text-[#bfbfbf] bg-white",
                           "relative cursor-default select-none py-2 pl-3 pr-9 dark:bg-[#212e4b] cursor-pointer"
                         )

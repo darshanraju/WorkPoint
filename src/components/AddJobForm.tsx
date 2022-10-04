@@ -28,7 +28,8 @@ const jobTypes = [
   { id: 3, name: "👩‍💻 Fullstack Engineer" },
   { id: 4, name: "🔬 Data Scientist" },
   { id: 5, name: "👷 Devops" },
-  { id: 6, name: "🎨 UX" },
+  { id: 6, name: "🕴 Consulting" },
+  { id: 7, name: "🎨 UX" },
 ];
 
 const jobLevels = [
@@ -389,6 +390,7 @@ const AddJobForm = () => {
                     updateData={setData}
                     selectOptions={jobTypes}
                     formKey="primaryJobTag"
+                    defaultOption={jobTypes[0]}
                   />
                 </div>
 
@@ -401,6 +403,7 @@ const AddJobForm = () => {
                     updateData={setData}
                     selectOptions={jobLevels}
                     formKey="jobLevel"
+                    defaultOption={jobLevels[0]}
                   />
                 </div>
 
@@ -429,6 +432,7 @@ const AddJobForm = () => {
                     updateData={setData}
                     selectOptions={jobCountries}
                     formKey="jobCountry"
+                    defaultOption={jobCountries[13]}
                   />
                 </div>
               </div>
@@ -613,7 +617,39 @@ const AddJobForm = () => {
             </div>
           </div>
         </div>
+        <div className={classNameMerged}>
+          <div className="md:grid md:grid-cols-3 md:gap-6">
+            <div className="md:col-span-1">
+              <h3 className="font-bold lg:text-xl leading-6 text-gray-900 dark:text-white">
+                Feedback
+              </h3>
+              <p className="mt-1 font-medium text-sm lg:text-lg">
+                Let us know how we improve your job posting experience even
+                more.
+              </p>
+            </div>
+            <div className="mt-5 md:col-span-2 md:mt-0">
+              <div className="grid grid-cols-6 gap-6">
+                <div className="col-span-6 sm:col-span-6">
+                  {/* <label
+                    htmlFor="feedback"
+                    className="block text-sm text-md font-bold"
+                  >
+                    Feedback
+                  </label> */}
 
+                  <textarea
+                    rows={4}
+                    name="Feedback"
+                    id="Feedback"
+                    className="dark:bg-[#212e4b] mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    defaultValue={""}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="flex justify-end">
           <button
             type="button"

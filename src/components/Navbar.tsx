@@ -2,23 +2,24 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import DarkModeToggle from "./DarkModeToggle";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <Popover className="relative bg-white dark:bg-gray-900">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
-          <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="#">
-              <span className="sr-only">CSE Gigs</span>
-              <img
-                className="h-8 w-auto sm:h-10"
-                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn1.iconfinder.com%2Fdata%2Ficons%2Femoji-of-smiley-color%2F100%2Fsmiley_nerd-512.png&f=1&nofb=1"
-                alt="logo-cse-gigs"
-              />
-            </a>
+    <Popover className="relative bg-white dark:bg-gray-900 w-full">
+      <div className="mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between border-gray-100 py-6">
+          <div className="flex flex-col justify-start">
+            <Link href="/">
+              <h1 className="cursor-pointer text-xl md:text-[3rem] font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 py-3 select-none">
+                CSE-Gigs
+              </h1>
+            </Link>
           </div>
-          <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+          <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-purple-400 to-blue-500 select-none">
+            Hire Curiosity
+          </h1>
+          <div className="">
             <DarkModeToggle />
           </div>
         </div>
