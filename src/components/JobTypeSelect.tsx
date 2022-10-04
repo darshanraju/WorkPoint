@@ -21,7 +21,6 @@ interface IJobTypeSelect {
   currentData: any;
   selectOptions: Array<IOption>;
   formKey: string;
-  isFlag?: boolean;
 }
 
 const JobTypeSelect = ({
@@ -29,7 +28,6 @@ const JobTypeSelect = ({
   currentData,
   selectOptions,
   formKey,
-  isFlag = false,
 }: IJobTypeSelect) => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const [selected, setSelected] = useState(selectOptions[0]!);
@@ -41,13 +39,13 @@ const JobTypeSelect = ({
   };
 
   return (
-    <div className="sm:col-span-6 lg:col-span-2">
+    <div className="cursor-pointer sm:col-span-6 lg:col-span-2">
       <Listbox value={selected} onChange={handleChange}>
         {({ open }) => (
           <>
-            <div className="relative mt-1">
-              <Listbox.Button className="dark:bg-[#212e4b] relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
-                <span className="block truncate">
+            <div className="cursor-pointer relative mt-1">
+              <Listbox.Button className="cursor-pointer dark:bg-[#212e4b] relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
+                <span className="block truncate cursor-pointer">
                   <div className="flex">
                     {selected.image && (
                       <img
@@ -59,7 +57,7 @@ const JobTypeSelect = ({
                     <div>{selected.name}</div>
                   </div>
                 </span>
-                <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer">
                   <ChevronUpDownIcon className="h-5 w-5" aria-hidden="true" />
                 </span>
               </Listbox.Button>
@@ -71,7 +69,7 @@ const JobTypeSelect = ({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="dark:bg-[#212e4b] absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                <Listbox.Options className="cursor-pointer dark:bg-[#212e4b] absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                   {selectOptions.map((option) => (
                     <Listbox.Option
                       key={option.id}
@@ -80,13 +78,13 @@ const JobTypeSelect = ({
                           active
                             ? "text-white dark:bg-indigo-600"
                             : "dark:text-[#bfbfbf] bg-white",
-                          "relative cursor-default select-none py-2 pl-3 pr-9 dark:bg-[#212e4b] "
+                          "relative cursor-default select-none py-2 pl-3 pr-9 dark:bg-[#212e4b] cursor-pointer"
                         )
                       }
                       value={option}
                     >
                       {({ selected, active }) => (
-                        <>
+                        <div className="cursor-pointer">
                           <span
                             className={classNames(
                               selected ? "font-bold" : "font-semibold",
@@ -109,7 +107,7 @@ const JobTypeSelect = ({
                             <span
                               className={classNames(
                                 active ? "text-white" : "text-indigo-600",
-                                "absolute inset-y-0 right-0 flex items-center pr-4"
+                                "absolute inset-y-0 right-0 flex items-center pr-4 cursor-pointer"
                               )}
                             >
                               <CheckIcon
@@ -118,7 +116,7 @@ const JobTypeSelect = ({
                               />
                             </span>
                           ) : null}
-                        </>
+                        </div>
                       )}
                     </Listbox.Option>
                   ))}
