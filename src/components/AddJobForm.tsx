@@ -298,6 +298,12 @@ const jobCountries: Array<any> = [
   { name: "Zimbabwe", id: "ZW" },
 ];
 
+const jobPostDuration: Array<any> = [
+  { id: "30", name: "30 Days" },
+  { id: "60", name: "60 Days" },
+  { id: "90", name: "90 Days" },
+];
+
 export interface IJobForm {
   jobTitle?: string;
   company?: string;
@@ -307,6 +313,7 @@ export interface IJobForm {
   jobCountry: string;
   jobLink?: string;
   jobDescription?: string;
+  jobPostDuration: string;
   benefits: Array<string>;
   companyEmailInvoice?: string;
   companyAddressInvoice?: string;
@@ -333,6 +340,7 @@ const AddJobForm = () => {
     primaryJobTag: jobTypes[0]!.name,
     jobLevel: jobLevels[0]!.name,
     jobCountry: jobCountries[13]!.name,
+    jobPostDuration: jobPostDuration[2].name,
   });
   const handleChange = (e: any) => {
     console.log(e.target.files);
@@ -434,6 +442,7 @@ const AddJobForm = () => {
                     placeholder="Sydney"
                   />
                 </div>
+
                 <div className="col-span-6 lg:col-span-3">
                   <label
                     htmlFor="jobCountry"
@@ -495,43 +504,64 @@ const AddJobForm = () => {
                   />
                 ))}
               </div>
-              <div>
-                <label className="block text-sm font-bold">Company Logo</label>
-                <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
-                  <div className="space-y-1 text-center">
-                    <svg
-                      className="mx-auto h-12 w-12 text-gray-400"
-                      stroke="currentColor"
-                      fill="none"
-                      viewBox="0 0 48 48"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <div className="flex text-sm">
-                      <label
-                        htmlFor="fileUpload"
-                        className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500 bg-transparent"
+
+              <div className="grid grid-cols-6 gap-6">
+                <div className="col-span-6 sm:col-span-3">
+                  <label className="block text-sm font-bold">
+                    Company Logo
+                  </label>
+                  <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                    <div className="space-y-1 text-center">
+                      <svg
+                        className="mx-auto h-12 w-12 text-gray-400"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true"
                       >
-                        <div className="badge badge-accent bg-green-300">
-                          Upload a file
-                        </div>
-                        <input
-                          id="fileUpload"
-                          name="fileUpload"
-                          type="file"
-                          className="sr-only"
-                          onChange={handleChange}
+                        <path
+                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                          strokeWidth={2}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
-                      </label>
-                      <p className="pl-1">or drag and drop</p>
+                      </svg>
+                      <div className="flex text-sm">
+                        <label
+                          htmlFor="fileUpload"
+                          className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500 bg-transparent"
+                        >
+                          <div className="badge badge-accent bg-green-300">
+                            Upload a file
+                          </div>
+                          <input
+                            id="fileUpload"
+                            name="fileUpload"
+                            type="file"
+                            className="sr-only"
+                            onChange={handleChange}
+                          />
+                        </label>
+                        <p className="pl-1">or drag and drop</p>
+                      </div>
+                      <p className="text-xs">PNG, JPG 10MB</p>
                     </div>
-                    <p className="text-xs">PNG, JPG 10MB</p>
+                  </div>
+                </div>
+                {/* jobPostDuration */}
+                <div className="col-span-6 sm:col-span-3">
+                  <div>
+                    <label className="block text-sm font-bold">
+                      Job Post Duration
+                    </label>
+                    <JobTypeSelect
+                      currentData={data}
+                      updateData={setData}
+                      selectOptions={jobPostDuration}
+                      formKey="jobPostDuration"
+                      defaultOption={jobPostDuration[2]}
+                    />
+                    <p>It's currently free to post a job 😃</p>
                   </div>
                 </div>
               </div>
@@ -665,17 +695,8 @@ const AddJobForm = () => {
           </div>
         </div>
         <div className="flex justify-end">
-          <button
-            type="button"
-            className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          >
-            Post
+          <button type="submit" className="btn btn-lg  bg-indigo-600 ">
+            Post for {data.jobPostDuration}
           </button>
         </div>
       </form>

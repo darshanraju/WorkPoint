@@ -16,9 +16,10 @@ const Navbar = () => {
               </h1>
             </Link>
           </div>
-          <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-purple-400 to-blue-500 select-none">
+          <h1 className="text-xl md:text-[3rem] font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 select-none py-3">
             Hire Curiosity
           </h1>
+
           <div className="">
             <DarkModeToggle />
           </div>
