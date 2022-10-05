@@ -49,9 +49,9 @@ const showCity = (location: string) => {
 };
 
 const JobAdd = ({
-  company = "",
+  company = "Your Company",
   jobDesc = "",
-  jobTitle = "",
+  jobTitle = "Example Job Title",
   location = "",
   link = "",
   type = JobTypes.grad,
@@ -96,11 +96,9 @@ const JobAdd = ({
         )}
         <div className="flex pl-4 lg:px-0 flex-col w-4/6 lg:w-2/6 items-start justify-center">
           <div className="font-medium text-sm lg:text-lg text-start">
-            {company || "Your Company"}
+            {company}
           </div>
-          <div className="font-bold lg:text-xl text-start">
-            {jobTitle || "Example Job Title"}
-          </div>
+          <div className="font-bold lg:text-xl text-start">{jobTitle}</div>
 
           <div className="flex items-center font-bold text-sm lg:text-lg pt-2 text-start lg:text-center ">
             <div className="flex items-center">

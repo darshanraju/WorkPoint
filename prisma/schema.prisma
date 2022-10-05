@@ -27,3 +27,28 @@ model subscribers {
     id    String @id @default(cuid())
     email String
 }
+
+model JobPost {
+    id            String @id @default(cuid())
+    Title         String
+    Company       String
+    PrimaryJobTag String
+    Level         String
+    JobCity       String
+    JobCountry    String
+    ApplyLink     String
+    Description   String
+    Benefits      String
+    PostDuration  String
+    CompanyLogo   String
+
+    CompanyEmail   String
+    CompanyAddress String
+    CompanyCity    String
+    CompanyCountry String
+    Feedback       String
+    Posted         DateTime @default(now())
+
+    // Job posts will initially be unverified, when manually verified they will be posted onto the job board
+    verified Boolean @default(false)
+}

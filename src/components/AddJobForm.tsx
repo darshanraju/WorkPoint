@@ -384,6 +384,7 @@ const AddJobForm = () => {
                     id="jobTitle"
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-[#212e4b]"
                     onChange={updateData}
+                    required
                   />
                 </div>
 
@@ -397,6 +398,7 @@ const AddJobForm = () => {
                     id="company"
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-[#212e4b]"
                     onChange={updateData}
+                    required
                   />
                 </div>
 
@@ -440,6 +442,7 @@ const AddJobForm = () => {
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-[#212e4b]"
                     onChange={updateData}
                     placeholder="Sydney"
+                    required
                   />
                 </div>
 
@@ -470,12 +473,13 @@ const AddJobForm = () => {
                       http://
                     </span>
                     <input
-                      type="text"
+                      type="url"
                       name="jobLink"
                       id="jobLink"
                       className="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-[#212e4b]"
                       placeholder="www.example.com"
                       onChange={updateData}
+                      required
                     />
                   </div>
                 </div>
@@ -540,6 +544,7 @@ const AddJobForm = () => {
                             type="file"
                             className="sr-only"
                             onChange={handleChange}
+                            required
                           />
                         </label>
                         <p className="pl-1">or drag and drop</p>
@@ -613,6 +618,7 @@ const AddJobForm = () => {
                     autoComplete="email"
                     className="dark:bg-[#212e4b] mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     onChange={updateData}
+                    required
                   />
                   <p>Make sure this email is accessible to you.</p>
                 </div>
@@ -630,6 +636,7 @@ const AddJobForm = () => {
                     autoComplete="street-address"
                     className="dark:bg-[#212e4b] mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     onChange={updateData}
+                    required
                   />
                 </div>
                 <div className="col-span-6 sm:col-span-6 lg:col-span-3">
@@ -646,6 +653,7 @@ const AddJobForm = () => {
                     autoComplete="address-level2"
                     className="dark:bg-[#212e4b] mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     onChange={updateData}
+                    required
                   />
                 </div>
                 <div className="col-span-6 sm:col-span-6 lg:col-span-3">
@@ -655,13 +663,12 @@ const AddJobForm = () => {
                   >
                     Country
                   </label>
-                  <input
-                    type="text"
-                    name="companyCountryInvoice"
-                    id="companyCountryInvoice"
-                    autoComplete="address-level2"
-                    className="dark:bg-[#212e4b] mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    onChange={updateData}
+                  <JobTypeSelect
+                    currentData={data}
+                    updateData={setData}
+                    selectOptions={jobCountries}
+                    formKey="companyCountryInvoice"
+                    defaultOption={jobCountries[13]}
                   />
                 </div>
               </div>
