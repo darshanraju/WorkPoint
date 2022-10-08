@@ -10,7 +10,7 @@ import Header from "../components/Header";
 import Script from "next/script";
 import { jobTypeValues } from "../components/AddJobForm";
 import { getBaseUrl } from "./_app";
-import Navbar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 
 export enum filterStates {
   grad = "grad",
@@ -33,7 +33,7 @@ const jobs = jobsJson as unknown as Array<IJobAdd>;
 const Home = ({
   viewableJobs = [],
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const [allJobs, _] = useState<Array<IJobAdd>>(
+  const [allJobs] = useState<Array<IJobAdd>>(
     (function () {
       const clientSideStoredJobs = jobs;
       const dbJobs = viewableJobs;
@@ -150,6 +150,7 @@ export async function getServerSideProps() {
   const baseUrl = getBaseUrl();
   const url = `${baseUrl}/api/getJobPosts`;
   const jobPostsResp = await fetch(url);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const jobPosts: Array<any> = await jobPostsResp.json();
   const viewableJobs: Array<IJobAdd> = jobPosts.map((job) => {
     return {

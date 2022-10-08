@@ -1,10 +1,8 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import ExpandedContent from "./ExpandedContent";
-import TempCompanyLogo from "../../public/tempCompanyLogo.png";
 import TempCompanyLogoV2 from "../../public/questionMark.svg";
 import { jobTypeValues } from "./AddJobForm";
-import { info } from "console";
 import { filterStates } from "../pages";
 export interface Section {
   title: string;

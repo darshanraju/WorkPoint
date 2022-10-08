@@ -5,15 +5,6 @@ const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import { IJobForm } from "./AddJobForm";
 
-const modules = () => {
-  return {
-    syntax: true,
-    toolbar: {
-      container: "#toolbar",
-    },
-  };
-};
-
 const TextEditor = ({
   updateData,
   currentData,

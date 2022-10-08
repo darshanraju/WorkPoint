@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unescaped-entities */
-
-import { createReadStream } from "fs";
 import {
   Dispatch,
   FormEvent,
@@ -12,7 +10,7 @@ import {
 } from "react";
 import { filterStates } from "../pages";
 import { trpc } from "../utils/trpc";
-import JobAdd, { JobTypes } from "./JobAdd";
+import JobAdd from "./JobAdd";
 import JobTypeSelect from "./JobTypeSelect";
 import Modal from "./Modal";
 import TextEditor from "./TextEditor";

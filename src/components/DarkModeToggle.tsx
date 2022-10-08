@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import wave from "../../public/wave.svg";
 import moon from "../../public/moon.svg";
 import sun from "../../public/sun.svg";
 import Image from "next/image";
@@ -51,7 +50,7 @@ const DarkModeToggle = () => {
             color="white"
             height="40px"
             width="40px"
-            onClick={(e) => {
+            onClick={() => {
               localStorage.setItem("cseGigsTheme", "dark");
               document.documentElement.classList.add("dark");
               setDarkMode(true);

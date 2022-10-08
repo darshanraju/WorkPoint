@@ -1,38 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
-import {
-  BoltIcon,
-  ChatBubbleBottomCenterTextIcon,
-  GlobeAltIcon,
-  ScaleIcon,
-} from "@heroicons/react/24/outline";
-
-const features = [
-  {
-    name: "Competitive exchange rates",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: GlobeAltIcon,
-  },
-  {
-    name: "No hidden fees",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: ScaleIcon,
-  },
-  {
-    name: "Transfers are instant",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: BoltIcon,
-  },
-  {
-    name: "Mobile notifications",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: ChatBubbleBottomCenterTextIcon,
-  },
-];
-// max-w-screen-xl
 export default function Header() {
   return (
     <section className="dark:text-white w-full bg-white   dark:bg-gray-900 bg-slate-100">

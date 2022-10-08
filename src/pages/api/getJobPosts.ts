@@ -11,8 +11,7 @@ const getJobPosts = async (req: NextApiRequest, res: NextApiResponse) => {
     //   verified: true,
     // },
   });
-  // console.log("👾👾👾👾👾👾👾👾");
-  // console.log(jobPosts);
+
   res.json(jobPosts);
   res.status(200);
 };
