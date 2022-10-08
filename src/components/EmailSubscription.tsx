@@ -5,6 +5,7 @@ const EmailSubscription = () => {
   const subscription = trpc.useMutation("subscribe");
   const [subbed, setSubbed] = useState(false);
   const [email, setEmail] = useState<string>("");
+
   const subscribe = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(email);

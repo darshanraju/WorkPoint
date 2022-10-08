@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 /* eslint-disable @next/next/no-css-tags */
 import Head from "next/head";
 import React from "react";
@@ -32,10 +33,15 @@ const AddJob = () => {
           href="https://jsuites.net/v4/jsuites.css"
           type="text/css"
         />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" />
       </Head>
       <main className="dark:bg-gray-900 ">
         <div className="container mx-auto flex flex-col items-center justify-center min-h-screen py-4 lg:px-4 min-w-screen w-full m-0">
-          {/* <DarkModeToggle /> */} <Navbar />
+          <Navbar />
           <div className="flex flex-col items-center">
             <div className="w-full py-10">
               <AddJobForm />

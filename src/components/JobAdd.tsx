@@ -5,6 +5,7 @@ import TempCompanyLogo from "../../public/tempCompanyLogo.png";
 import TempCompanyLogoV2 from "../../public/questionMark.svg";
 import { jobTypeValues } from "./AddJobForm";
 import { info } from "console";
+import { filterStates } from "../pages";
 export interface Section {
   title: string;
   text: Array<string>;
@@ -33,12 +34,12 @@ export interface IJobAdd {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   logo?: any;
   posted: number;
-  type?: JobTypes;
+  type?: filterStates;
   location?: string;
   jobDesc?: string;
   link?: string;
   posting?: boolean;
-  primaryJobTag: jobTypeValues;
+  primaryJobTag?: jobTypeValues;
 }
 
 const showCity = (location: string) => {
@@ -54,7 +55,7 @@ const JobAdd = ({
   jobTitle = "Example Job Title",
   location = "",
   link = "",
-  type = JobTypes.grad,
+  type = filterStates.grad,
   posted,
   logo = TempCompanyLogoV2,
   tags,
@@ -132,7 +133,7 @@ const JobAdd = ({
             ) : (
               <JobTypeTag tag="👶 Internship" />
             )}
-            <PrimaryJobTag tag={primaryJobTag} />
+            {primaryJobTag && <PrimaryJobTag tag={primaryJobTag} />}
           </span>
         </div>
         <div className="flex items-end lg:w-2/6  flex-wrap hidden lg:flex">
@@ -147,7 +148,9 @@ const JobAdd = ({
           <button
             className="btn btn-secondary"
             onClick={() => {
-              link && window.open(link, "_blank");
+              // 8 = 'https://'
+              if (link && link.length > 8)
+                link !== "" && window.open(link, "_blank");
             }}
           >
             Apply

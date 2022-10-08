@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-css-tags */
-import type { NextPage } from "next";
+import type { InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import JobAdd, { IJobAdd } from "../components/JobAdd";
 import EmailSubscription from "../components/EmailSubscription";
@@ -9,7 +9,8 @@ import jobsJson from "../../lib/jobs.json";
 import Header from "../components/Header";
 import Script from "next/script";
 import DarkModeToggle from "../components/DarkModeToggle";
-import Navbar from "../components/Navbar";
+import { jobTypeValues } from "../components/AddJobForm";
+import { getBaseUrl } from "./_app";
 
 export enum filterStates {
   grad = "grad",
@@ -29,14 +30,23 @@ export interface IJobFilter {
 
 const jobs = jobsJson as unknown as Array<IJobAdd>;
 
-const Home: NextPage = () => {
+const Home = ({
+  viewableJobs = [],
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const [allJobs, _] = useState<Array<IJobAdd>>(
+    (function () {
+      const clientSideStoredJobs = jobs;
+      const dbJobs = viewableJobs;
+      return [...dbJobs, ...clientSideStoredJobs];
+    })()
+  );
   const [jobFilter, setJobFilter] = useState<IJobFilter>({
     JobType: filterStates.both,
     sortState: sortStates.company,
   });
 
   const [filtedJobs, setFilteredJobs] = useState(
-    jobs.sort((a, b) => {
+    allJobs.sort((a, b) => {
       if (a.company && b.company) {
         return a.company.localeCompare(b.company);
       }
@@ -79,30 +89,8 @@ const Home: NextPage = () => {
     setFilteredJobs(newJobs);
   };
 
-  const sortByLatest = (jobsToSort: Array<IJobAdd>): void => {
-    console.log(jobsToSort.sort((a, b) => a.posted - b.posted));
-    setFilteredJobs(jobsToSort.sort((a, b) => a.posted - b.posted));
-  };
-
-  const sortByCompany = (jobsToSort: Array<IJobAdd>): void => {
-    setFilteredJobs(
-      jobsToSort.sort((a, b) => {
-        if (a.company && b.company) {
-          return a.company.localeCompare(b.company);
-        }
-        if (!a.company && !b.company) {
-          return 0;
-        }
-        if (!b.company) {
-          return 1;
-        }
-        return -1;
-      })
-    );
-  };
-
   useEffect(() => {
-    sortByAll(jobs);
+    sortByAll(allJobs);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [jobFilter]);
 
@@ -132,12 +120,7 @@ const Home: NextPage = () => {
         {/* <Navbar /> */}
         <DarkModeToggle />
         <Header />
-        <Filter
-          sorts={{ company: sortByCompany, latest: sortByLatest }}
-          jobs={filtedJobs}
-          jobFilter={jobFilter}
-          setJobFilter={setJobFilter}
-        />
+        <Filter jobFilter={jobFilter} setJobFilter={setJobFilter} />
         <div className="grid lg:gap-4 pt-6 pb-40 text-center md:grid-cols-1 w-full lg:w-3/4lg:mb-40">
           {filtedJobs.map((job, idx) => (
             <JobAdd
@@ -162,3 +145,27 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps() {
+  const baseUrl = getBaseUrl();
+  const url = `${baseUrl}/api/getJobPosts`;
+  const jobPostsResp = await fetch(url);
+  const jobPosts: Array<any> = await jobPostsResp.json();
+  const viewableJobs: Array<IJobAdd> = jobPosts.map((job) => {
+    return {
+      posted: new Date(job.Posted).getTime(),
+      company: job.Company,
+      jobDesc: job.Description,
+      jobTitle: job.Title,
+      link: job.ApplyLink,
+      location: `${job.JobCity}, ${job.JobCountry}`,
+      logo: job.CompanyLogo,
+      primaryJobTag: job.PrimaryJobTag as jobTypeValues,
+      type: job.Level.includes("Internship")
+        ? filterStates.intern
+        : filterStates.grad,
+      tags: job.Benefits.split(","),
+    };
+  });
+  return { props: { viewableJobs } };
+}

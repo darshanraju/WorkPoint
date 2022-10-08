@@ -1,9 +1,20 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unescaped-entities */
 
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { createReadStream } from "fs";
+import {
+  Dispatch,
+  FormEvent,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
+import { filterStates } from "../pages";
+import { trpc } from "../utils/trpc";
 import JobAdd, { JobTypes } from "./JobAdd";
 import JobTypeSelect from "./JobTypeSelect";
+import Modal from "./Modal";
 import TextEditor from "./TextEditor";
 
 const Benefits = [
@@ -305,20 +316,23 @@ const jobPostDuration: Array<any> = [
 ];
 
 export interface IJobForm {
-  jobTitle?: string;
-  company?: string;
+  jobTitle: string;
+  company: string;
   primaryJobTag: jobTypeValues;
   jobLevel: string;
-  jobCity?: string;
+  jobCity: string;
   jobCountry: string;
-  jobLink?: string;
-  jobDescription?: string;
+  jobLink: string;
+  companyLogo: string;
+
+  jobDescription: string;
   jobPostDuration: string;
   benefits: Array<string>;
-  companyEmailInvoice?: string;
-  companyAddressInvoice?: string;
-  companyCityInvoice?: string;
-  companyCountryInvoice?: string;
+  companyEmailInvoice: string;
+  companyAddressInvoice: string;
+  companyCityInvoice: string;
+  companyCountryInvoice: string;
+  feedback: string;
 }
 
 const AddJobForm = () => {
@@ -334,17 +348,31 @@ const AddJobForm = () => {
   const defaultClass = "bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 ";
   const classNameMerged = `${darkClasses} ${defaultClass}`;
   const [file, setFile] = useState<string>();
-  const [data, setData] = useState<IJobForm>({
+  const [fileV2, setFileV2] = useState<File>();
+  const [postedJob, setPostedJob] = useState<boolean>(false);
+  const defaultJobForm = {
     benefits: [],
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     primaryJobTag: jobTypes[0]!.name,
     jobLevel: jobLevels[0]!.name,
     jobCountry: jobCountries[13]!.name,
     jobPostDuration: jobPostDuration[2].name,
-  });
+    company: "",
+    companyAddressInvoice: "",
+    companyCityInvoice: "",
+    companyCountryInvoice: jobCountries[13]?.name,
+    companyEmailInvoice: "",
+    companyLogo: "",
+    feedback: "",
+    jobCity: "",
+    jobDescription: "",
+    jobLink: "",
+    jobTitle: "",
+  };
+  const [data, setData] = useState<IJobForm>(defaultJobForm);
+
   const handleChange = (e: any) => {
-    console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
+    setFileV2(e.currentTarget.files[0]);
   };
 
   const updateData = (e: any) => {
@@ -354,10 +382,44 @@ const AddJobForm = () => {
     });
   };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log(data);
+  const postJob = trpc.useMutation("postJob");
+  const generateDirectUploadUrl = trpc.useMutation("generateDirectUploadUrl");
+
+  const uploadCompanyLogo = async (directUpload: string, file: File) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    const response = await fetch(directUpload, {
+      method: "POST",
+      body: formData,
+    });
+    const respJson = await response.json();
+    return respJson.result.id;
   };
+
+  const [disableSubmit, setDisableSubmit] = useState(false);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!fileV2) return;
+    setDisableSubmit(true);
+    const { uploadUrl } = await generateDirectUploadUrl.mutateAsync();
+    console.log("UploadURL: " + uploadUrl);
+    const imageId = await uploadCompanyLogo(uploadUrl, fileV2);
+    console.log("ImageID: " + imageId);
+    const imageUrl = `https://imagedelivery.net/XmlBAUGCN5tyuiiZB4aVVw/${imageId}/public`;
+    const formDataWithImageId = { ...data, companyLogo: imageUrl };
+    await postJob.mutateAsync(formDataWithImageId);
+    setDisableSubmit(false);
+  };
+
+  useEffect(() => {
+    if (postJob.isSuccess) {
+      setPostedJob(true);
+      setData(defaultJobForm);
+      postJob.reset();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [postJob]);
 
   return (
     <div className="flex">
@@ -385,6 +447,7 @@ const AddJobForm = () => {
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-[#212e4b]"
                     onChange={updateData}
                     required
+                    value={data.jobTitle}
                   />
                 </div>
 
@@ -399,6 +462,7 @@ const AddJobForm = () => {
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-[#212e4b]"
                     onChange={updateData}
                     required
+                    value={data.company}
                   />
                 </div>
 
@@ -443,6 +507,7 @@ const AddJobForm = () => {
                     onChange={updateData}
                     placeholder="Sydney"
                     required
+                    value={data.jobCity}
                   />
                 </div>
 
@@ -470,16 +535,17 @@ const AddJobForm = () => {
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
                     <span className="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm  dark:bg-[#212e4b] ">
-                      http://
+                      https://
                     </span>
                     <input
-                      type="url"
+                      type="text"
                       name="jobLink"
                       id="jobLink"
                       className="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-[#212e4b]"
                       placeholder="www.example.com"
                       onChange={updateData}
                       required
+                      value={data.jobLink}
                     />
                   </div>
                 </div>
@@ -553,7 +619,6 @@ const AddJobForm = () => {
                     </div>
                   </div>
                 </div>
-                {/* jobPostDuration */}
                 <div className="col-span-6 sm:col-span-3">
                   <div>
                     <label className="block text-sm font-bold">
@@ -576,14 +641,19 @@ const AddJobForm = () => {
         <JobAdd
           company={data.company}
           jobTitle={data.jobTitle}
-          link={data.jobLink}
+          link={
+            data.jobLink.startsWith("http://") ||
+            data.jobLink.startsWith("https://")
+              ? data.jobLink
+              : `https://${data.jobLink}`
+          }
           location={data.jobCountry}
           posted={Date.now()}
           logo={file}
           type={
             data.jobLevel.includes("Internship")
-              ? JobTypes.intern
-              : JobTypes.grad
+              ? filterStates.intern
+              : filterStates.grad
           }
           jobDesc={data.jobDescription}
           key="toPost"
@@ -619,6 +689,7 @@ const AddJobForm = () => {
                     className="dark:bg-[#212e4b] mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     onChange={updateData}
                     required
+                    value={data.companyEmailInvoice}
                   />
                   <p>Make sure this email is accessible to you.</p>
                 </div>
@@ -637,6 +708,7 @@ const AddJobForm = () => {
                     className="dark:bg-[#212e4b] mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     onChange={updateData}
                     required
+                    value={data.companyAddressInvoice}
                   />
                 </div>
                 <div className="col-span-6 sm:col-span-6 lg:col-span-3">
@@ -654,6 +726,7 @@ const AddJobForm = () => {
                     className="dark:bg-[#212e4b] mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     onChange={updateData}
                     required
+                    value={data.companyCityInvoice}
                   />
                 </div>
                 <div className="col-span-6 sm:col-span-6 lg:col-span-3">
@@ -691,10 +764,12 @@ const AddJobForm = () => {
                 <div className="col-span-6 sm:col-span-6">
                   <textarea
                     rows={4}
-                    name="Feedback"
-                    id="Feedback"
+                    name="feedback"
+                    id="feedback"
                     className="dark:bg-[#212e4b] mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     defaultValue={""}
+                    value={data.feedback}
+                    onChange={updateData}
                   />
                 </div>
               </div>
@@ -702,11 +777,43 @@ const AddJobForm = () => {
           </div>
         </div>
         <div className="flex justify-end">
-          <button type="submit" className="btn btn-lg  bg-indigo-600 ">
+          <button
+            type="submit"
+            className="btn btn-lg  bg-indigo-600 #my-modal-2"
+            disabled={disableSubmit}
+          >
             Post for {data.jobPostDuration}
           </button>
+          {/* {postedJob && (
+            <div className="modal" id="my-modal-2">
+              <div className="modal-box">
+                <h3 className="font-bold text-lg">
+                  Congratulations random Internet user!
+                </h3>
+                <p className="py-4">
+                  You've been selected for a chance to get one year of
+                  subscription to use Wikipedia for free!
+                </p>
+                <div className="modal-action">
+                  <a href="#" className="btn">
+                    Yay!
+                  </a>
+                </div>
+              </div>
+            </div>
+          )} */}
         </div>
       </form>
+      {postedJob && (
+        <Modal
+          button1Text="Go to Job Board"
+          button2Text="Post Another Job!"
+          header="Thanks for Posting!"
+          setShowModal={setPostedJob}
+          showModal={postedJob}
+          subText="We'll verify the job post soon and let you know once it's posted!"
+        />
+      )}
     </div>
   );
 };
@@ -721,6 +828,7 @@ const Badge = ({
   currentData: IJobForm;
 }) => {
   const [selected, setSelected] = useState(false);
+
   const handleChange = () => {
     const newData = { ...currentData };
     if (!selected) {

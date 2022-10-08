@@ -1,9 +1,18 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import React, { Dispatch, useState } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import { IJobForm } from "./AddJobForm";
+
+const modules = () => {
+  return {
+    syntax: true,
+    toolbar: {
+      container: "#toolbar",
+    },
+  };
+};
 
 const TextEditor = ({
   updateData,
@@ -13,6 +22,16 @@ const TextEditor = ({
   currentData: IJobForm;
 }) => {
   const [value, setValue] = useState("");
+
+  useEffect(() => {
+    let newEditorValue = currentData.jobDescription;
+    newEditorValue = newEditorValue.replaceAll(
+      "background-color",
+      "background-colorp"
+    );
+    newEditorValue = newEditorValue.replaceAll("color:", "background-colorp");
+    setValue(newEditorValue);
+  }, [currentData.jobDescription]);
 
   const handleChange = (newValue: string) => {
     setValue(newValue);

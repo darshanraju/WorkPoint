@@ -12,17 +12,6 @@ datasource db {
     referentialIntegrity = "prisma"
 }
 
-model CSEJobs {
-    id       String   @id @default(cuid())
-    company  String
-    tags     String
-    role     String
-    posted   DateTime @updatedAt
-    type     String
-    location String
-    expire   DateTime
-}
-
 model subscribers {
     id    String @id @default(cuid())
     email String
@@ -37,7 +26,7 @@ model JobPost {
     JobCity       String
     JobCountry    String
     ApplyLink     String
-    Description   String
+    Description   String @db.LongText
     Benefits      String
     PostDuration  String
     CompanyLogo   String
