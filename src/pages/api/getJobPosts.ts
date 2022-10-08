@@ -7,12 +7,12 @@ const getJobPosts = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
   const jobPosts = await prisma.jobPost.findMany({
-    where: {
-      verified: true,
-    },
+    // where: {
+    //   verified: true,
+    // },
   });
-  console.log("👾👾👾👾👾👾👾👾");
-  console.log(jobPosts);
+  // console.log("👾👾👾👾👾👾👾👾");
+  // console.log(jobPosts);
   res.json(jobPosts);
   res.status(200);
 };

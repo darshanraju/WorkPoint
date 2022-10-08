@@ -73,7 +73,7 @@ const JobAdd = ({
 
   return (
     <div
-      className="dark:text-[#bfbfbf] hover:text-black flex flex-col border-t-2 md:border-2 border-gray-200 lg:rounded-lg lg:shadow-lg hover:bg-slate-100 transition ease-in-out delay-100 dark:border-[#28395c] dark:bg-[#192339] hover:dark:bg-[#212e4b] w-full min-h-100"
+      className="dark:text-[#bfbfbf] hover:text-black flex flex-col border-t-2 md:border-2 border-gray-200 lg:rounded-lg lg:shadow-lg hover:bg-slate-200 transition ease-in-out delay-100 dark:border-[#28395c] dark:bg-[#192339] hover:dark:bg-[#212e4b] w-full min-h-100 bg-white"
       onMouseEnter={() => setSeeApply(true)}
       onMouseLeave={() => setSeeApply(false)}
     >

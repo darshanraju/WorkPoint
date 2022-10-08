@@ -3,9 +3,7 @@
 import Head from "next/head";
 import React from "react";
 import AddJobForm from "../components/AddJobForm";
-import DarkModeToggle from "../components/DarkModeToggle";
-import Header from "../components/Header";
-import Navbar from "../components/Navbar";
+import PostNavbar from "../components/PostNavbar";
 
 const AddJob = () => {
   return (
@@ -41,7 +39,7 @@ const AddJob = () => {
       </Head>
       <main className="dark:bg-gray-900 ">
         <div className="container mx-auto flex flex-col items-center justify-center min-h-screen py-4 lg:px-4 min-w-screen w-full m-0">
-          <Navbar />
+          <PostNavbar />
           <div className="flex flex-col items-center">
             <div className="w-full py-10">
               <AddJobForm />

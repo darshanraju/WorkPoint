@@ -11,6 +11,7 @@ import Script from "next/script";
 import DarkModeToggle from "../components/DarkModeToggle";
 import { jobTypeValues } from "../components/AddJobForm";
 import { getBaseUrl } from "./_app";
+import Navbar from "../components/NavBar";
 
 export enum filterStates {
   grad = "grad",
@@ -95,7 +96,7 @@ const Home = ({
   }, [jobFilter]);
 
   return (
-    <div className="bg-white dark:bg-gray-900">
+    <div className="bg-white dark:bg-gray-900 bg-slate-100">
       <Head>
         <title>CSE Gigs</title>
         <meta name="description" content="Compsci/Seng Student Gigs" />
@@ -117,8 +118,8 @@ const Home = ({
       </Head>
 
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen py-4 lg:px-4">
-        {/* <Navbar /> */}
-        <DarkModeToggle />
+        <Navbar />
+        {/* <DarkModeToggle /> */}
         <Header />
         <Filter jobFilter={jobFilter} setJobFilter={setJobFilter} />
         <div className="grid lg:gap-4 pt-6 pb-40 text-center md:grid-cols-1 w-full lg:w-3/4lg:mb-40">
