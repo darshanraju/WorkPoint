@@ -135,9 +135,11 @@ const JobAdd = ({
           </span>
         </div>
         <div className="flex items-end lg:w-2/6  flex-wrap hidden lg:flex">
-          {tags?.map((tag, idx) => (
-            <BenefitTag tag={tag} key={idx} />
-          ))}
+          {tags?.map((tag, idx) => {
+            if (tag.length > 0) {
+              return <BenefitTag tag={tag} key={idx} />;
+            }
+          })}
         </div>
         <div className="flex w-1/6 lg:w-1/6 items-center font-semibold justify-center">
           {!posting && snowManMethod(now, posted)}
@@ -146,9 +148,10 @@ const JobAdd = ({
           <button
             className="btn btn-secondary"
             onClick={() => {
-              // 8 = 'https://'
-              if (link && link.length > 8)
-                link !== "" && window.open(link, "_blank");
+              if (link && link.length > 8) {
+                console.log("Opening: ", link);
+                window.open(link, "_blank");
+              }
             }}
           >
             Apply

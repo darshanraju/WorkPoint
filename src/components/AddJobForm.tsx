@@ -406,6 +406,11 @@ const AddJobForm = () => {
     console.log("ImageID: " + imageId);
     const imageUrl = `https://imagedelivery.net/XmlBAUGCN5tyuiiZB4aVVw/${imageId}/public`;
     const formDataWithImageId = { ...data, companyLogo: imageUrl };
+    formDataWithImageId.jobLink =
+      formDataWithImageId.jobLink.startsWith("http://") ||
+      formDataWithImageId.jobLink.startsWith("https://")
+        ? formDataWithImageId.jobLink
+        : `https://${formDataWithImageId.jobLink}`;
     await postJob.mutateAsync(formDataWithImageId);
     setDisableSubmit(false);
   };
@@ -503,7 +508,6 @@ const AddJobForm = () => {
                     id="jobCity"
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-[#212e4b]"
                     onChange={updateData}
-                    placeholder="Sydney"
                     required
                     value={data.jobCity}
                   />
@@ -774,10 +778,10 @@ const AddJobForm = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-center md:justify-end">
           <button
             type="submit"
-            className="btn btn-lg  bg-indigo-600 #my-modal-2"
+            className="btn md:btn-lg bg-indigo-600 #my-modal-2"
             disabled={disableSubmit}
           >
             Post for {data.jobPostDuration}
