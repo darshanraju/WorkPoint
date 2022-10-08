@@ -1,8 +1,7 @@
 import DarkModeToggle from "./DarkModeToggle";
 import Link from "next/link";
-import ArrowRight from "../../public/ArrowRight.svg";
-import Image from "next/image";
-const PostNavbar = () => {
+
+const Navbar = () => {
   return (
     <div className="relative bg-white dark:bg-gray-900 w-full bg-slate-100">
       <div className="flex justify-end border-gray-100 py-6">
@@ -20,4 +19,4 @@ const PostNavbar = () => {
   );
 };
 
-export default PostNavbar;
+export default Navbar;

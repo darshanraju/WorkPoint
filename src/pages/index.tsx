@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import jobsJson from "../../lib/jobs.json";
 import Header from "../components/Header";
 import Script from "next/script";
-import DarkModeToggle from "../components/DarkModeToggle";
 import { jobTypeValues } from "../components/AddJobForm";
 import { getBaseUrl } from "./_app";
 import Navbar from "../components/NavBar";
