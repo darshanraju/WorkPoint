@@ -27,7 +27,7 @@ const DarkModeToggle = () => {
   return (
     <div className="flex justify-end w-full">
       {darkMode ? (
-        <div className="mx-4 lg-mx-0">
+        <div className="mx-2 lg:mx-4 lg-mx-0">
           <Image
             className="sun cursor-pointer"
             height="40px"
