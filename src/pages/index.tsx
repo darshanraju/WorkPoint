@@ -103,7 +103,6 @@ const Home = ({
           property="og:image"
           content="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn1.iconfinder.com%2Fdata%2Ficons%2Femoji-of-smiley-color%2F100%2Fsmiley_nerd-512.png&f=1&nofb=1"
         />
-
         <link rel="icon" href="/favicon.png" />
         <link
           rel="stylesheet"
