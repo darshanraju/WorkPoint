@@ -9,7 +9,7 @@ const PostNavbar = () => {
   return (
     <Popover className="relative bg-white dark:bg-gray-900 w-full">
       <div className="mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between border-gray-100 py-6">
+        <div className="flex items-center justify-between border-gray-100 py-1 lg:py-6">
           <div className="flex flex-col justify-start">
             <Link href="/">
               <h1 className="cursor-pointer text-xl md:text-[3rem] font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 py-3 select-none">
@@ -17,7 +17,7 @@ const PostNavbar = () => {
               </h1>
             </Link>
           </div>
-          <h1 className="text-xl md:text-[3rem] font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 select-none py-3">
+          <h1 className="hidden lg:flex text-xl md:text-[3rem] font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 select-none py-3">
             Hire Curiosity
           </h1>
 

@@ -844,8 +844,8 @@ const Badge = ({
     setSelected(!selected);
   };
   const classNameContainer = selected
-    ? "p-4 m-1 badge badge-accent hover:badge-accent cursor-pointer"
-    : "p-4 m-1 badge badge-accent badge-outline hover:badge-accent cursor-pointer";
+    ? "p-4 m-1 badge badge-xs md:badge-md badge-accent hover:badge-accent cursor-pointer"
+    : "p-4 m-1 badge badge-xs md:badge-md badge-accent badge-outline hover:badge-accent cursor-pointer";
   return (
     <div className={classNameContainer} onClick={handleChange}>
       <div className="hover:text-black font-bold">{text}</div>
