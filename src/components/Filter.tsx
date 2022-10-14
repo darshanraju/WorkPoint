@@ -64,7 +64,7 @@ const Filter = ({ setJobFilter, jobFilter, countriesWithJobs }: IFilter) => {
 
   return (
     <div className="w-full h-fit">
-      <div className="flex flex-row w-full items-center md:justify-end sm:px-0 md:px-2">
+      <div className="flex flex-row w-full items-center md:justify-end sm:px-0 md:px-2 overflow-x-scroll md:overflow-visible">
         <HomeFilterSelect
           selectOptions={jobType}
           defaultOption={jobType[0]}

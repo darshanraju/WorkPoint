@@ -67,7 +67,7 @@ const HomeFilterSelect = ({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="cursor-pointer dark:bg-[#212e4b] absolute z-10 mt-1 max-h-60 w-full rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm w-max">
+                <Listbox.Options className="cursor-pointer dark:bg-[#212e4b] fixed md:absolute z-10 mt-1 max-h-60 w-full rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm w-max">
                   {selectOptions.map((option) => {
                     if (option.name.includes(excludeOption)) return;
                     return (
