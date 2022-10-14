@@ -1,11 +1,22 @@
+import Image from "next/image";
 import React from "react";
 import { filterStates, IJobFilter, sortStates } from "../pages";
+import { IOption } from "../utils/jobUtils";
+import HomeFilterSelect from "./HomeFilterSelect";
+import HorizontalScroll from "react-scroll-horizontal";
 interface IFilter {
   jobFilter: IJobFilter;
   setJobFilter: React.Dispatch<React.SetStateAction<IJobFilter>>;
+  countriesWithJobs: Array<IOption>;
 }
 
-const Filter = ({ setJobFilter, jobFilter }: IFilter) => {
+export enum filterTypes {
+  JobType = "JobType",
+  sortState = "sortState",
+  country = "country",
+}
+
+const Filter = ({ setJobFilter, jobFilter, countriesWithJobs }: IFilter) => {
   const handleSortChange = (sortKey: string) => {
     if (sortKey.includes("Newly Added")) {
       setJobFilter({ ...jobFilter, sortState: sortStates.latest });
@@ -15,6 +26,7 @@ const Filter = ({ setJobFilter, jobFilter }: IFilter) => {
   };
 
   const handleJobTypeChange = (jobType: string) => {
+    console.log("Inside JobTypeChange: ", jobType);
     if (jobType.includes("Internship")) {
       setJobFilter({ ...jobFilter, JobType: filterStates.intern });
     } else if (jobType.includes("Graduate")) {
@@ -24,54 +36,77 @@ const Filter = ({ setJobFilter, jobFilter }: IFilter) => {
     }
   };
 
+  const jobType: Array<IOption> = [
+    {
+      id: 0,
+      name: "👶 Internship",
+    },
+    {
+      id: 1,
+      name: "💼 Graduate",
+    },
+    {
+      id: 2,
+      name: "😎 Intern and Grad",
+    },
+  ];
+
+  const sortState: Array<IOption> = [
+    {
+      id: 0,
+      name: "🕓 Newly Added",
+    },
+    {
+      id: 1,
+      name: "💻 Company",
+    },
+  ];
+
   return (
-    <div className="w-full">
-      <div className="flex w-full justify-between items-end px-2 ">
-        <select
-          className="select select-success max-w-xs bg-white dark:bg-[#222222] dark:text-[#bfbfbf] lg:text-xl"
-          onChange={(e) => handleJobTypeChange(e.target.value)}
-        >
-          <option className="lg:text-xl py-3">👶 Internship</option>
-          <option className="lg:text-xl py-3">💼 Graduate</option>
-          <option selected className="lg:text-xl py-3">
-            😎 Intern and Grad
-          </option>
-        </select>
-        <select
-          className="select select-success max-w-xs bg-white dark:bg-[#222222] dark:text-[#bfbfbf] lg:text-xl"
-          onChange={(e) => handleSortChange(e.target.value)}
-        >
-          <option disabled selected className="lg:text-xl py-3">
-            ❓ Sort by
-          </option>
-          <option className="lg:text-xl py-3">🕓 Newly Added</option>
-          <option className="lg:text-xl py-3">💻 Company</option>
-        </select>
-        {/* <select className="select select-success  max-w-xs">
-          <option disabled selected>
-            Location
-          </option>
-          <option>Australia</option>
-          <option>Ireland</option>
-          <option>United States</option>
-          <option>Germany</option>
-          <option>India</option>
-        </select> */}
-        {/* <select className="select select-success  max-w-xs">
-          <option disabled selected>
-            Search
-          </option>
-          <option>Software Developer</option>
-          <option>Frontend Engineer</option>
-          <option>Backend Engineer</option>
-          <option>Data Scientist</option>
-          <option>Data Analyst</option>
-          <option>Golang</option>
-          <option>C#</option>
-          <option>C++</option>
-          <option>Most Applied</option>
-        </select> */}
+    <div className="w-full h-fit">
+      <div className="flex flex-row w-full items-center md:justify-end sm:px-0 md:px-2">
+        <HomeFilterSelect
+          selectOptions={jobType}
+          defaultOption={jobType[0]}
+          currentFilter={jobFilter}
+          setFilter={setJobFilter}
+          excludeOption="none"
+          filterKey={filterTypes.JobType}
+          onChange={handleJobTypeChange}
+        />
+        <HomeFilterSelect
+          selectOptions={countriesWithJobs}
+          defaultOption={countriesWithJobs[0]}
+          currentFilter={jobFilter}
+          setFilter={setJobFilter}
+          excludeOption="Location"
+          filterKey={filterTypes.country}
+        />
+        <HomeFilterSelect
+          selectOptions={sortState}
+          defaultOption={sortState[0]}
+          currentFilter={jobFilter}
+          setFilter={setJobFilter}
+          excludeOption="xxx"
+          filterKey={filterTypes.sortState}
+          onChange={handleSortChange}
+        />
       </div>
+    </div>
+  );
+};
+
+interface ISelectOption {
+  image: string;
+  name: string;
+}
+
+const SelectOption = ({ image, name }: ISelectOption) => {
+  console.log("Image: ", image);
+  return (
+    <div className="flex">
+      <Image src={image} height="20px" width="20px" alt="country" />{" "}
+      <option className="lg:text-xl py-3">{name} </option>
     </div>
   );
 };

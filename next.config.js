@@ -5,6 +5,7 @@ module.exports = {
       "media-exp1.licdn.com",
       "cardea.imgix.net",
       "imagedelivery.net",
+      "cdn.jsdelivr.net",
     ],
   },
 };

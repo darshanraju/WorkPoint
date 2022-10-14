@@ -32,7 +32,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           }
         `}
       </Script>
-      <Component {...pageProps} />
+      <Component className="dark:bg-gray-900 bg-slate-100" {...pageProps} />
     </>
   );
 };

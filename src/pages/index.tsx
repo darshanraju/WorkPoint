@@ -8,9 +8,9 @@ import { useEffect, useState } from "react";
 import jobsJson from "../../lib/jobs.json";
 import Header from "../components/Header";
 import Script from "next/script";
-import { jobTypeValues } from "../components/AddJobForm";
 import { getBaseUrl } from "./_app";
 import Navbar from "../components/Navbar";
+import { getCountryMap, jobTypeValues } from "../utils/jobUtils";
 
 export enum filterStates {
   grad = "grad",
@@ -23,16 +23,24 @@ export enum sortStates {
   company = "company",
 }
 
+enum jobFilterTypes {
+  JobType = "JobType",
+  SortState = "sortState",
+  Country = "Country",
+}
+
 export interface IJobFilter {
   JobType: filterStates;
   sortState: sortStates;
+  country: string;
 }
 
 const jobs = jobsJson as unknown as Array<IJobAdd>;
 
 const Home = ({
   viewableJobs = [],
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  countriesWithJobs = [],
+}: InferGetServerSidePropsType<typeof getStaticProps>) => {
   const [allJobs] = useState<Array<IJobAdd>>(
     (function () {
       const clientSideStoredJobs = jobs;
@@ -43,6 +51,7 @@ const Home = ({
   const [jobFilter, setJobFilter] = useState<IJobFilter>({
     JobType: filterStates.both,
     sortState: sortStates.company,
+    country: "anywhere",
   });
 
   const [filtedJobs, setFilteredJobs] = useState(
@@ -63,8 +72,20 @@ const Home = ({
   const sortByAll = (jobs: Array<IJobAdd>): void => {
     let newJobs = [...jobs];
 
-    // Sort by job role
+    if (
+      !jobFilter.country.includes("anywhere") &&
+      !jobFilter.country.includes("Anywhere")
+    ) {
+      //Sort by country
+      newJobs = newJobs.filter((job) => {
+        console.log("Current country is: ", jobFilter.country);
+        console.log("Current job location: ", job.location);
+        return job.location?.includes(jobFilter.country);
+      });
+    }
+
     if (jobFilter.JobType !== filterStates.both) {
+      // Sort by job role
       newJobs = newJobs.filter((job) => job.type === jobFilter.JobType);
     }
 
@@ -95,7 +116,7 @@ const Home = ({
   }, [jobFilter]);
 
   return (
-    <div className="bg-white dark:bg-gray-900 bg-slate-100">
+    <div className="dark:bg-gray-900 bg-slate-100">
       <Head>
         <title>CSE Gigs</title>
         <meta name="description" content="Compsci/Seng Student Gigs" />
@@ -117,9 +138,12 @@ const Home = ({
 
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen py-4 lg:px-4">
         <Navbar />
-        {/* <DarkModeToggle /> */}
         <Header />
-        <Filter jobFilter={jobFilter} setJobFilter={setJobFilter} />
+        <Filter
+          jobFilter={jobFilter}
+          setJobFilter={setJobFilter}
+          countriesWithJobs={countriesWithJobs}
+        />
         <div className="grid lg:gap-4 pt-6 pb-40 text-center md:grid-cols-1 w-full lg:w-3/4lg:mb-40">
           {filtedJobs.map((job, idx) => (
             <JobAdd
@@ -145,13 +169,19 @@ const Home = ({
 
 export default Home;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const baseUrl = getBaseUrl();
   const url = `${baseUrl}/api/getJobPosts`;
   const jobPostsResp = await fetch(url);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const jobPosts: Array<any> = await jobPostsResp.json();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const countries: any = {};
+
   const viewableJobs: Array<IJobAdd> = jobPosts.map((job) => {
+    if (!countries[job.JobCountry]) {
+      countries[job.JobCountry] = true;
+    }
     return {
       posted: new Date(job.Posted).getTime(),
       company: job.Company,
@@ -167,5 +197,21 @@ export async function getServerSideProps() {
       tags: job.Benefits.split(","),
     };
   });
-  return { props: { viewableJobs } };
+
+  const countriesWithJobs = Object.keys(countries);
+
+  let countriesWithJobsData = getCountryMap(countriesWithJobs);
+  countriesWithJobsData = [
+    { id: 0, name: "🗺️ Location" },
+    { id: 1, name: "🗺️ Anywhere" },
+    ...countriesWithJobsData,
+  ];
+
+  return {
+    props: {
+      viewableJobs,
+      countriesWithJobs: countriesWithJobsData,
+    },
+    revalidate: 18000,
+  };
 }

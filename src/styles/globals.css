@@ -15,6 +15,14 @@
   stroke: #fff;
 }
 
+:root.dark {
+  background-color: rgb(17 24 39);
+}
+
+:root {
+  background-color: rgb(241 245 249);
+}
+
 :root.dark .ql-toolbar .ql-fill {
   fill: #fff;
   stroke: none;
