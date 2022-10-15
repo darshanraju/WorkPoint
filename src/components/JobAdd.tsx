@@ -4,6 +4,8 @@ import ExpandedContent from "./ExpandedContent";
 import TempCompanyLogoV2 from "../../public/questionMark.svg";
 import { filterStates } from "../pages";
 import { jobTypeValues } from "../utils/jobUtils";
+import ReactRoundedImage from "react-rounded-image";
+
 export interface Section {
   title: string;
   text: Array<string>;
@@ -80,19 +82,19 @@ const JobAdd = ({
         onClick={() => setOpen(!open)}
       >
         {logo && (
-          <div className="w-1/6 lg:w-1/7 relative flex justify-center">
-            {/* <div className="flex w-3/4"> */}
+          <div className="w-1/6 h-fit lg:w-1/7 flex justify-center">
             <Image
               src={logo}
               // layout="fill"
-              height="100%"
-              width="100%"
+              height="100"
+              width="100"
               objectFit="contain"
               alt="company_logo"
+              // style={{ borderRadius: "50%", border: "2px solid white" }}
             />
-            {/* </div> */}
           </div>
         )}
+
         <div className="flex pl-4 lg:px-0 flex-col w-4/6 lg:w-2/6 items-start justify-center">
           <div className="font-medium text-sm lg:text-lg text-start">
             {company}
@@ -134,12 +136,15 @@ const JobAdd = ({
             {primaryJobTag && <PrimaryJobTag tag={primaryJobTag} />}
           </span>
         </div>
-        <div className="flex items-end lg:w-2/6  flex-wrap hidden lg:flex">
-          {tags?.map((tag, idx) => {
-            if (tag.length > 0) {
-              return <BenefitTag tag={tag} key={idx} />;
-            }
-          })}
+        {/* <div className="flex items-end lg:w-2/6  flex-wrap hidden lg:flex"> */}
+        <div className="items-end lg:w-2/6 hidden lg:flex flex-wrap flex-row-reverse	">
+          <div className="h-fit flex flex-wrap flex-row">
+            {tags?.map((tag, idx) => {
+              if (tag.length > 0) {
+                return <BenefitTag tag={tag} key={idx} />;
+              }
+            })}
+          </div>
         </div>
         <div className="flex lg:w-1/6 items-center font-semibold justify-center">
           {!posting && snowManMethod(now, posted)}
@@ -180,10 +185,10 @@ const JobAdd = ({
 interface ITag {
   tag: string;
 }
-
+// p-2 m-1 badge badge-md md:badge-lg badge-info bg-sky-300
 const BenefitTag = ({ tag }: ITag) => {
   return (
-    <div className="p-2 m-1 badge badge-sm badge-accent hover:badge-accent cursor-pointer">
+    <div className="p-2 m-1 badge badge-md badge-accent hover:badge-accent cursor-pointer">
       {tag}
     </div>
   );
