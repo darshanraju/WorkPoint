@@ -45,6 +45,7 @@ export interface IJobForm {
 
 const AddJobForm = () => {
   const jobCountries = countriesWithFlags();
+
   const darkClasses =
     "flex flex-col border-t-2 md:border-2 border-gray-200 lg:rounded-lg lg:shadow-lg hover:bg-slate-100 transition ease-in-out delay-100 dark:border-[#28395c] dark:bg-[#192339] dark:text-[#bfbfbf]";
   const defaultClass = "bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 ";

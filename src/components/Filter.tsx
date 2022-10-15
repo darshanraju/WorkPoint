@@ -4,6 +4,8 @@ import { filterStates, IJobFilter, sortStates } from "../pages";
 import { IOption } from "../utils/jobUtils";
 import HomeFilterSelect from "./HomeFilterSelect";
 import HorizontalScroll from "react-scroll-horizontal";
+import FilterSelect from "./DefaultSelect";
+import Select from "./Select";
 interface IFilter {
   jobFilter: IJobFilter;
   setJobFilter: React.Dispatch<React.SetStateAction<IJobFilter>>;
@@ -54,17 +56,21 @@ const Filter = ({ setJobFilter, jobFilter, countriesWithJobs }: IFilter) => {
   const sortState: Array<IOption> = [
     {
       id: 0,
-      name: "🕓 Newly Added",
+      name: "❓ Sort By",
     },
     {
       id: 1,
+      name: "🕓 Newly Added",
+    },
+    {
+      id: 2,
       name: "💻 Company",
     },
   ];
 
   return (
     <div className="w-full h-fit">
-      <div className="flex flex-row w-full items-center md:justify-end sm:px-0 md:px-2 overflow-x-scroll md:overflow-visible">
+      {/* <div className="flex flex-row w-full items-center md:justify-end sm:px-0 md:px-2 overflow-x-scroll md:overflow-visible">
         <HomeFilterSelect
           selectOptions={jobType}
           defaultOption={jobType[0]}
@@ -91,6 +97,48 @@ const Filter = ({ setJobFilter, jobFilter, countriesWithJobs }: IFilter) => {
           filterKey={filterTypes.sortState}
           onChange={handleSortChange}
         />
+      </div> */}
+
+      <div className="w-full h-fit">
+        <div className="flex justify-around md:justify-end overflow-x-scroll md:overflow-x-hidden pb-[12px]">
+          <FilterSelect
+            selectOptions={jobType}
+            defaultOption={jobType[2]}
+            currentFilter={jobFilter}
+            setFilter={setJobFilter}
+            excludeOption="none"
+            filterKey={filterTypes.JobType}
+            onChange={handleJobTypeChange}
+          />
+          <FilterSelect
+            selectOptions={countriesWithJobs}
+            defaultOption={countriesWithJobs[0]}
+            currentFilter={jobFilter}
+            setFilter={setJobFilter}
+            excludeOption="Location"
+            filterKey={filterTypes.country}
+          />
+          <FilterSelect
+            selectOptions={sortState}
+            defaultOption={sortState[2]}
+            currentFilter={jobFilter}
+            setFilter={setJobFilter}
+            excludeOption="Sort By"
+            filterKey={filterTypes.sortState}
+            onChange={handleSortChange}
+          />
+          {/* <FilterSelect />
+          <FilterSelect />
+          <FilterSelect />
+          <FilterSelect />
+          <FilterSelect /> */}
+        </div>
+        {/* <div className="flex md:justify-end ">
+          <Select />
+          <Select />
+          <Select />
+          <Select />
+        </div> */}
       </div>
     </div>
   );

@@ -11,7 +11,6 @@ import Script from "next/script";
 import { getBaseUrl } from "./_app";
 import Navbar from "../components/Navbar";
 import { getCountryMap, jobTypeValues } from "../utils/jobUtils";
-
 export enum filterStates {
   grad = "grad",
   intern = "intern",
@@ -144,6 +143,7 @@ const Home = ({
           setJobFilter={setJobFilter}
           countriesWithJobs={countriesWithJobs}
         />
+
         <div className="grid lg:gap-4 pt-6 pb-40 text-center md:grid-cols-1 w-full lg:w-3/4lg:mb-40">
           {filtedJobs.map((job, idx) => (
             <JobAdd

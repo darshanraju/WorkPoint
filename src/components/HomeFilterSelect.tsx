@@ -31,11 +31,6 @@ const HomeFilterSelect = ({
   );
   const handleChange = (newValue: { id: number; name: string }) => {
     setSelected(newValue);
-    const newFilter: any = { ...currentFilter };
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    // newFilter[filterKey] = newValue.name as filterTypes;
-    // console.log("New filter: ", newFilter);
-    // setFilter(newFilter);
     onChange(newValue.name);
   };
 
