@@ -4,7 +4,6 @@ import ExpandedContent from "./ExpandedContent";
 import TempCompanyLogoV2 from "../../public/questionMark.svg";
 import { filterStates } from "../pages";
 import { jobTypeValues } from "../utils/jobUtils";
-import ReactRoundedImage from "react-rounded-image";
 
 export interface Section {
   title: string;
@@ -65,6 +64,7 @@ const JobAdd = ({
   const now = Date.now();
   const [open, setOpen] = useState<boolean>(false);
   const [seeApply, setSeeApply] = useState<boolean>(false);
+
   const applyClass = posting
     ? "items-center flex"
     : seeApply
@@ -82,16 +82,17 @@ const JobAdd = ({
         onClick={() => setOpen(!open)}
       >
         {logo && (
-          <div className="w-1/6 h-fit lg:w-1/7 flex justify-center">
-            <Image
-              src={logo}
-              // layout="fill"
-              height="100"
-              width="100"
-              objectFit="contain"
-              alt="company_logo"
-              // style={{ borderRadius: "50%", border: "2px solid white" }}
-            />
+          <div className="flex items-center w-1/6 ">
+            <div className="w-full h-fit lg:w-1/7 flex justify-center">
+              <Image
+                src={logo}
+                height="100"
+                width="100"
+                objectFit="contain"
+                alt="company_logo"
+                // style={{ borderRadius: "50%", border: "2px solid white" }}
+              />
+            </div>
           </div>
         )}
 
@@ -154,7 +155,6 @@ const JobAdd = ({
             className="btn btn-sm md:btn-md btn-secondary mx-2"
             onClick={() => {
               if (link && link.length > 8) {
-                console.log("Opening: ", link);
                 window.open(link, "_blank");
               }
             }}

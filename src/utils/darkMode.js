@@ -39,17 +39,12 @@ const themeSwitch = () => {
 
 // Call Theme switch on clicking buttons
 sunIcon.addEventListener("click", () => {
-  console.log("Clicked");
   themeSwitch();
 });
 
 moonIcon.addEventListener("click", () => {
-  console.log("Clicked");
-
   themeSwitch();
 });
-
-console.log("LOADING");
 
 // Invoke theme check on initial load
 themeCheck();

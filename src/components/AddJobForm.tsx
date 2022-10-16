@@ -106,9 +106,7 @@ const AddJobForm = () => {
     if (!fileV2) return;
     setDisableSubmit(true);
     const { uploadUrl } = await generateDirectUploadUrl.mutateAsync();
-    console.log("UploadURL: " + uploadUrl);
     const imageId = await uploadCompanyLogo(uploadUrl, fileV2);
-    console.log("ImageID: " + imageId);
     const imageUrl = `https://imagedelivery.net/XmlBAUGCN5tyuiiZB4aVVw/${imageId}/public`;
     const formDataWithImageId = { ...data, companyLogo: imageUrl };
     formDataWithImageId.jobLink =

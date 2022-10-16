@@ -8,7 +8,6 @@ const EmailSubscription = () => {
 
   const subscribe = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(email);
     subscription.mutate(email);
   };
 

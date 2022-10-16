@@ -32,6 +32,7 @@ export interface IJobFilter {
   JobType: filterStates;
   sortState: sortStates;
   country: string;
+  primaryJobTag: jobTypeValues;
 }
 
 const jobs = jobsJson as unknown as Array<IJobAdd>;
@@ -42,7 +43,10 @@ const Home = ({
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   const [allJobs] = useState<Array<IJobAdd>>(
     (function () {
-      const clientSideStoredJobs = jobs;
+      const clientSideStoredJobs = jobs.map((job) => {
+        job.primaryJobTag = jobTypeValues.softwareEngineer;
+        return job;
+      });
       const dbJobs = viewableJobs;
       return [...dbJobs, ...clientSideStoredJobs];
     })()
@@ -51,6 +55,7 @@ const Home = ({
     JobType: filterStates.both,
     sortState: sortStates.company,
     country: "anywhere",
+    primaryJobTag: jobTypeValues.softwareEngineer,
   });
 
   const [filtedJobs, setFilteredJobs] = useState(
@@ -77,8 +82,6 @@ const Home = ({
     ) {
       //Sort by country
       newJobs = newJobs.filter((job) => {
-        console.log("Current country is: ", jobFilter.country);
-        console.log("Current job location: ", job.location);
         return job.location?.includes(jobFilter.country);
       });
     }
@@ -105,6 +108,11 @@ const Home = ({
         return -1;
       });
     }
+
+    // Sort by PrimaryJobTag
+    newJobs = newJobs.filter(
+      (job) => job.primaryJobTag === jobFilter.primaryJobTag
+    );
 
     setFilteredJobs(newJobs);
   };
@@ -156,6 +164,7 @@ const Home = ({
               location={job.location}
               link={job.link}
               jobDesc={job.jobDesc}
+              primaryJobTag={job.primaryJobTag}
               key={idx}
             />
           ))}
@@ -182,6 +191,7 @@ export async function getStaticProps() {
     if (!countries[job.JobCountry]) {
       countries[job.JobCountry] = true;
     }
+
     return {
       posted: new Date(job.Posted).getTime(),
       company: job.Company,

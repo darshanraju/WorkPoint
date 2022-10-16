@@ -307,7 +307,7 @@ export enum jobTypeValues {
   ux = "🎨 UX",
 }
 
-export const jobTypes = [
+export const primaryJobTags = [
   { id: 0, name: jobTypeValues.softwareEngineer },
   { id: 1, name: jobTypeValues.frontendEngineer },
   { id: 2, name: jobTypeValues.backendEngineer },
