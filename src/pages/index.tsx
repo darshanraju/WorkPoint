@@ -44,7 +44,7 @@ const Home = ({
   const [allJobs] = useState<Array<IJobAdd>>(
     (function () {
       const clientSideStoredJobs = jobs.map((job) => {
-        job.primaryJobTag = jobTypeValues.softwareEngineer;
+        job.primaryJobTag = jobTypeValues.fullstackEngineer;
         return job;
       });
       const dbJobs = viewableJobs;

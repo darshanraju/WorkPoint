@@ -82,21 +82,34 @@ const JobAdd = ({
         onClick={() => setOpen(!open)}
       >
         {logo && (
-          <div className="flex items-center w-1/6 ">
-            <div className="w-full h-fit lg:w-1/7 flex justify-center">
-              <Image
-                src={logo}
-                height="100"
-                width="100"
-                objectFit="contain"
-                alt="company_logo"
-                // style={{ borderRadius: "50%", border: "2px solid white" }}
-              />
+          <>
+            <div className="hidden items-center w-1/6 md:flex">
+              <div className="w-full h-fit lg:w-1/7 flex justify-center">
+                <Image
+                  src={logo}
+                  height="100"
+                  width="100"
+                  objectFit="contain"
+                  alt="company_logo"
+                  // style={{ borderRadius: "50%", border: "2px solid white" }}
+                />
+              </div>
             </div>
-          </div>
+            <div className="flex items-center w-1/6 md:hidden h-full">
+              <div className="w-full h-fit flex justify-center">
+                <Image
+                  src={logo}
+                  height="50"
+                  width="50"
+                  objectFit="contain"
+                  alt="company_logo"
+                />
+              </div>
+            </div>
+          </>
         )}
 
-        <div className="flex pl-4 lg:px-0 flex-col w-4/6 lg:w-2/6 items-start justify-center">
+        <div className="flex lg:px-0 flex-col w-4/6 lg:w-2/6 items-start justify-center">
           <div className="font-medium text-sm lg:text-lg text-start">
             {company}
           </div>
@@ -138,7 +151,7 @@ const JobAdd = ({
           </span>
         </div>
         {/* <div className="flex items-end lg:w-2/6  flex-wrap hidden lg:flex"> */}
-        <div className="items-end lg:w-2/6 hidden lg:flex flex-wrap flex-row-reverse	">
+        <div className="items-end lg:w-2/6 hidden lg:flex">
           <div className="h-fit flex flex-wrap flex-row">
             {tags?.map((tag, idx) => {
               if (tag.length > 0) {
@@ -147,9 +160,10 @@ const JobAdd = ({
             })}
           </div>
         </div>
-        <div className="flex lg:w-1/6 items-center font-semibold justify-center">
+        <div className="flex w-1/6 items-center font-semibold justify-center">
           {!posting && snowManMethod(now, posted)}
         </div>
+
         <div className={applyClass}>
           <button
             className="btn btn-sm md:btn-md btn-secondary mx-2"
@@ -196,11 +210,11 @@ const BenefitTag = ({ tag }: ITag) => {
 
 const JobTypeTag = ({ tag }: ITag) => {
   return tag.includes("Graduate") ? (
-    <div className="p-2 m-1 badge badge-md md:badge-lg badge-success bg-green-300">
+    <div className="p-2 m-1 badge badge-sm md:badge-lg badge-success bg-green-300">
       {tag}
     </div>
   ) : (
-    <div className="p-2 m-1 badge badge-md md:badge-lg badge-info bg-sky-300">
+    <div className="p-2 m-1 badge badge-sm md:badge-lg badge-info bg-sky-300">
       <div className="text-bold">{tag}</div>
     </div>
   );
@@ -210,49 +224,49 @@ const PrimaryJobTag = ({ tag }: { tag: jobTypeValues }) => {
   switch (tag) {
     case jobTypeValues.backendEngineer:
       return (
-        <div className="p-2 m-1 badge badge-md md:badge-lg bg-purple-300 text-black">
+        <div className="p-2 m-1 badge badge-sm md:badge-lg bg-purple-300 text-black">
           {tag}
         </div>
       );
     case jobTypeValues.consulting:
       return (
-        <div className="p-2 m-1 badge badge-md md:badge-lg badge-lg bg-lime-300 text-black">
+        <div className="p-2 m-1 badge badge-sm md:badge-lg badge-lg bg-lime-300 text-black">
           {tag}
         </div>
       );
     case jobTypeValues.dataScientist:
       return (
-        <div className="p-2 m-1 badge badge-md md:badge-lg bg-teal-300 text-black">
+        <div className="p-2 m-1 badge badge-sm md:badge-lg bg-teal-300 text-black">
           {tag}
         </div>
       );
     case jobTypeValues.devops:
       return (
-        <div className="p-2 m-1 badge badge-md md:badge-lg  bg-yellow-300 text-black">
+        <div className="p-2 m-1 badge badge-sm md:badge-lg  bg-yellow-300 text-black">
           {tag}
         </div>
       );
     case jobTypeValues.frontendEngineer:
       return (
-        <div className="p-2 m-1 badge badge-md md:badge-lg bg-pink-300 text-black">
+        <div className="p-2 m-1 badge badge-sm md:badge-lg bg-pink-300 text-black">
           {tag}
         </div>
       );
     case jobTypeValues.fullstackEngineer:
       return (
-        <div className="p-2 m-1 badge badge-md md:badge-lg bg-red-300 text-black">
+        <div className="p-2 m-1 badge badge-sm md:badge-lg bg-red-300 text-black">
           {tag}
         </div>
       );
     case jobTypeValues.softwareEngineer:
       return (
-        <div className="p-2 m-1 badge badge-md md:badge-lg bg-indigo-300 text-black">
+        <div className="p-2 m-1 badge badge-sm md:badge-lg bg-indigo-300 text-black">
           {tag}
         </div>
       );
     case jobTypeValues.ux:
       return (
-        <div className="p-2 m-1 badge badge-md md:badge-lg bg-rose-300 text-black">
+        <div className="p-2 m-1 badge badge-sm md:badge-lg bg-rose-300 text-black">
           {tag}
         </div>
       );
